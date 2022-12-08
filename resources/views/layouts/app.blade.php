@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 <body>
-    @include('partials.navbar')
+    @include('partials.header')
 
     <main id="main" class="main">
         @yield('main')
     </main>
-    
+
     @include('partials.footer')
 
     @yield('scripts')
