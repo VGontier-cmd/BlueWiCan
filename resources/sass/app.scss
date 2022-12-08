@@ -2,7 +2,6 @@
 @import 'variables';
 @import 'style';
 
-
 .main-title {
     font-size: 2rem;
     text-transform: uppercase;
@@ -14,10 +13,16 @@ header, main, footer {
     width: 100%;
 }
 
+
 header {
-    border-bottom: $border-color;
+    border-bottom: 1px solid $border-color;
 }
+
+main {
+    margin-bottom: auto;
+}
+
 footer {
-    border-top: $border-color;
+    border-top: 1px solid $border-color;
 }
 
