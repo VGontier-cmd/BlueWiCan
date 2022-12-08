@@ -1,0 +1,23 @@
+html {
+    color-scheme: dark light;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    font: inherit;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+}
+
+input, textarea, button, select {
+    font: inherit;
+}

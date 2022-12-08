@@ -1,0 +1,23 @@
+
+@import 'variables';
+@import 'style';
+
+
+.main-title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header, main, footer {
+    padding: 2rem;
+    width: 100%;
+}
+
+header {
+    border-bottom: $border-color;
+}
+footer {
+    border-top: $border-color;
+}
+
