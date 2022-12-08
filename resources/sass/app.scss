@@ -1,6 +1,25 @@
 
+
+
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
 @import 'variables';
+
+// Global styles
 @import 'style';
+ 
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+ 
+// DataTables
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+@import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
+@import 'datatables.net-select-bs5/css/select.bootstrap5.css';
+
+@import 'dataTables';
 
 .main-title {
     font-size: 2rem;
@@ -12,7 +31,6 @@ header, main, footer {
     padding: 2rem;
     width: 100%;
 }
-
 
 header {
     border-bottom: 1px solid $border-color;
@@ -26,3 +44,14 @@ footer {
     border-top: 1px solid $border-color;
 }
 
+.card {
+    box-shadow: $large-shadow;
+    border: none;
+}
+/* ---------------- */
+/*      Buttons     */
+.main-btn {
+    background: transparent;
+    background-image: $gradient-color;
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
+}

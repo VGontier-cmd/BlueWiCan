@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\CanDatasDataTable;
+
 class CoreController extends Controller
 {
     /**
      * Permet d'afficher la page d'accueil
-     * @return View
      */
-    public function home() {
-        return view('core/home');
+    public function home(CanDatasDataTable $dataTable) {
+        return $dataTable->render('core.home');
     }
 }

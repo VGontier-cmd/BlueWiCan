@@ -16,11 +16,11 @@
     @include('partials.header')
 
     <main id="main" class="main">
-        @yield('main')
+        @yield('content')
     </main>
 
     @include('partials.footer')
 
-    @yield('scripts')
+    @stack('scripts')
 </body>
 </html>
