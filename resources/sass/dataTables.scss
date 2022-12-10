@@ -2,6 +2,26 @@
     padding-bottom: .5rem;
 }
 
+.gradient-line {
+    background-color: $primary-color;
+    height: 4px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.table-header {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    background-color: #fff;
+    box-shadow: $large-shadow;
+    margin-left: -1.5rem;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    
+    @media (min-width: 1200px) {
+        width: calc(100vw - $sidenav-width);
+    }
+}
 .dataTable  {
     width: 100% !important;
 
@@ -19,6 +39,7 @@
     }
     tbody {
         tr {
+
             td {
                 font-size: .9rem;
                 vertical-align: middle;
@@ -28,10 +49,9 @@
     }
 }
 
-.btn {
-    &[title=Reload] {
-        background: transparent;
-        background-image: linear-gradient(310deg,#7928ca,#ff0080);
+.dt-buttons {
+    .btn {
+        background-color: $primary-color;
         box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
         border: none;
     }
@@ -65,7 +85,8 @@
         padding: .5rem 1rem;
     }
 }
-.dataTables_length {
+.dataTables_length,
+.dataTables_filter {
     label {
         font-size: .75rem;
     }
@@ -128,8 +149,7 @@
 
         &.active {
             .page-link {
-                background: transparent;
-                background-image: linear-gradient(310deg,#7928ca,#ff0080);
+                background-color: $primary-color;
                 box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
                 color: #fff;
                 border: none;

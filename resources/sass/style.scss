@@ -24,3 +24,13 @@ img, picture, svg, video {
 input, textarea, button, select {
     font: inherit;
 }
+
+header, main, footer {
+    padding: 0 !important;
+}
+
+ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}

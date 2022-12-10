@@ -7,7 +7,10 @@
 |
 */
 
-$border-color: red;
+// primary color
+$primary-color: #243783;
+
+$sidenav-link-color: #243783;
 // background color
 $background-color: #f8f9fa;
 // table font color
@@ -22,3 +25,5 @@ $success-color: #82d616;
 $gradient-color: linear-gradient(310deg,#7928ca,#ff0080);
 // large shadow
 $large-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+
+$sidenav-width: 15.625rem;

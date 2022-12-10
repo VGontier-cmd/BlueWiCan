@@ -20,9 +20,12 @@
 @import 'datatables.net-select-bs5/css/select.bootstrap5.css';
 
 @import 'dataTables';
+@import 'sidenav';
+@import 'footer';
 
 .main-title {
-    font-size: 2rem;
+    font-size: 1.3rem;
+    color: $primary-color;
     text-transform: uppercase;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -32,16 +35,9 @@ header, main, footer {
     width: 100%;
 }
 
-header {
-    border-bottom: 1px solid $border-color;
-}
 
 main {
     margin-bottom: auto;
-}
-
-footer {
-    border-top: 1px solid $border-color;
 }
 
 .card {
@@ -52,6 +48,41 @@ footer {
 /*      Buttons     */
 .main-btn {
     background: transparent;
-    background-image: $gradient-color;
+    background-image: $primary-color;
     box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
+}
+
+
+.main-content {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: all .2s ease-in-out;
+    position: relative;
+    height: 100%;
+
+    @media (min-width: 1200px) {
+        margin-left: $sidenav-width;
+        width: calc(100% - $sidenav-width);
+    }
+
+    .main-wrapper {
+        margin-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        min-height: calc(100vh - 6rem);
+    }
+}
+.blur {
+    backdrop-filter: saturate(200%) blur(30px) !important;
+    background-color: hsla(0,0%,100%,.8) !important;
+}
+
+#navbar__open-btn,
+#sidenav__close-btn {
+    display: block;
+    @media (min-width: 1200px) {
+        display: none;
+    }
 }
