@@ -12,12 +12,13 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
-<body>
+<body page-format="default">
+    @include('partials.header')
     @include('partials.sidenav')
-
+    
     <main id="main-content" class="main-content no-sb">
         <div class="main-wrapper">
-            <div class="container-fluid p-4">
+            <div class="main-inner container-fluid p-4">
                 <div class="row">
                     @yield('content')
                 </div>
