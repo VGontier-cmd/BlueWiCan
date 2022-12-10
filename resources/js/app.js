@@ -40,9 +40,9 @@ function togglePageFormat() {
         $('body').attr('page-format', function(index, attr) {
             
             if(attr == 'minimalized')
-                $(minimalized_icon).addClass("bi-arrow-bar-left").removeClass("bi-arrow-bar-right");
+                $(minimalized_icon).addClass("bi-chevron-left").removeClass("bi-chevron-right");
             else
-                $(minimalized_icon).addClass("bi-arrow-bar-right").removeClass("bi-arrow-bar-left");
+                $(minimalized_icon).addClass("bi-chevron-right").removeClass("bi-chevron-left");
 
             return attr == 'minimalized' ? 'default' : 'minimalized';
         });

@@ -56,7 +56,11 @@ class CanDatasDataTable extends DataTable
                     ->orderBy(4)
                     ->pageLength(50)
                     ->selectStyleSingle()
-                    ->languageUrl("https://cdn.datatables.net/plug-ins/1.12.0/i18n/fr-FR.json")
+                    ->responsive(true)
+                    ->autoWidth(false)
+                    ->languageSearch('<div class="search-icon"><i class="bi bi-search"></i></div>')
+                    ->languageSearchPlaceholder('Recherche...')
+                    ->languageUrl('https://cdn.datatables.net/plug-ins/1.12.0/i18n/fr-FR.json')
                     ->languageSelectColumns("")
                     ->buttons([
                         Button::make('reload'),

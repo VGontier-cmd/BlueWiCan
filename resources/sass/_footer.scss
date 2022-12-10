@@ -14,7 +14,7 @@
     }
 
     .footer-wrapper {
-        padding: 2rem;
+        padding: 2rem 0;
         background-color: $primary-color;
 
         .footer__link-list {
@@ -37,7 +37,7 @@
        
         .footer__copyright {
             margin-top: 2rem;
-            border-top: 1px solid #f4f4f4;
+            border-top: 1px solid $footer-border-color;
             padding: 1rem;
             text-align: center;
             color: #fff;
@@ -54,15 +54,17 @@
     }
 
     .footer__names {
-        background-color: #ffff;
+        background-color: $primary-color;
         padding: .5rem 2rem;
+        border-top: 1px solid $footer-border-color;
         
         .footer__copy-items {
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
             gap: .5rem;
-            color: $font-color;
+            color: #fff;
 
             span {
                 display: block;

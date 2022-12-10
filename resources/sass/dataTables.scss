@@ -1,5 +1,26 @@
 .dataTable-container {
     padding-bottom: .5rem;
+    overflow: hidden;
+
+    .dataTables_wrapper {
+        .row {
+            &:first-child {
+                .col-sm-12 {
+                    padding-bottom: .8rem;
+                    margin-bottom: 1rem;
+                    border-bottom: 1px solid #dbdbdb;
+                }
+            }
+            &:nth-child(3) {
+                margin-inline: 0 !important;
+                overflow-x: auto;
+
+                .col-sm-12 {
+                    padding-inline: 0 !important;
+                }
+            }
+        }
+    }
 }
 
 .gradient-line {
@@ -14,7 +35,6 @@
 
     thead th,
     tbody td {
-        padding: 0.5rem 1.5rem;
         border: none;
     }
     thead {
@@ -77,6 +97,45 @@
     label {
         font-size: .75rem;
     }
+}
+.dataTables_length {
+    text-align: left !important;
+}
+.dataTables_filter {
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 2.5rem;
+
+        .search-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $primary-color;
+            color: #fff;
+            font-size: 1rem;
+            height: 100%;
+            border-radius: .5rem 0 0 .5rem;
+            padding: 0 .7rem;
+        }
+        input {
+            width: 100% !important;
+            outline: none !important;
+            box-shadow: none !important;
+            padding: .5rem !important;
+            border-color: $primary-color !important;
+            height: 100%;
+            margin-left: 0 !important;
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+            
+            @media (min-width: 48rem) {
+                width: 500px !important;
+            }
+        }
+    }
+
 }
 
 .dataTables_info {

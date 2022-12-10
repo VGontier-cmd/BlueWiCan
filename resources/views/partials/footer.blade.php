@@ -8,10 +8,10 @@
                 <a href="#" class="footer__link">Dashboard</a>
             </li>
             <li class="footer__link-item">
-                <a href="#" class="footer__link">Données stockées</a>
+                <a href="{{ route('home') }}" class="footer__link">Données stockées</a>
             </li>
             <li class="footer__link-item">
-                <a href="#" class="footer__link">Données live</a>
+                <a href="{{ route('live') }}" class="footer__link">Données live</a>
             </li>
         </ul>
         <div class="footer__copyright">

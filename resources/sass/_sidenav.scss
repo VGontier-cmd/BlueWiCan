@@ -10,7 +10,7 @@
     opacity: 0;
     visibility: hidden;
     transition: all .2s ease-in-out;
-    z-index: 11;
+    z-index: 3;
 
     @media (min-width: 1201px) {
         display: none;
@@ -40,21 +40,17 @@
     left: 0;
     width: 100%;
     max-width: $sidenav-width;
-    overflow-y: auto;
     padding: 0;
-    box-shadow: none;
-    z-index: 12;
-    //border-radius: 1rem;
-    //margin: 1rem 0 1rem 1rem;
     transform: translateX(0);
     transition: all .2s ease-in-out;
     box-shadow: $large-shadow;
-    overflow: hidden;
+    z-index: 2;
 
     @media (max-width: 1200px) {
         transform: translateX(-150%);
         box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
         background: #fff;
+        z-index: 4;
     }
 
     .sidenav__header {
@@ -110,8 +106,8 @@
 
         padding: 1rem 0 2rem 0;
         margin-top: -1rem;
-        border-radius: 1rem 1rem 0 0;
         background-color: #fff;
+        overflow: hidden;
         z-index: 1;
 
         .sidenav__navbar-nav {
@@ -170,24 +166,4 @@
             }
         }
     }
-}
-
-#sidenav__minimalized-trigger {
-    position: absolute;
-    right: 0;
-    bottom: 84px;
-    width: auto;
-    color: #fff;
-    padding: .5rem;
-    padding-inline: .2rem;
-    border-radius: .5rem 0 0 .5rem;
-    font-size: 1.3rem;
-}
-.sidenav__minimalized-bg {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    min-width: 250px;
-    rotate: -90deg;
-    transform: translate(0, 190%);
 }
