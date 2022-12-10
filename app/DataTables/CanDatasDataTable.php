@@ -25,10 +25,7 @@ class CanDatasDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->editColumn('created_at', function($data){ 
-                return $data->created_at->format('d/m/Y'); 
-            })
-            ->editColumn('updated_at', function($data){ 
-                return $data->updated_at->format('d/m/Y'); 
+                return $data->created_at->format('d/m/Y à H:m'); 
             });
     }
 
@@ -55,10 +52,16 @@ class CanDatasDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->lengthMenu([100, 200, 500, 1000])
+                    ->orderBy(4)
+                    ->pageLength(100)
                     ->selectStyleSingle()
+                    ->languageUrl("https://cdn.datatables.net/plug-ins/1.12.0/i18n/fr-FR.json")
+                    ->languageSelectColumns("")
                     ->buttons([
-                        Button::make('reload')
+                        Button::make('reload'),
+                        Button::make('print'),
+                        Button::make('pdf')
                     ]);
     }
 
@@ -74,8 +77,7 @@ class CanDatasDataTable extends DataTable
             Column::make('given_id'),
             Column::make('data'),
             Column::make('length'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('created_at')
         ];
     }
 
