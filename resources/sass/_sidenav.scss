@@ -16,7 +16,22 @@
         display: none;
     }
 }
-#sidenav {
+
+.nav-item__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-right: .7rem;
+    border-radius: .5rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 .3125rem .625rem 0 rgba(0,0,0,.12);
+}
+
+.sidenav {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -34,29 +49,14 @@
     transform: translateX(0);
     transition: all .2s ease-in-out;
     box-shadow: $large-shadow;
+    overflow: hidden;
 
     @media (max-width: 1200px) {
         transform: translateX(-150%);
         box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
         background: #fff;
     }
-}
 
-.nav-item__icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    margin-right: .7rem;
-    border-radius: .5rem;
-    width: 2rem;
-    height: 2rem;
-    background-color: #fff;
-    text-align: center;
-    box-shadow: 0 .3125rem .625rem 0 rgba(0,0,0,.12);
-}
-
-.sidenav {
     .sidenav__header {
         position: relative;
         background-color: $primary-color;
@@ -67,9 +67,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            top: .5rem;
+            top: 0;
             right: .5rem;
             font-size: 1.5rem;
+            color: #fff;
             cursor: pointer;
         }
 
@@ -79,12 +80,18 @@
             padding: .5rem;
             margin: 1rem;
 
-            @media (max-width: 1200px) {
-                padding: 1.5rem 2rem 0.5rem;
-            }
-
             .sidenav__brand-logo {
+                background-image: url(../../public/images/stellantis-logo-white.svg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 100%;
+                height: $logo-height;
+                opacity: 1;
+                transition: all .2s ease-in-out;
+
                 img {
+                    display: none;
                     margin: 0 auto;
                     height: 2rem;
                 }
@@ -101,23 +108,25 @@
         height: auto;
         margin-bottom: auto;
 
-        padding-top: 1rem;
+        padding: 1rem 0 2rem 0;
         margin-top: -1rem;
-        border-radius: 1rem;
+        border-radius: 1rem 1rem 0 0;
         background-color: #fff;
         z-index: 1;
 
         .sidenav__navbar-nav {
+            position: relative;
             display: flex;
             padding-left: 0;
             margin-bottom: 0;
             list-style: none;
             flex-direction: column;
+            height: 100%;
 
             .nav-item {
                 margin-top: 0.125rem;
                 width: 100%;
-
+                            
                 .nav-link {
                     display: flex;
                     align-items: center;
@@ -130,16 +139,22 @@
                     font-weight: 500;
                     color: $sidenav-link-color;
                     font-size: .875rem;
-
-                    &.current-page {
+                    border-radius: 0.5rem;
+                    width: 100%;
+                    transition: width .2s ease-in-out;
+                    
+                    &[data-active=true] {
                         color: $primary-color;
-                        background-color: rgba(36, 55, 131, .2);
+                        background-color: $active-link-color;
                         font-weight: 600;
-                        border-radius: 0.5rem;
 
                         .nav-item__icon {
                             color: $primary-color;
                         }
+                    }
+
+                    .nav-item__text {
+                        transition: all .2s ease-in-out;
                     }
                 }
 
@@ -155,4 +170,24 @@
             }
         }
     }
+}
+
+#sidenav__minimalized-trigger {
+    position: absolute;
+    right: 0;
+    bottom: 84px;
+    width: auto;
+    color: #fff;
+    padding: .5rem;
+    padding-inline: .2rem;
+    border-radius: .5rem 0 0 .5rem;
+    font-size: 1.3rem;
+}
+.sidenav__minimalized-bg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    min-width: 250px;
+    rotate: -90deg;
+    transform: translate(0, 190%);
 }

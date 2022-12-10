@@ -12,7 +12,9 @@ $primary-color: #243783;
 
 $sidenav-link-color: #243783;
 // background color
-$background-color: #f8f9fa;
+$background-color: rgba(36, 55, 131, 0.2); //#f8f9fa (gris clair)
+
+$active-link-color: rgba(36, 55, 131, .2);
 // table font color
 $table-font-color: #67748e;
 // font color
@@ -25,5 +27,11 @@ $success-color: #82d616;
 $gradient-color: linear-gradient(310deg,#7928ca,#ff0080);
 // large shadow
 $large-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-
+// sidenav width
 $sidenav-width: 15.625rem;
+// minimalized sidenav width
+$sidenav-min-width : 6rem;
+// header height
+$header-height: 4.5rem;
+// logo height
+$logo-height: 2.5rem;

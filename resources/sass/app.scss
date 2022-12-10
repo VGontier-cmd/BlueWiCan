@@ -20,8 +20,55 @@
 @import 'datatables.net-select-bs5/css/select.bootstrap5.css';
 
 @import 'dataTables';
+@import 'header';
 @import 'sidenav';
 @import 'footer';
+
+body {
+    &[page-format=minimalized] {
+        .sidenav {
+            max-width: $sidenav-min-width !important;
+
+            .sidenav__brand-logo {
+                background-image: url(../../public/images/stellantis-small-logo-white.png) !important;
+            }
+            .nav-link {
+                width: auto !important;
+
+                .nav-item__text {
+                    opacity: 0;
+                    width: 0;
+                }
+            }
+        }
+        .header, .main-content {
+            @media (min-width: 1200px) {
+                margin-left: $sidenav-min-width !important;
+                width: calc(100% - $sidenav-min-width) !important;
+            }
+        }
+    }
+
+    @media (max-width: 1200px) {
+        &.open {
+            overflow: hidden;
+    
+            #sidenav {
+                transform: translateX(0);
+    
+                .nav-link {
+                    &.current-page {
+                        box-shadow: none;
+                    }
+                }
+            }
+            #sidenav__overlay {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+}
 
 .main-title {
     font-size: 1.3rem;
@@ -44,14 +91,21 @@ main {
     box-shadow: $large-shadow;
     border: none;
 }
+
+
+
 /* ---------------- */
 /*      Buttons     */
-.main-btn {
+.app-btn {
+    border: none !important;
+    outline: none !important;
     background: transparent;
-    background-image: $primary-color;
-    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
 }
 
+.main-btn {
+    background-color: $primary-color;
+    color: #fff;
+}
 
 .main-content {
     position: relative;
@@ -72,6 +126,10 @@ main {
         display: flex;
         flex-direction: column;
         min-height: calc(100vh - 6rem);
+
+        .main-inner {
+            margin-bottom: auto;
+        }
     }
 }
 .blur {
@@ -79,7 +137,7 @@ main {
     background-color: hsla(0,0%,100%,.8) !important;
 }
 
-#navbar__open-btn,
+#header__sidenav-trigger,
 #sidenav__close-btn {
     display: block;
     @media (min-width: 1200px) {

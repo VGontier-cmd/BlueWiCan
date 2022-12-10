@@ -8,20 +8,7 @@
     width: 100%;
     margin-bottom: 1rem;
 }
-.table-header {
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    background-color: #fff;
-    box-shadow: $large-shadow;
-    margin-left: -1.5rem;
-    padding: 1rem 1.5rem;
-    width: 100%;
-    
-    @media (min-width: 1200px) {
-        width: calc(100vw - $sidenav-width);
-    }
-}
+
 .dataTable  {
     width: 100% !important;
 

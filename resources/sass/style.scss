@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     font: inherit;
-    background-color: $background-color;
+    background-color: $background-color !important;
 }
 
 *, *::after, *::before {
