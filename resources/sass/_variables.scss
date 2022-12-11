@@ -7,35 +7,47 @@
 |
 */
 
-// primary color
+/*
+|--------------------------------------------------------------------------
+| Global variables
+|--------------------------------------------------------------------------
+*/
+
 $primary-color: #243783;
-
-$sidenav-link-color: #243783;
-// background color
-$background-color: rgba(36, 55, 131, 0.2); //#f8f9fa (gris clair)
-
-$active-link-color: rgba(36, 55, 131, .2);
-// table font color
-$table-font-color: #67748e;
-// font color
+$secondary-color: #24378333;
 $font-color: #344767;
-// error color
-$error-color: #dc3545;
-// success color
-$success-color: #82d616;
-// gradient color
-$gradient-color: linear-gradient(310deg,#7928ca,#ff0080);
-// large shadow
 $large-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-// sidenav width
+
+/*
+|--------------------------------------------------------------------------
+| Partial variables
+|--------------------------------------------------------------------------
+*/
+
 $sidenav-width: 15.625rem;
-// minimalized sidenav width
 $sidenav-min-width : 6rem;
-// header height
 $header-height: 4.5rem;
-// header height mobile
 $header-height-mobile: 3.5rem;
-// logo height
 $logo-height: 2.5rem;
-// footer border color
 $footer-border-color: #505e99;
+
+/*
+|--------------------------------------------------------------------------
+| Table variables
+|--------------------------------------------------------------------------
+*/
+
+$table-font-color: #67748e;
+
+/*
+|--------------------------------------------------------------------------
+| Break points variables
+|--------------------------------------------------------------------------
+*/
+
+$bp-laptop-L: 90rem; // 1440px
+$bp-laptop: 64rem; // 1024px
+$bp-tablet: 48rem; // 768px
+$bp-mobile-L: 26.563rem; // 425px
+$bp-mobile-M: 23.438rem; // 375px
+$bp-mobile-S: 20rem; // 320px

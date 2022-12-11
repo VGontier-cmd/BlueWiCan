@@ -1,5 +1,11 @@
-
-
+/*
+|--------------------------------------------------------------------------
+| SASS App
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize the application by adding your own css.
+| 
+*/
 
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
@@ -19,37 +25,39 @@
 @import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
 @import 'datatables.net-select-bs5/css/select.bootstrap5.css';
 
+// App imports
 @import 'dataTables';
 @import 'header';
 @import 'sidenav';
 @import 'footer';
 
 body {
-    &[page-format=minimalized] {
-        .sidenav {
-            max-width: $sidenav-min-width !important;
-
-            .sidenav__brand-logo {
-                background-image: url(../../public/images/stellantis-small-logo-white.png) !important;
-            }
-            .nav-link {
-                width: auto !important;
-
-                .nav-item__text {
-                    opacity: 0;
-                    width: 0;
+    @media (min-width: $bp-laptop) {
+        &[page-format=minimalized] {
+            .sidenav {
+                max-width: $sidenav-min-width !important;
+    
+                .sidenav__brand-logo {
+                    background-image: url(../../public/images/stellantis-small-logo-white.png) !important;
+                }
+                .nav-link {
+                    width: auto !important;
+                    border-radius: 50px !important;
+    
+                    .nav-item__text {
+                        opacity: 0;
+                        width: 0;
+                    }
                 }
             }
-        }
-        .header, .main-content {
-            @media (min-width: 1200px) {
+            .header, .main-content {
                 margin-left: $sidenav-min-width !important;
                 width: calc(100% - $sidenav-min-width) !important;
             }
         }
     }
-
-    @media (max-width: 1200px) {
+    
+    @media (max-width: $bp-laptop) {
         &.open {
             overflow: hidden;
     
@@ -76,7 +84,7 @@ body {
     text-transform: uppercase;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
-    @media (min-width: 48rem) {
+    @media (min-width: $bp-tablet) {
         font-size: 1.3rem;
     }
 }
@@ -139,7 +147,7 @@ main {
     position: relative;
     height: 100%;
 
-    @media (min-width: 1200px) {
+    @media (min-width: $bp-laptop) {
         margin-left: $sidenav-width;
         width: calc(100% - $sidenav-width);
     }
@@ -150,13 +158,18 @@ main {
         margin-top: $header-height-mobile;
         min-height: calc(100vh - $header-height-mobile);
 
-        @media (min-width: 48rem) {
+        @media (min-width: $bp-tablet) {
             margin-top: $header-height;
             min-height: calc(100vh - $header-height);
         }
 
         .main-inner {
             margin-bottom: auto;
+            padding: 1.5rem .5rem;
+
+            @media (min-width: $bp-tablet) {
+                padding-inline: 1.5rem;
+            }
         }
     }
 }
@@ -168,7 +181,7 @@ main {
 #header__sidenav-trigger,
 #sidenav__close-btn {
     display: block;
-    @media (min-width: 1200px) {
+    @media (min-width: $bp-laptop) {
         display: none;
     }
 }

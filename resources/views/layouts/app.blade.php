@@ -20,10 +20,8 @@
     
     <main id="main-content" class="main-content no-sb">
         <div class="main-wrapper">
-            <div class="main-inner container-fluid p-4">
-                <div class="row">
-                    @yield('content')
-                </div>
+            <div class="main-inner container-fluid">
+                @yield('content')
             </div>
             @include('partials.footer')
         </div>

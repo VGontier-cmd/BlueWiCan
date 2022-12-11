@@ -1,5 +1,12 @@
-/* ================ */
-/*      SIDENAV     */
+/*
+|--------------------------------------------------------------------------
+| SASS Sidenav
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize the sidenav of the applciation.
+| 
+*/
+
 #sidenav__overlay {
     position: fixed;
     top: 0;
@@ -12,7 +19,7 @@
     transition: all .2s ease-in-out;
     z-index: 3;
 
-    @media (min-width: 1201px) {
+    @media (min-width: calc($bp-laptop + 1px)) {
         display: none;
     }
 }
@@ -23,7 +30,7 @@
     align-items: center;
     padding: 10px;
     margin-right: .7rem;
-    border-radius: .5rem;
+    border-radius: 50px;
     width: 2rem;
     height: 2rem;
     background-color: #fff;
@@ -46,7 +53,7 @@
     box-shadow: $large-shadow;
     z-index: 2;
 
-    @media (max-width: 1200px) {
+    @media (max-width: $bp-laptop) {
         transform: translateX(-150%);
         box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
         background: #fff;
@@ -133,15 +140,15 @@
                     padding-left: 1rem;
                     padding-right: 1rem;
                     font-weight: 500;
-                    color: $sidenav-link-color;
+                    color: $primary-color;
                     font-size: .875rem;
-                    border-radius: 0.5rem;
+                    border-radius: 50px 0 0 50px;
                     width: 100%;
                     transition: width .2s ease-in-out;
                     
                     &[data-active=true] {
                         color: $primary-color;
-                        background-color: $active-link-color;
+                        background-color: $secondary-color;
                         font-weight: 600;
 
                         .nav-item__icon {

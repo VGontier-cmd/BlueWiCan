@@ -1,3 +1,12 @@
+/*
+|--------------------------------------------------------------------------
+| SASS DataTables
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize the dataTables of the applciation.
+| 
+*/
+
 .dataTable-container {
     padding-bottom: .5rem;
     overflow: hidden;
@@ -46,7 +55,6 @@
     }
     tbody {
         tr {
-
             td {
                 font-size: .9rem;
                 vertical-align: middle;
@@ -64,7 +72,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: $bp-tablet) {
     .dataTables_filter,
     .dataTables_length {
         text-align: left;
@@ -88,7 +96,7 @@
 .dataTables_paginate {
     padding: .5rem 1.5rem;
 
-    @media (max-width: 767px) {
+    @media (max-width: $bp-tablet) {
         padding: .5rem 1rem;
     }
 }
@@ -130,7 +138,7 @@
             border-top-left-radius: 0 !important;
             border-bottom-left-radius: 0 !important;
             
-            @media (min-width: 48rem) {
+            @media (min-width: $bp-tablet) {
                 width: 500px !important;
             }
         }

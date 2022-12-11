@@ -1,3 +1,12 @@
+/*
+|--------------------------------------------------------------------------
+| SASS Header
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize the header of the applciation.
+| 
+*/
+
 .header {
     position: fixed;
     top: 0;
@@ -18,7 +27,7 @@
             padding-inline: .75rem;
         }
 
-        @media (min-width: 48rem) {
+        @media (min-width: $bp-tablet) {
             height: $header-height;
 
             .header-title {
@@ -27,7 +36,7 @@
         }
     }
     
-    @media (min-width: 1200px) {
+    @media (min-width: $bp-laptop) {
         width: calc(100vw - $sidenav-width) !important;
         margin-left: $sidenav-width;
     }
@@ -39,7 +48,7 @@
     visibility: hidden;
     pointer-events: none;
 
-    @media (min-width: 1200px) {
+    @media (min-width: $bp-laptop) {
         position: absolute;
         display: flex;
         align-items: center;
@@ -63,7 +72,7 @@
     width: $header-height-mobile;
     height: 100%;
 
-    @media (min-width: 48rem) {
+    @media (min-width: $bp-tablet) {
         width: $header-height;
     }
 
