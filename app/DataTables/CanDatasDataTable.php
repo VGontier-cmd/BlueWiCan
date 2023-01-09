@@ -58,7 +58,9 @@ class CanDatasDataTable extends DataTable
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
-                        Button::make('reload')
+                        Button::make('reload'),
+                        Button::make('print'),
+                        Button::make('pdf')
                     ]);
     }
 
