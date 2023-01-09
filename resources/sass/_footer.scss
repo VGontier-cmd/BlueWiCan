@@ -1,0 +1,84 @@
+/*
+|--------------------------------------------------------------------------
+| SASS Footer
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize the footer of the applciation.
+| 
+*/
+
+.footer {
+    background-color: #fff;
+    color: $primary-color;
+    margin-top: 7rem;
+    padding: 0 !important;
+
+    .footer-logo {
+        padding: 2rem 0;
+
+        img {
+            height: 2rem;
+            margin: auto
+        }
+    }
+
+    .footer-wrapper {
+        padding: 2rem 0;
+        background-color: $primary-color;
+
+        .footer__link-list {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+    
+            .footer__link-item {
+                .footer__link {
+                    text-decoration: none;
+                    color: #fff !important;
+                    font-weight: 500;
+                    font-size: .9rem;
+                }
+            }
+        }
+
+       
+        .footer__copyright {
+            margin-top: 2rem;
+            border-top: 1px solid $footer-border-color;
+            padding: 1rem;
+            text-align: center;
+            color: #fff;
+
+            h3 {
+                font-size: 1rem;
+            }
+            p {
+                font-size: .9rem;
+                opacity: .8;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .footer__names {
+        background-color: $primary-color;
+        padding: .5rem 2rem;
+        border-top: 1px solid $footer-border-color;
+        
+        .footer__copy-items {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: .5rem;
+            color: #fff;
+
+            span {
+                display: block;
+                font-size: .8rem;
+            }
+        }
+    }
+}

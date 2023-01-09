@@ -1,3 +1,12 @@
+/*
+|--------------------------------------------------------------------------
+| SASS Style
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize the global style of the applciation.
+| 
+*/
+
 html {
     color-scheme: dark light;
 }
@@ -9,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     font: inherit;
-    background-color: $background-color;
+    background-color: $secondary-color !important;
 }
 
 *, *::after, *::before {
@@ -23,4 +32,14 @@ img, picture, svg, video {
 
 input, textarea, button, select {
     font: inherit;
+}
+
+header, main, footer {
+    padding: 0 !important;
+}
+
+ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }

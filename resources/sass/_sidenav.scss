@@ -1,0 +1,176 @@
+/*
+|--------------------------------------------------------------------------
+| SASS Sidenav
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize the sidenav of the applciation.
+| 
+*/
+
+#sidenav__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease-in-out;
+    z-index: 3;
+
+    @media (min-width: calc($bp-laptop + 1px)) {
+        display: none;
+    }
+}
+
+.nav-item__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-right: .7rem;
+    border-radius: 50px;
+    width: 2rem;
+    height: 2rem;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 .3125rem .625rem 0 rgba(0,0,0,.12);
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: $sidenav-width;
+    padding: 0;
+    transform: translateX(0);
+    transition: all .2s ease-in-out;
+    box-shadow: $large-shadow;
+    z-index: 2;
+
+    @media (max-width: $bp-laptop) {
+        transform: translateX(-150%);
+        box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+        background: #fff;
+        z-index: 4;
+    }
+
+    .sidenav__header {
+        position: relative;
+        background-color: $primary-color;
+        padding-bottom: 1rem;
+
+        .sidenav__close-btn {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            right: .5rem;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .sidenav__brand {
+            display: block;
+            align-items: center;
+            padding: .5rem;
+            margin: 1rem;
+
+            .sidenav__brand-logo {
+                background-image: url(../../public/images/stellantis-logo-white.svg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 100%;
+                height: $logo-height;
+                opacity: 1;
+                transition: all .2s ease-in-out;
+
+                img {
+                    display: none;
+                    margin: 0 auto;
+                    height: 2rem;
+                }
+            }
+        }
+    }
+    .sidenav__navbar {
+        flex-basis: 100%;
+        flex-grow: 1;
+        align-items: center;
+        
+        display: block;
+        width: auto;
+        height: auto;
+        margin-bottom: auto;
+
+        padding: 1rem 0 2rem 0;
+        margin-top: -1rem;
+        background-color: #fff;
+        overflow: hidden;
+        z-index: 1;
+
+        .sidenav__navbar-nav {
+            position: relative;
+            display: flex;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+            flex-direction: column;
+            height: 100%;
+
+            .nav-item {
+                margin-top: 0.125rem;
+                width: 100%;
+                            
+                .nav-link {
+                    display: flex;
+                    align-items: center;
+                    white-space: nowrap;
+                    padding-top: 0.675rem;
+                    padding-bottom: 0.675rem;
+                    margin: 0 1rem;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    font-weight: 500;
+                    color: $primary-color;
+                    font-size: .875rem;
+                    border-radius: 50px 0 0 50px;
+                    width: 100%;
+                    transition: width .2s ease-in-out;
+                    
+                    &[data-active=true] {
+                        color: $primary-color;
+                        background-color: $secondary-color;
+                        font-weight: 600;
+
+                        .nav-item__icon {
+                            color: $primary-color;
+                        }
+                    }
+
+                    .nav-item__text {
+                        transition: all .2s ease-in-out;
+                    }
+                }
+
+                .nav-subtitle {
+                    font-weight: bold;
+                    font-size: .75rem;
+                    line-height: 1.25;
+                    text-transform: uppercase;
+                    padding-left: 1.5rem;
+                    margin-left: .5rem;
+                    opacity: .6;
+                }
+            }
+        }
+    }
+}
