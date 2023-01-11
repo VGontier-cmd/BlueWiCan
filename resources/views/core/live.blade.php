@@ -8,7 +8,8 @@
                 <div class="row">
                     <div class="col-sm-12 mb-4">
                         <div class="dt-buttons btn-group flex-wrap">
-                            <h3 class="main-title">Receive</h3>
+                            <button class="btn btn-secondary btn-primary" tabindex="0" aria-controls="candatas-table" type="button" title="Reload">Connect</button>
+                            <button class="btn btn-secondary btn-primary" tabindex="0" aria-controls="candatas-table" type="button" title="Reload">Disconnect</button>
                         </div>
                     </div>
                 </div>
