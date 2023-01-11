@@ -253,7 +253,12 @@
                 position: sticky;
                 top: 0;
                 background-color: #fff;
-                border-bottom: 1px solid $border-color-light;
+
+                tr {
+                    th {
+                        border-bottom: 1px solid $border-color-light !important;
+                    }
+                }
             }
             tbody {
                 tr {
