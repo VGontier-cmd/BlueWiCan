@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post("/sockets/connect", [WebSocketController::class, "connect"]);
+Route::get("/sockets/connect", [WebSocketController::class, "connect"]);
