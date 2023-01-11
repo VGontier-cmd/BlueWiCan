@@ -27,6 +27,6 @@
         </div>
     </main>
 
-    @stack('scripts')
+    @yield('scripts')
 </body>
 </html>

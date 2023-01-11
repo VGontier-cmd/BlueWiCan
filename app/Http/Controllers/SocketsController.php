@@ -19,6 +19,6 @@ class SocketsController {
                 []
             )
         );
-        return $broacaster->validAuthenticationTesponse($request, []);
+        return $broacaster->validAuthenticationResponse($request, []);
     }
 }

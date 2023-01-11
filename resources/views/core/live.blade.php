@@ -1,14 +1,22 @@
 @extends('layouts.app')
 
+@section('head')
+    <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.min.js" integrity="sha512-BAMfk70VjqBkBIyo9UTRLl3TBJ3M0c6uyy2VMUrq370bWs7kchLNN9j1WiJQus9JAJVqcriIUX859JOm12LWtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endsection
+
 @section('content')
-    <div class="card">
+    <div class="card" id="app">
         <div class="gradient-line"></div>
         <div class="dataTable-container pb-0">
             <div id="live-table__container" class="dataTables_wrapper dt-bootstrap5 no-footer">
                 <div class="row">
                     <div class="col-sm-12 mb-0">
                         <div class="dt-buttons btn-group flex-wrap">
-                            <button class="btn btn-secondary btn-primary" tabindex="0" aria-controls="candatas-table" type="button" title="Lancer/Arrêter"><i class="bi bi-power"></i></button>
+                            <form>
+                                <button v-if="connected === false" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer"><i class="bi bi-power"></i></button>
+                                <button v-if="connected === true" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -33,16 +41,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @for($i = 0; $i < 20; $i++)
-                                            <tr>
-                                                <td>000h</td>
-                                                <td></td>
-                                                <td>8</td>
-                                                <td>00 01 02 03 04 05 06 07</td>
-                                                <td>1502.0</td>
-                                                <td>8</td>
-                                            </tr>
-                                        @endfor
+                                        <tr v-for="(data, index) in incomingDatas">
+                                            <td>@{{ data.id }}</td>
+                                            <td>@{{ data.type }}</td>
+                                            <td>@{{ data.length }}</td>
+                                            <td>@{{ data.data }}</td>
+                                            <td>@{{ data.time }}</td>
+                                            <td>@{{ data.count }}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -60,4 +66,80 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                connected: false,
+
+                pusher: null,
+                app: null,
+                apps: "{{ $apps }}",
+                logChannel: "{{ $logChannel }}",
+                authEndpoint: "{{ $authEnpoint }}",
+                host: "{{ $host }}",
+                port: "{{ $port }}",
+
+                state: null,
+
+                incomingDatas: [
+                    {
+                        id: "000h",
+                        type: "",
+                        length: 8,
+                        data: "00 01 02 03 04 05 06 07",
+                        time: 1502.0,
+                        count: 8
+                    }
+                ]
+            },
+            mounted() {
+                this.app = this.apps[0] || null;
+            },
+            methods: {
+                connect() {
+                    this.pusher = new Pusher("staging", {
+                        wsHost: this.host,
+                        wsPort: this.port,
+                        wssPort: this.port,
+                        wsPath: this.app.path,
+                        disableStats: true,
+                        authEndpoint: this:authEndpoint,
+                        forceTLS: false,
+                        auth: {
+                            headers: {
+                                "X-CSRF-Token" : "{{ csrf_token() }}",
+                                "X-App-ID": this.app.id
+                            }
+                        },
+                        enabledTransports:["ws", "flash"]
+                    });
+
+                    this.pusher.connection.bind('state_change', states => {
+                        this.state = states.current
+                    });
+
+                    this.pusher.connection.bind('connected', () => {
+                        this.connected = true;
+                    });
+
+                    this.pusher.connection.bind('disconnected', () => {
+                        this.connected = false;
+                    });
+
+                    this.pusher.connection.bind('error', event => {
+                        this.formError = true;
+                    });
+
+                    this.subscribeToAllChannels();
+                },
+                disconnect() {
+                    this.connected = false;
+                }
+            }
+        })
+    </script>
 @endsection
