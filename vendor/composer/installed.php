@@ -2,6 +2,10 @@
     'root' => array(
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
+<<<<<<< HEAD
+=======
+        'reference' => '199b6bcc1b7c0b750df29567fadf5fddc2bdda6d',
+>>>>>>> 302be9d26a6c60750b589e664bdc5c7ec94b8cb1
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,8 +24,14 @@
             'dev_requirement' => false,
         ),
         'beyondcode/laravel-websockets' => array(
+<<<<<<< HEAD
             'pretty_version' => '1.13.1',
             'version' => '1.13.1.0',
+=======
+            'pretty_version' => '1.13.2',
+            'version' => '1.13.2.0',
+            'reference' => '50f8a1e77227a2d2302d45b99185d68a1c1c6866',
+>>>>>>> 302be9d26a6c60750b589e664bdc5c7ec94b8cb1
             'type' => 'library',
             'install_path' => __DIR__ . '/../beyondcode/laravel-websockets',
             'aliases' => array(),
@@ -466,6 +476,10 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
+<<<<<<< HEAD
+=======
+            'reference' => '199b6bcc1b7c0b750df29567fadf5fddc2bdda6d',
+>>>>>>> 302be9d26a6c60750b589e664bdc5c7ec94b8cb1
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -882,8 +896,14 @@
             'dev_requirement' => false,
         ),
         'pusher/pusher-php-server' => array(
+<<<<<<< HEAD
             'pretty_version' => '7.2.1',
             'version' => '7.2.1.0',
+=======
+            'pretty_version' => '7.2.2',
+            'version' => '7.2.2.0',
+            'reference' => '4ace4873873b06c25cecb2dd6d9fdcbf2f20b640',
+>>>>>>> 302be9d26a6c60750b589e664bdc5c7ec94b8cb1
             'type' => 'library',
             'install_path' => __DIR__ . '/../pusher/pusher-php-server',
             'aliases' => array(),

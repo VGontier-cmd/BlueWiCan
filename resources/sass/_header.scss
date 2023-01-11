@@ -62,7 +62,7 @@
         font-size: .9rem;
         background-color: #fff;
         color: $primary-color;
-        border: 1px solid #dbdbdb !important;
+        border: 1px solid $border-color-light !important;
         visibility: visible;
         pointer-events: all;
     }
