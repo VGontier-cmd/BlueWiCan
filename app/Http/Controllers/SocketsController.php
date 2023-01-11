@@ -10,6 +10,6 @@ use Illuminate\Http\Request;
 class SocketsController {
 
     public function connect(Request $request) {
-        dd("good")
+        dd("good");
     }
 }
