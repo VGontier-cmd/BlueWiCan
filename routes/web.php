@@ -18,3 +18,5 @@ use App\Http\Controllers\CoreController;
 Route::get('/', [CoreController::class, 'home'])->name('home');
 Route::get('/live', [CoreController::class, 'live'])->name('live');
 
+Route::get("/sockets/connect", [SocketsController::class, "connect"]);
+

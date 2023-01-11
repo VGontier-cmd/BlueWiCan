@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/sockets/connect", [SocketsController::class, "connect"]);
+Route::get("/sockets/connect", [SocketsController::class,'connect'])->name('connect');
