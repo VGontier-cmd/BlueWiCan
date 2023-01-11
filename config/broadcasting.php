@@ -35,16 +35,10 @@ return [
             'key' => env('PUSHER_APP_KEY'),
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
-            'options' => [
-<<<<<<< HEAD
+            'options' =>  [
 		'host' => env('LARAVEL_WEBSOCKETS_HOST'),
                 'port' => env('LARAVEL_WEBSOCKETS_PORT', 6001),
 		'cluster' => env('PUSHER_APP_CLUSTER'),
-=======
-		        'host' => env('LARAVEL_WEBSOCKETS_HOST'),
-                'port' => env('LARAVEL_WEBSOCKETS_PORT', 6001),
-		        'cluster' => env('PUSHER_APP_CLUSTER'),
->>>>>>> 302be9d26a6c60750b589e664bdc5c7ec94b8cb1
                 'scheme' => env('PUSHER_SCHEME', 'https'),
                 'encrypted' => true,
                 //'useTLS' => env('PUSHER_SCHEME', 'https') === 'https',
