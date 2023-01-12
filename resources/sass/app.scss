@@ -88,10 +88,9 @@ body {
     font-size: 1.1rem;
     color: $primary-color;
     text-transform: uppercase;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
     @media (min-width: $bp-tablet) {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 }
 .subtitle {
