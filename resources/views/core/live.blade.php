@@ -92,8 +92,7 @@
 		},
 		methods: {
 			connect() {
-				console.log("connected")
-				this.connected = true;		
+				console.log("connected")	
 				this.pusher = new Pusher("staging", {
 					wsHost: this.host,
 					wsPort: this.port,
@@ -110,6 +109,7 @@
 					},
 					enabledTransports: ["ws", "flash"]
 				});
+                console.log(this.pusher)
 
 				this.pusher.connection.bind('state_change', states => {
 					console.log(states)
