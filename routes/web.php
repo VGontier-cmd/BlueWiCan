@@ -3,8 +3,7 @@
 use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoreController;
-use \App\Handlers\WebSocketHandler;
-use Ratchet\WebSocket\MessageComponentInterface;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +18,9 @@ use Ratchet\WebSocket\MessageComponentInterface;
 
 // homepage path
 Route::get('/', [CoreController::class, 'home'])->name('home');
+
+// live page
 Route::get('/live', [CoreController::class, 'live'])->name('live');
-WebSocketsRouter::webSocket('/my-websocket', WebSocketHandler::class);
+
+//WebSockets Handlers
+WebSocketsRouter::webSocket('/my-websocket', \App\MyCustomWebSocketHandler::class);
