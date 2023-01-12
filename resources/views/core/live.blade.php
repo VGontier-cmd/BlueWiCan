@@ -14,8 +14,8 @@
                     <div class="col-sm-12 mb-0">
                         <div class="dt-buttons btn-group flex-wrap">
                             <form>
-                                <button v-if="connected === false" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer"><i class="bi bi-power"></i></button>
-                                <button v-if="connected === true" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
+                                <button v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer"><i class="bi bi-power"></i></button>
+                                <button v-if="connected" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
                             </form>
                         </div>
 						<p>@{{ state }}</p>
@@ -93,7 +93,7 @@
 		methods: {
 			connect() {
 				console.log("connected")
-								
+				this.connected = true;		
 				this.pusher = new Pusher("staging", {
 					wsHost: this.host,
 					wsPort: this.port,
