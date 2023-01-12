@@ -22,6 +22,7 @@ Route::get('/live', [CoreController::class, 'live'])->name('live');
 
 
 Route::post("/data/send", function(Request $request) {
+    print($id);
     $id = $request->input("id", "test");
     $trame = $request->input("trame", "test");
     $sizeTrame = strlen($trame);
