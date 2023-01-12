@@ -13,9 +13,9 @@ class SocketsController {
     public function connect(Request $request) {
         $broacaster = new PusherBroadcaster(
             new Pusher(
-                env("PUSHER_APP_KEY"),
-                env("PUSHER_APP_SECRET"),
-                env("PUSHER_APP_ID"),
+                config("broadcasting.connections.pusher.key"),
+                config("broadcasting.connections.pusher.secret"),
+                config("broadcasting.connections.pusher.app_id")
                 []
             )
         );
