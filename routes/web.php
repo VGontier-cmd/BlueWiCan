@@ -22,8 +22,8 @@ Route::get('/live', [CoreController::class, 'live'])->name('live');
 
 
 Route::post("/data/send", function(Request $request) {
-    $id = $request->input("id", null);
-    $trame = $request->input("trame", null);
+    $id = $request->input("id", "test");
+    $trame = $request->input("trame", "test");
     $sizeTrame = sizeof($trame);
     $date = (new DateTime(now()))->format(DateTime::ATOM);
 
