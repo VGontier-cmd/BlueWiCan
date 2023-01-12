@@ -30,9 +30,17 @@ class SendData implements ShouldBroadcast
         $this->$trame = $trame;
         $this->$sizeTrame = $sizeTrame;
         $this->$date = $date;
+        print($this->id);
+        print($this->trame);
+        print($this->sizeTrame);
+        print($this->date);
     }
 
     public function broadcastWith() {
+        print($this->id);
+        print($this->trame);
+        print($this->sizeTrame);
+        print($this->date);
         return [
             "id" => $this->id,
             "trame" => $this->trame,
