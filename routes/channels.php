@@ -18,6 +18,7 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });*/
 
 Broadcast::channel("SendDataEvent", function () {
+    print("Channel");
     return [
         "id" => $this->id,
         "trame" => $this->trame,

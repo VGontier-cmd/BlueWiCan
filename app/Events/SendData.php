@@ -26,7 +26,6 @@ class SendData implements ShouldBroadcast
      */
     public function __construct(string $id, string $trame, string $sizeTrame, string $date)
     {
-        print($id);
         $this->id = $id;
         $this->$trame = $trame;
         $this->$sizeTrame = $sizeTrame;
