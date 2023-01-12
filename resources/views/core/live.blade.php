@@ -18,7 +18,6 @@
                                 <button v-if="connected" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
                             </form>
                         </div>
-						<p>@{{ state }}</p>
                     </div>
                 </div>
                 <div class="row">
