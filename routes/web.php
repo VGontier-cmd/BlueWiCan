@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoreController;
 use Illuminate\Http\Request;
-use App\Events\SendData;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +19,3 @@ use App\Events\SendData;
 // homepage path
 Route::get('/', [CoreController::class, 'home'])->name('home');
 Route::get('/live', [CoreController::class, 'live'])->name('live');
-
-
-Route::post("/data/send", function(Request $request) {
-    $id = $request->input("id", null);
-    $trame = $request->input("trame", null);
-    $sizeTrame = sizeof($trame);
-    $date = (new DateTime(now()))->format(DateTime::ATOM);
-
-    SendData::dispatch($id, $trame, $sizeTrame, $date);
-});

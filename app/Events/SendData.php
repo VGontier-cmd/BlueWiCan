@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class SendData
+class SendData implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -27,9 +27,9 @@ class SendData
     public function __construct(string $id, string $trame, string $sizeTrame, string $date)
     {
         $this->id = $id;
-        $this->$trame = $trame;
-        $this->$sizeTrame = $sizeTrame;
-        $this->$date = $date;
+        $this->trame = $trame;
+        $this->sizeTrame = $sizeTrame;
+        $this->date = $date;
     }
 
     public function broadcastWith() {
@@ -48,6 +48,7 @@ class SendData
      */
     public function broadcastOn()
     {
+        print("broadcastOn");
         return new Channel("SendDataEvent");
     }
 }

@@ -24,7 +24,6 @@ class CoreController extends Controller
         return view('core.live', [
             "page_title" => "Toutes les données live",
             "page_subtitle" => "Liste de toutes les trames en live",
-
             "host" => config("broadcasting.connections.pusher.options.host"),
             "port" => config("broadcasting.connections.pusher.options.port"),
             "authEndpoint" => "api/sockets/connect",

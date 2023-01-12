@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocketsController;
+use App\Events\SendData;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post("/sockets/connect", [SocketsController::class, "connect"]);
+
+
+Route::post("/data/send", function(Request $request) {
+    
+    $id = $request->input("id", null);
+    $trame = $request->input("trame", null);
+    $sizeTrame = strlen($trame);
+    $date = (new DateTime(now()))->format(DateTime::ATOM);
+    SendData::dispatch($id, $trame, $sizeTrame, $date);
+});

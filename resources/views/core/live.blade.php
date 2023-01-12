@@ -14,11 +14,10 @@
                     <div class="col-sm-12 mb-0">
                         <div class="dt-buttons btn-group flex-wrap">
                             <form>
-                                <button v-if="connected === false" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer"><i class="bi bi-power"></i></button>
-                                <button v-if="connected === true" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
+                                <button v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer"><i class="bi bi-power"></i></button>
+                                <button v-if="connected" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
                             </form>
                         </div>
-						<p>@{{ state }}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -42,9 +41,9 @@
                                     <tbody>
                                         <tr v-for="(data, index) in incomingDatas">
                                             <td>@{{ data.id }}</td>
-                                            <td>@{{ data.length }}</td>
-                                            <td>@{{ data.data }}</td>
-											<td></td>
+                                            <td>@{{ data.sizeTrame }}</td>
+                                            <td>@{{ data.trame }}</td>
+											<td>@{{ data.date }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -72,13 +71,7 @@
 			port: "{{ $port }}",
 			state: null,
 			formError: false,
-			incomingDatas: [
-				{
-					id: "000h",
-					length: 10,
-					data: "00 01 02 03 04 05 06 07"
-				}
-            ]
+			incomingDatas: []
 		},
 		mounted() {
 			this.app = this.apps[0] || null;
@@ -103,6 +96,7 @@
 					},
 					enabledTransports: ["ws", "flash"]
 				});
+                console.log(this.pusher)
 
 				this.pusher.connection.bind('state_change', states => {
 					this.state = states.current
@@ -117,6 +111,7 @@
 				});
 
 				this.pusher.connection.bind('error', event => {
+                    console.log(event)
 					this.formError = true;
 				});
 
@@ -133,17 +128,16 @@
 				let inst = this;
 				this.pusher.subscribe(this.logChannel + channelName)
 					.bind("log-message", (data) => {
+                    console.log(data)
 					if (data.type === "api-message") {
 						if (data.details.includes("SendDataEvent")) {
 							let incomingData = JSON.parse(data.data);
-							let utcDate = new Date(incomingData.time);
-							mData.time = utcDate.toLocaleString();
 							inst.incomingDatas.push(incomingData);
 						}
 					}
 				});
 			},
-
+            /**
 			sendData() {
           		this.formError = false;
 				if (this.canData === "" || this.canData === null) {
@@ -158,7 +152,7 @@
 						alert("Error sending event.")
 					});
 				}
-          	},
+          	},*/
 
 			disconnect() {
 				this.connected = false;

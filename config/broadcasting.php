@@ -35,7 +35,7 @@ return [
             'key' => env('PUSHER_APP_KEY'),
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
-            'options' => [
+            'options' =>  [
 		        'host' => env('LARAVEL_WEBSOCKETS_HOST'),
                 'port' => env('LARAVEL_WEBSOCKETS_PORT', 6001),
 		        'cluster' => env('PUSHER_APP_CLUSTER'),
@@ -48,7 +48,7 @@ return [
                     CURLOPT_SSL_VERIFYPEER => 0,
                 ]
             ],
-            'client_options' => [
+	    'client_options' => [
                 // Guzzle client options: https://docs.guzzlephp.org/en/stable/request-options.html
             ],
         ],
