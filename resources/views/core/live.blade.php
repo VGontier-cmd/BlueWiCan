@@ -61,7 +61,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
 <script>
     new Vue({
 		el: "#app",
@@ -93,8 +93,7 @@
 		methods: {
 			connect() {
 				console.log("connected")
-				this.connected = true
-				
+								
 				this.pusher = new Pusher("staging", {
 					wsHost: this.host,
 					wsPort: this.port,
@@ -163,4 +162,4 @@
 		}
     });
 </script>
-@endsection
+@endpush
