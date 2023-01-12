@@ -48,6 +48,7 @@ class SendData implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+        print("broadcastOn");
         return new Channel("SendDataEvent");
     }
 }
