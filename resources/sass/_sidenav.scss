@@ -63,7 +63,7 @@
     .sidenav__header {
         position: relative;
         background-color: $primary-color;
-        padding-bottom: 1rem;
+        padding-bottom: 2.5rem;
 
         .sidenav__close-btn {
             position: absolute;
@@ -111,10 +111,8 @@
         height: auto;
         margin-bottom: auto;
 
-        padding: 1rem 0 2rem 0;
-        margin-top: -1rem;
+        padding: 2rem 0 2rem 0;
         background-color: #fff;
-        overflow: hidden;
         z-index: 1;
 
         .sidenav__navbar-nav {
@@ -172,5 +170,19 @@
                 }
             }
         }
+    }
+}
+
+.sidenav__image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 40%);
+    z-index: 2;
+
+    img {
+        width: 130px;
+        margin-inline: auto;
+        object-fit: contain;
     }
 }
