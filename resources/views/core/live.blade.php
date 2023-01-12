@@ -138,7 +138,7 @@
                     console.log(data)
 					if (data.type === "api-message") {
 						if (data.details.includes("SendDataEvent")) {
-							let incomingData = JSON.parse(data);
+							let incomingData = JSON.parse(data.data);
 							inst.incomingDatas.push(incomingData);
 						}
 					}
