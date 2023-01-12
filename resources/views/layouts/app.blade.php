@@ -6,7 +6,7 @@
     <meta http-equiv="content-language" content="fr-FR"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @yield('head')
+    @stack('head')
     <!-- Styles -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- icons -->
