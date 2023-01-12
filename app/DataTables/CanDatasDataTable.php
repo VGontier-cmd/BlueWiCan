@@ -65,7 +65,9 @@ class CanDatasDataTable extends DataTable
                     ->buttons([
                         Button::make('reload'),
                         Button::make('print'),
-                        Button::make('pdf')
+                        Button::make('pdf'),
+                        Button::make('excel'),
+                        Button::make('csv')
                     ]);
     }
 
