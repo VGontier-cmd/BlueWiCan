@@ -21,12 +21,11 @@ class CoreController extends Controller
      * Permet d'afficher la page des données live
      */
     public function live(AppProvider $appProvider) {
-        dd(env("LARAVEL_WEBSOCKETS_HOST"));
         return view('core.live', [
             "page_title" => "Toutes les données live",
             "page_subtitle" => "Liste de toutes les trames en live",
-            "host" => env("LARAVEL_WEBSOCKETS_HOST"),
-            "port" => env("LARAVEL_WEBSOCKETS_PORT"),
+            "host" => config("broadcasting.connections.pusher.options.host"),
+            "port" => config("broadcasting.connections.pusher.options.port"),
             "authEndpoint" => "api/sockets/connect",
             "logChannel" => DashboardLogger::LOG_CHANNEL_PREFIX,
             "apps" => $appProvider->all()
