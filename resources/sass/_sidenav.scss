@@ -52,6 +52,7 @@
     transition: all .2s ease-in-out;
     box-shadow: $large-shadow;
     z-index: 2;
+    overflow : hidden;
 
     @media (max-width: $bp-laptop) {
         transform: translateX(-150%);
