@@ -25,8 +25,8 @@ class CoreController extends Controller
             "page_title" => "Toutes les données live",
             "page_subtitle" => "Liste de toutes les trames en live",
 
-            "host" => env("LARAVEL_WEBSOCKETS_HOST"),
-            "port" => env("LARAVEL_WEBSOCKETS_PORT"),
+            "host" => config("broadcasting.connections.pusher.options.host"),
+            "port" => config("broadcasting.connections.pusher.options.port"),
             "authEndpoint" => "api/sockets/connect",
             "logChannel" => DashboardLogger::LOG_CHANNEL_PREFIX,
             "apps" => $appProvider->all()

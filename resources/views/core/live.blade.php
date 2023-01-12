@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('head')
+@push('head')
     <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.min.js" integrity="sha512-BAMfk70VjqBkBIyo9UTRLl3TBJ3M0c6uyy2VMUrq370bWs7kchLNN9j1WiJQus9JAJVqcriIUX859JOm12LWtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-@endsection
+@endpush
 
 @section('content')
     <div class="card" id="app">
@@ -34,21 +34,17 @@
                                     <thead>
                                         <tr>
                                             <th title="CAN-ID" tabindex="0" rowspan="1" colspan="1">CAN-ID</th>
-                                            <th title="Type" tabindex="0" rowspan="1" colspan="1">Type</th>
                                             <th title="Length" tabindex="0" rowspan="1" colspan="1">Length</th>
                                             <th title="Data" tabindex="0" rowspan="1" colspan="1">Data</th>
-                                            <th title="Cycle Time" tabindex="0" rowspan="1" colspan="1">Cycle Time</th>
-                                            <th title="Count" tabindex="0" rowspan="1" colspan="1">Count</th>
+											<th title="Data" tabindex="0" rowspan="1" colspan="1">Date de réception</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr v-for="(data, index) in incomingDatas">
                                             <td>@{{ data.id }}</td>
-                                            <td>@{{ data.type }}</td>
                                             <td>@{{ data.length }}</td>
                                             <td>@{{ data.data }}</td>
-                                            <td>@{{ data.time }}</td>
-                                            <td>@{{ data.count }}</td>
+											<td></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -68,7 +64,7 @@
 		data: {
 			connected: false,
 			pusher: null,
-			app: null,
+			canData: null,
 			apps: {!! json_encode($apps) !!},
 			logChannel: "{{ $logChannel }}",
 			authEndpoint: "{{ $authEndpoint }}",
@@ -79,15 +75,10 @@
 			incomingDatas: [
 				{
 					id: "000h",
-					type: "",
-					length: 8,
-					data: "00 01 02 03 04 05 06 07",
-					time: 1502.0,
-					count: 8
+					length: 10,
+					data: "00 01 02 03 04 05 06 07"
 				}
             ]
-            id = null;
-            trame = null;
 		},
 		mounted() {
 			this.app = this.apps[0] || null;
@@ -95,7 +86,7 @@
 		methods: {
 			connect() {
 				console.log("connected")
-								
+				
 				this.pusher = new Pusher("staging", {
 					wsHost: this.host,
 					wsPort: this.port,
@@ -114,17 +105,14 @@
 				});
 
 				this.pusher.connection.bind('state_change', states => {
-					console.log(states)
 					this.state = states.current
 				});
 
 				this.pusher.connection.bind('connected', () => {
-					console.log("bind connected")
 					this.connected = true;
 				});
 
 				this.pusher.connection.bind('disconnected', () => {
-					console.log("bind disconnected")
 					this.connected = false;
 				});
 
@@ -134,7 +122,6 @@
 
 				this.subscribeToAllChannels();
 			},
-
 			
 			subscribeToAllChannels() {
 				[
@@ -147,33 +134,35 @@
 				this.pusher.subscribe(this.logChannel + channelName)
 					.bind("log-message", (data) => {
 					if (data.type === "api-message") {
-						if (data.details.includes("SendMessageEvent")) {
+						if (data.details.includes("SendDataEvent")) {
 							let messageData = JSON.parse(data.data);
 							let utcDate = new Date(messageData.time);
-							messageData.time = utcDate.toLocaleString();
+							mData.time = utcDate.toLocaleString();
 							inst.incomingMessages.push(messageData);
 						}
 					}
 				});
 			},
+
+			sendData() {
+          		this.formError = false;
+				if (this.canData === "" || this.canData === null) {
+					this.formError = true;
+				} else {
+					$.post("/data/send", {
+						_token: '{{ csrf_token() }}',
+						id: this.canData.id,
+						length: this.canData.length,
+						data: this.canData.data
+					}).fail(() => {
+						alert("Error sending event.")
+					});
+				}
+          	},
+
 			disconnect() {
-				console.log("disconnected")
 				this.connected = false;
-			},
-            sendData() {
-                formError = false;
-                if(this.id === "" || this.id === null) {
-                    this.formError = true;
-                } else {
-                    $.post("/data/send", {
-                        _token: '{{ csrf_token() }}',
-                        id: this.id,
-                        trame: this.trame
-                    }).fail(() => {
-                        alert("Error sending event.")
-                    });
-                }
-            }
+			}
 		}
     });
 </script>
