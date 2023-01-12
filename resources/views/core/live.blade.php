@@ -42,9 +42,9 @@
                                     <tbody>
                                         <tr v-for="(data, index) in incomingDatas">
                                             <td>@{{ data.id }}</td>
-                                            <td>@{{ data.length }}</td>
-                                            <td>@{{ data.data }}</td>
-											<td></td>
+                                            <td>@{{ data.sizeTrame }}</td>
+                                            <td>@{{ data.trame }}</td>
+											<td>@{{ data.date }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -138,15 +138,13 @@
                     console.log(data)
 					if (data.type === "api-message") {
 						if (data.details.includes("SendDataEvent")) {
-							let messageData = JSON.parse(data);
-							let utcDate = new Date(messageData.time);
-							mData.time = utcDate.toLocaleString();
-							inst.incomingDatas.push(messageData);
+							let incomingData = JSON.parse(data);
+							inst.incomingDatas.push(incomingData);
 						}
 					}
 				});
 			},
-
+            /**
 			sendData() {
           		this.formError = false;
 				if (this.canData === "" || this.canData === null) {
@@ -161,7 +159,7 @@
 						alert("Error sending event.")
 					});
 				}
-          	},
+          	},*/
 
 			disconnect() {
 				this.connected = false;
