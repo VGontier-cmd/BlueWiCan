@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocketsController;
+use App\Events\SendData;
 
 /*
 |--------------------------------------------------------------------------

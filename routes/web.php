@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoreController;
 use Illuminate\Http\Request;
-use App\Events\SendData;
+
 
 /*
 |--------------------------------------------------------------------------
