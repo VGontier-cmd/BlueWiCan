@@ -3,9 +3,8 @@
 use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoreController;
-use Illuminate\Http\Request;
 use \App\Handlers\WebSocketHandler;
-
+use Ratchet\WebSocket\MessageComponentInterface;
 
 /*
 |--------------------------------------------------------------------------
