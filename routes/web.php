@@ -1,5 +1,6 @@
 <?php
 
+use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoreController;
 use Illuminate\Http\Request;
@@ -19,3 +20,4 @@ use Illuminate\Http\Request;
 // homepage path
 Route::get('/', [CoreController::class, 'home'])->name('home');
 Route::get('/live', [CoreController::class, 'live'])->name('live');
+WebSocketsRouter::webSocket('/my-websocket', \App\MyCustomWebSocketHandler::class);
