@@ -135,9 +135,9 @@
 				let inst = this;
 				this.pusher.subscribe(this.logChannel + channelName)
 					.bind("log-message", (data) => {
+                    console.log(data)
 					if (data.type === "api-message") {
 						if (data.details.includes("SendDataEvent")) {
-                            console.log(data)
 							let messageData = JSON.parse(data);
 							let utcDate = new Date(messageData.time);
 							mData.time = utcDate.toLocaleString();
