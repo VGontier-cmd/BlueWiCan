@@ -92,7 +92,8 @@
 		},
 		methods: {
 			connect() {
-				console.log("connected")	
+				console.log("connected")
+                console.log(this.host, this.port, this.app,this.authEndpoint)	
 				this.pusher = new Pusher("staging", {
 					wsHost: this.host,
 					wsPort: this.port,
