@@ -127,6 +127,7 @@
 				});
 
 				this.pusher.connection.bind('error', event => {
+                    console.log(event)
 					this.formError = true;
 				});
 
