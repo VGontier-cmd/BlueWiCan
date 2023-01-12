@@ -137,10 +137,11 @@
 					.bind("log-message", (data) => {
 					if (data.type === "api-message") {
 						if (data.details.includes("SendDataEvent")) {
-							let messageData = JSON.parse(data.data);
+                            console.log(data)
+							let messageData = JSON.parse(data);
 							let utcDate = new Date(messageData.time);
 							mData.time = utcDate.toLocaleString();
-							inst.incomingMessages.push(messageData);
+							inst.incomingDatas.push(messageData);
 						}
 					}
 				});
