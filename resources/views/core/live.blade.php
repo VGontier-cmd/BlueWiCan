@@ -86,6 +86,8 @@
 					count: 8
 				}
             ]
+            id = null;
+            trame = null;
 		},
 		mounted() {
 			this.app = this.apps[0] || null;
@@ -154,11 +156,24 @@
 					}
 				});
 			},
-
 			disconnect() {
 				console.log("disconnected")
 				this.connected = false;
-			}
+			},
+            sendData() {
+                formError = false;
+                if(this.id === "" || this.id === null) {
+                    this.formError = true;
+                } else {
+                    $.post("/data/send", {
+                        _token: '{{ csrf_token() }}',
+                        id: this.id,
+                        trame: this.trame
+                    }).fail(() => {
+                        alert("Error sending event.")
+                    });
+                }
+            }
 		}
     });
 </script>

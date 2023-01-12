@@ -11,8 +11,17 @@ use Illuminate\Support\Facades\Broadcast;
 | application supports. The given channel authorization callbacks are
 | used to check if an authenticated user can listen to the channel.
 |
-*/
+
 
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
+});*/
+
+Broadcast::channel("SendDataEvent", function () {
+    return [
+        "id" => $this->id,
+        "trame" => $this->trame,
+        "sizeTrame" => $this->sizeTrame,
+        "date" => $this->date
+    ];
 });
