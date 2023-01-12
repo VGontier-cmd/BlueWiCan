@@ -135,10 +135,10 @@
 					.bind("log-message", (data) => {
 					if (data.type === "api-message") {
 						if (data.details.includes("SendDataEvent")) {
-							let messageData = JSON.parse(data.data);
-							let utcDate = new Date(messageData.time);
+							let incomingData = JSON.parse(data.data);
+							let utcDate = new Date(incomingData.time);
 							mData.time = utcDate.toLocaleString();
-							inst.incomingMessages.push(messageData);
+							inst.incomingDatas.push(incomingData);
 						}
 					}
 				});
