@@ -25,10 +25,9 @@ Route::post("/sockets/connect", [SocketsController::class, "connect"]);
 
 Route::post("/data/send", function(Request $request) {
     
-    $id = $request->input("id", "test");
-    $trame = $request->input("trame", "test");
+    $id = $request->input("id", null);
+    $trame = $request->input("trame", null);
     $sizeTrame = strlen($trame);
     $date = (new DateTime(now()))->format(DateTime::ATOM);
-    print($id);
     SendData::dispatch($id, $trame, $sizeTrame, $date);
 });

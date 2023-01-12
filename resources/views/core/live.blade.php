@@ -72,13 +72,7 @@
 			port: "{{ $port }}",
 			state: null,
 			formError: false,
-			incomingDatas: [
-				{
-					id: "000h",
-					length: 10,
-					data: "00 01 02 03 04 05 06 07"
-				}
-            ]
+			incomingDatas: []
 		},
 		mounted() {
 			this.app = this.apps[0] || null;
