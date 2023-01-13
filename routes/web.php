@@ -22,5 +22,6 @@ Route::get('/', [CoreController::class, 'home'])->name('home');
 // live page
 Route::get('/live', [CoreController::class, 'live'])->name('live');
 
-//WebSockets Handlers
+// WebSockets Handlers
 WebSocketsRouter::webSocket('/', \App\Handlers\CustomWebSocketHandler::class);
+error_log('Web.php Loaded');

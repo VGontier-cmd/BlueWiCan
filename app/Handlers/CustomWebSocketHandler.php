@@ -13,6 +13,7 @@ class CustomWebSocketHandler implements MessageComponentInterface
 
     public function onOpen(ConnectionInterface $connection)
     {
+        error_log('WebSocketHandler - custom');
         $socketId = sprintf('%d.%d', random_int(1, 1000000000), random_int(1, 1000000000));
         $connection->socketId = $socketId;
         $connection->app = App::findById('staging');
