@@ -15,20 +15,21 @@ class WebSocketHandler implements MessageComponentInterface
         $socketId = sprintf('%d.%d', random_int(1, 1000000000), random_int(1, 1000000000));
         $connection->socketId = $socketId;
         $connection->app = App::findById('staging');
+        echo sprintf("[server] %s connected.\n", spl_object_hash($connection));
     }
     
     public function onClose(ConnectionInterface $connection)
     {
-        // TODO: Implement onClose() method.
+        echo sprintf("[server] %s disconnected.\n", spl_object_hash($connection));
     }
 
     public function onError(ConnectionInterface $connection, \Exception $e)
     {
-        // TODO: Implement onError() method.
+        echo sprintf("[error] %s\n", $e->getMessage());
     }
 
     public function onMessage(ConnectionInterface $connection, MessageInterface $msg)
     {
-        $connection->send('Message recu !');
+        echo $msg . "\n";
     }
 }
