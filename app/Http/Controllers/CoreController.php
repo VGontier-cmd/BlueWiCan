@@ -26,9 +26,11 @@ class CoreController extends Controller
             "page_subtitle" => "Liste de toutes les trames en live",
             "host" => config("broadcasting.connections.pusher.options.host"),
             "port" => config("broadcasting.connections.pusher.options.port"),
-            "authEndpoint" => "api/sockets/connect",
+            "authEndpoint" => "socket/update-data",
             "logChannel" => DashboardLogger::LOG_CHANNEL_PREFIX,
-            "apps" => $appProvider->all()
+            "apps" => $appProvider->all(),
+
+            "appKey" => config("broadcasting.connections.pusher.key")
         ]);
     }
 }

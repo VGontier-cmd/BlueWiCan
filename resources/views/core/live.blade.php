@@ -69,7 +69,6 @@
 				<span class="sr-only"></span>
 			</div>
 		</div>`
-
 		if ($(elem).find('.spinner').length === 0) $(elem).append(loader);
 	}
 	
@@ -119,6 +118,9 @@
 			connect() {
 				loading("#btn-websockets")
 
+				updateData();
+
+				/*
 				this.pusher = new Pusher("staging", {
 					wsHost: this.host,
 					wsPort: this.port,
@@ -146,13 +148,13 @@
 				this.pusher.connection.bind('connected', () => {
 					this.connected = true;
 					$('#btn-websockets .spinner').remove();
-					showToast('success', 'Vous êtes connecté.')
+					showToast('info', 'Vous êtes connecté.')
 				});
 
 				this.pusher.connection.bind('disconnected', () => {
 					this.connected = false;
 					$('#btn-websockets .spinner').remove();
-					showToast('success', 'Vous êtes déconnecté.')
+					showToast('info', 'Vous êtes déconnecté.')
 				});
 
 				this.pusher.connection.bind('error', event => {
@@ -161,6 +163,7 @@
 				});
 
 				this.subscribeToAllChannels();
+				*/
 			},
 			
 			subscribeToAllChannels() {
@@ -185,9 +188,25 @@
 
 			disconnect() {
 				this.connected = false;
-				showToast('success', 'Vous êtes déconnecté.')
+				showToast('info', 'Vous êtes déconnecté.')
 			}
 		}
     });
+</script>
+
+
+<script>
+function updateData() {
+	const socket = new WebSocket(`ws://{{ $host }}:{{ $port }}/{{ $authEndpoint }}?appKey={{ $appKey }}`);
+
+	socket.onopen = function (event){
+		console.log('on open!!');
+	}
+
+	socket.onmessage = function (event) {
+		console.log(event);
+	}
+}
+
 </script>
 @endpush
