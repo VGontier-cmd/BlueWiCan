@@ -103,7 +103,6 @@ header, main, footer {
     width: 100%;
 }
 
-
 main {
     margin-bottom: auto;
 }
@@ -206,4 +205,119 @@ main {
 ::-webkit-scrollbar-thumb {
     background: $primary-color;
     border-radius: 10px;
+}
+
+
+/* ------------------- */
+/*  TOAST
+*/
+.toast-wrapper {
+    position: fixed;
+    overflow: hidden;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: $page-space-x;
+    margin-top: $header-height;
+    z-index: 4;
+
+    .toast {
+        position: relative;
+        width: auto;
+        background-color: #fff;
+        color: $font-color;
+        border: none;
+        border-radius: .325rem;
+        overflow: hidden;
+        box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.2);
+
+        .toast-header,
+        .toast-body {
+            padding-inline: 1rem;
+        }
+
+        p {
+            color: rgba(0, 0, 0, .7);
+            margin-bottom: .5rem;
+            font-size: .9rem;
+        }
+
+        i.bi {
+            font-size: 1.2rem;
+        }
+
+        strong {
+            font-size: .95rem;
+            margin-left: 1rem;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        &[data-level=success] {
+            i.bi {
+                color: $success-color;
+            }
+            &:before {
+                background-color: $success-color;
+            }
+        }
+        &[data-level=info] {
+            i.bi {
+                color: $info-color;
+            }
+            &:before {
+                background-color: $info-color;
+            }
+        }
+        &[data-level=warning] {
+            i.bi {
+                color: $warning-color;
+            }
+            &:before {
+                background-color: $warning-color;
+            }
+        }
+        &[data-level=error] {
+            i.bi {
+                color: $error-color;
+            }
+            &:before {
+                background-color: $error-color;
+            }
+        }
+    }
+}
+
+#btn-websockets {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 36px;
+    padding: 0;
+    overflow: hidden;
+}
+.spinner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color;
+}
+.spinner-border {
+    border-width: 2px;
+    width: 18px;
+    height: 18px;
 }
