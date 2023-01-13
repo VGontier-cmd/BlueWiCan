@@ -74,6 +74,7 @@
 	}
 	
 	function showToast(level, message) {
+		let timeout = 5000;
 		let toast = 
 		`<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-level="${level}">
 			<div class="toast-header">
@@ -93,7 +94,7 @@
 
 		setTimeout(() => {
 			$('.toast').hide();
-		}, 5000000000000);
+		}, timeout);
 	}
 
     new Vue({
