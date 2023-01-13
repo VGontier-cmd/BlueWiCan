@@ -31,6 +31,6 @@ class WebSocketHandler implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $connection, MessageInterface $msg)
     {
-        echo $msg . "\n";
+        event(new \App\Events\SendData::createEvent($msg));
     }
 }

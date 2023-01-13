@@ -9,6 +9,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Ratchet\RFC6455\Messaging\MessageInterface;
 
 class SendData implements ShouldBroadcast
 {
@@ -30,6 +31,13 @@ class SendData implements ShouldBroadcast
         $this->trame = $trame;
         $this->sizeTrame = $sizeTrame;
         $this->date = $date;
+    }
+
+    public static function createEvent(MessageInterface $msg)
+    {
+        $payload = $msg->getPayload();
+        print($payload);
+        return new self("test","test","test","test");
     }
 
     public function broadcastWith() {
