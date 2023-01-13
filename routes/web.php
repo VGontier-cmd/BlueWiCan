@@ -1,8 +1,9 @@
 <?php
 
-use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 use Illuminate\Support\Facades\Route;
+use App\Handlers\CustomWebSocketHandler;
 use App\Http\Controllers\CoreController;
+use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 
 
 /*
@@ -22,5 +23,5 @@ Route::get('/', [CoreController::class, 'home'])->name('home');
 // live page
 Route::get('/live', [CoreController::class, 'live'])->name('live');
 
-// WebSockets Handlers
-WebSocketsRouter::webSocket('/arduino', \App\Handlers\CustomWebSocketHandler::class);
+//WebSockets Handlers
+WebSocketsRouter::webSocket('/', CustomWebSocketHandler::class);
