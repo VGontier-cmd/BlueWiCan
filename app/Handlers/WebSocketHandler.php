@@ -15,6 +15,7 @@ class WebSocketHandler implements MessageComponentInterface
         $socketId = sprintf('%d.%d', random_int(1, 1000000000), random_int(1, 1000000000));
         $connection->socketId = $socketId;
         $connection->app = App::findById('staging');
+        dd('ouiiiiiiiiiiiiiiiii');
         echo sprintf("[server] %s connected.\n", spl_object_hash($connection));
     }
     
