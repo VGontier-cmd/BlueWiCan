@@ -29,6 +29,6 @@ class WebSocketHandler implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $connection, MessageInterface $msg)
     {
-        // TODO: Implement onMessage() method.
+        $connection->send('Message recu !');
     }
 }
