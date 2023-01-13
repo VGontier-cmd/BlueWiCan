@@ -24,4 +24,3 @@ Route::get('/live', [CoreController::class, 'live'])->name('live');
 
 // WebSockets Handlers
 WebSocketsRouter::webSocket('/arduino', \App\Handlers\CustomWebSocketHandler::class);
-error_log('Web.php Loaded');
