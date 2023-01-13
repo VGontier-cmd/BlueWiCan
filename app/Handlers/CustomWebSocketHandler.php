@@ -7,8 +7,9 @@ use Ratchet\ConnectionInterface;
 use BeyondCode\LaravelWebSockets\Apps\App;
 use Ratchet\RFC6455\Messaging\MessageInterface;
 use Ratchet\WebSocket\MessageComponentInterface;
+use BeyondCode\LaravelWebSockets\WebSockets\WebSocketHandler;
 
-class WebSocketHandler implements MessageComponentInterface
+class CustomWebSocketHandler  extends WebSocketHandler implements MessageComponentInterface
 {
 
     public function onOpen(ConnectionInterface $connection)
@@ -32,6 +33,7 @@ class WebSocketHandler implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $connection, MessageInterface $msg)
     {
+        parent:onMessage( $connection, $msg);
         event(SendData::createEvent($msg));
     }
 }
