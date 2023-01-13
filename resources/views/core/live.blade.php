@@ -6,6 +6,7 @@
 @endpush
 
 @section('content')
+
     <div class="card" id="app">
         <div class="gradient-line"></div>
         <div class="dataTable-container pb-0">
@@ -14,8 +15,8 @@
                     <div class="col-sm-12 mb-0">
                         <div class="dt-buttons btn-group flex-wrap">
                             <form>
-                                <button v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer"><i class="bi bi-power"></i></button>
-                                <button v-if="connected" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
+                                <button id="btn-websockets" v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer"><i class="bi bi-power"></i></button>
+                                <button id="btn-websockets" v-if="connected" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
                             </form>
                         </div>
                     </div>
@@ -29,7 +30,7 @@
                             </div>
                             <!-- table -->
                             <div class="live-table__table">
-                                <table class="table dataTable table-striped table-bordered table-hover no-footer" style="margin-top: 0 !important">
+                                <table class="table dataTable table-striped table-bordered table-hover no-footer" style="margin: 0 !important">
                                     <thead>
                                         <tr>
                                             <th title="CAN-ID" tabindex="0" rowspan="1" colspan="1">CAN-ID</th>
@@ -39,12 +40,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(data, index) in incomingDatas">
+                                        <tr v-if="incomingDatas" v-for="(data, index) in incomingDatas">
                                             <td>@{{ data.id }}</td>
                                             <td>@{{ data.sizeTrame }}</td>
                                             <td>@{{ data.trame }}</td>
 											<td>@{{ data.date }}</td>
                                         </tr>
+										<tr v-if="incomingDatas.length === 0" class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -58,6 +60,43 @@
 
 @push('scripts')
 <script>
+	const toast_wrapper = document.getElementById("toast-wrapper")
+
+	function loading(elem) {
+		let loader =
+		` <div class="spinner">
+			<div class="spinner-border" role="status">
+				<span class="sr-only"></span>
+			</div>
+		</div>`
+
+		if ($(elem).find('.spinner').length === 0) $(elem).append(loader);
+	}
+	
+	function showToast(level, message) {
+		let timeout = 5000;
+		let toast = 
+		`<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-level="${level}">
+			<div class="toast-header">
+				${(level == 'success') ? '<i class="bi bi-check-square-fill"></i>' : ''}
+				${(level == 'info') ? '<i class="bi bi-info-square-fill"></i>' : ''}
+				${(level == 'warning') ? '<i class="bi bi-exclamation-square-fill"></i>' : ''}
+				${(level == 'error') ? '<i class="bi bi-exclamation-square-fill"></i>' : ''}
+				<strong class="me-auto">${level}</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body">
+				<p>${message}</p>
+			</div>
+		</div>`
+
+		$('#toast-wrapper').html(toast)
+
+		setTimeout(() => {
+			$('.toast').hide();
+		}, timeout);
+	}
+
     new Vue({
 		el: "#app",
 		data: {
@@ -78,8 +117,8 @@
 		},
 		methods: {
 			connect() {
-				console.log("connected")
-				
+				loading("#btn-websockets")
+
 				this.pusher = new Pusher("staging", {
 					wsHost: this.host,
 					wsPort: this.port,
@@ -96,23 +135,29 @@
 					},
 					enabledTransports: ["ws", "flash"]
 				});
-                console.log(this.pusher)
 
 				this.pusher.connection.bind('state_change', states => {
 					this.state = states.current
+					$('#btn-websockets .spinner').remove();
+					console.log(this.state)
+					if(this.state == 'unavailable') showToast('warning', 'Le serveur websocket n\'est pas disponible.')
 				});
 
 				this.pusher.connection.bind('connected', () => {
 					this.connected = true;
+					$('#btn-websockets .spinner').remove();
+					showToast('success', 'Vous êtes connecté.')
 				});
 
 				this.pusher.connection.bind('disconnected', () => {
 					this.connected = false;
+					$('#btn-websockets .spinner').remove();
+					showToast('success', 'Vous êtes déconnecté.')
 				});
 
 				this.pusher.connection.bind('error', event => {
-                    console.log(event)
 					this.formError = true;
+					showToast('error', 'Une erreur est survenue...')
 				});
 
 				this.subscribeToAllChannels();
@@ -137,25 +182,10 @@
 					}
 				});
 			},
-            /**
-			sendData() {
-          		this.formError = false;
-				if (this.canData === "" || this.canData === null) {
-					this.formError = true;
-				} else {
-					$.post("/data/send", {
-						_token: '{{ csrf_token() }}',
-						id: this.canData.id,
-						length: this.canData.length,
-						data: this.canData.data
-					}).fail(() => {
-						alert("Error sending event.")
-					});
-				}
-          	},*/
 
 			disconnect() {
 				this.connected = false;
+				showToast('success', 'Vous êtes déconnecté.')
 			}
 		}
     });
