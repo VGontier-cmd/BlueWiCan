@@ -118,6 +118,9 @@
 			connect() {
 				loading("#btn-websockets")
 
+				updateData();
+
+				/*
 				this.pusher = new Pusher("staging", {
 					wsHost: this.host,
 					wsPort: this.port,
@@ -160,6 +163,7 @@
 				});
 
 				this.subscribeToAllChannels();
+				*/
 			},
 			
 			subscribeToAllChannels() {
@@ -188,5 +192,21 @@
 			}
 		}
     });
+</script>
+
+
+<script>
+function updateData() {
+	const socket = new WebSocket(`ws://{{ $host }}:{{ $port }}/{{ $authEndpoint }}?appKey={{ $appKey }}`);
+
+	socket.onopen = function (event){
+		console.log('on open!!');
+	}
+
+	socket.onmessage = function (event) {
+		console.log(event);
+	}
+}
+
 </script>
 @endpush
