@@ -33,6 +33,7 @@ class CustomWebSocketHandler implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $connection, MessageInterface $msg)
     {
+        error_log('WebSocketHandler - onMessage');
        SendData::createEvent($msg);
     }
 }
