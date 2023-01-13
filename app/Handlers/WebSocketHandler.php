@@ -2,8 +2,9 @@
 
 namespace App\Handlers;
 
-use BeyondCode\LaravelWebSockets\Apps\App;
+use App\Events\SendData;
 use Ratchet\ConnectionInterface;
+use BeyondCode\LaravelWebSockets\Apps\App;
 use Ratchet\RFC6455\Messaging\MessageInterface;
 use Ratchet\WebSocket\MessageComponentInterface;
 
@@ -31,6 +32,6 @@ class WebSocketHandler implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $connection, MessageInterface $msg)
     {
-        event(new \App\Events\SendData::createEvent($msg));
+        event(SendData::createEvent($msg));
     }
 }
