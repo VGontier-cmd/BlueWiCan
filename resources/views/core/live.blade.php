@@ -69,7 +69,6 @@
 				<span class="sr-only"></span>
 			</div>
 		</div>`
-
 		if ($(elem).find('.spinner').length === 0) $(elem).append(loader);
 	}
 	
@@ -146,13 +145,13 @@
 				this.pusher.connection.bind('connected', () => {
 					this.connected = true;
 					$('#btn-websockets .spinner').remove();
-					showToast('success', 'Vous êtes connecté.')
+					showToast('info', 'Vous êtes connecté.')
 				});
 
 				this.pusher.connection.bind('disconnected', () => {
 					this.connected = false;
 					$('#btn-websockets .spinner').remove();
-					showToast('success', 'Vous êtes déconnecté.')
+					showToast('info', 'Vous êtes déconnecté.')
 				});
 
 				this.pusher.connection.bind('error', event => {
@@ -185,7 +184,7 @@
 
 			disconnect() {
 				this.connected = false;
-				showToast('success', 'Vous êtes déconnecté.')
+				showToast('info', 'Vous êtes déconnecté.')
 			}
 		}
     });
