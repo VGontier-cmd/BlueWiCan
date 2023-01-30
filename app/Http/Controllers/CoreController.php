@@ -30,7 +30,8 @@ class CoreController extends Controller
             "logChannel" => DashboardLogger::LOG_CHANNEL_PREFIX,
             "apps" => $appProvider->all(),
 
-            "appKey" => config("broadcasting.connections.pusher.key")
+            //"appKey" => config("broadcasting.connections.pusher.key")
+            "appKey" => ''
         ]);
     }
 }
