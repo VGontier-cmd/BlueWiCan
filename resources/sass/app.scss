@@ -286,7 +286,7 @@ main {
                 background-color: $info-color;
             }
         }
-        &[data-level=warning] {
+        &[data-level=warn] {
             i.bi {
                 color: $warning-color;
             }
@@ -325,7 +325,7 @@ main {
     background-color: $primary-color;
 }
 .spinner-border {
-    border-width: 2px;
-    width: 18px;
-    height: 18px;
+    border-width: 1px;
+    width: 13px;
+    height: 13px;
 }
