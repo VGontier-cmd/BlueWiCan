@@ -120,7 +120,6 @@
 
 				//updateData();
 
-				/*
 				this.pusher = new Pusher("staging", {
 					wsHost: this.host,
 					wsPort: this.port,
@@ -163,7 +162,6 @@
 				});
 
 				this.subscribeToAllChannels();
-				*/
 			},
 			
 			subscribeToAllChannels() {
