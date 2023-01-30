@@ -631,7 +631,9 @@ class QueryDataTable extends DataTableAbstract
             ->each(function ($orderable) {
                 $column = $this->resolveRelationColumn($orderable['name']);
 
-                if ($this->hasOrderColumn($column)) {
+                if ($this->hasOrderColumn($orderable['name'])) {
+                    $this->applyOrderColumn($orderable['name'], $orderable);
+                } elseif ($this->hasOrderColumn($column)) {
                     $this->applyOrderColumn($column, $orderable);
                 } else {
                     $nullsLastSql = $this->getNullsLastSql($column, $orderable['direction']);
@@ -735,7 +737,7 @@ class QueryDataTable extends DataTableAbstract
         $query_log = $this->getConnection()->getQueryLog();
         array_walk_recursive($query_log, function (&$item) {
             if (is_string($item)) {
-                $item = utf8_encode($item);
+                $item = iconv('iso-8859-1', 'utf-8', $item);
             }
         });
 

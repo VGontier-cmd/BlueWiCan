@@ -15,19 +15,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body page-format="default">
-    <div id="toast-wrapper" class="toast-wrapper"></div>
-    
-    @include('partials.header')
-    @include('partials.sidenav')
-
-    <main id="main-content" class="main-content no-sb">
-        <div class="main-wrapper">
-            <div class="main-inner container-fluid">
-                @yield('content')
-            </div>
-            @include('partials.footer')
+    <div id="app">
+        <div id="toast-wrapper" class="toast-wrapper">
+            @include('partials._toast')
         </div>
-    </main>
+        
+        @include('partials.header')
+        @include('partials.sidenav')
+    
+        <main id="main-content" class="main-content no-sb">
+            <div class="main-wrapper">
+                <div class="main-inner container-fluid">
+                    @yield('content')
+                </div>
+                @include('partials.footer')
+            </div>
+        </main>
+    </div>
 
     @stack('scripts')
 </body>
