@@ -2,9 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoreController;
-use App\Websockets\SocketHandlers\UpdateDataSocketHandler;
-use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +19,3 @@ Route::get('/', [CoreController::class, 'home'])->name('home');
 
 // live page
 Route::get('/live', [CoreController::class, 'live'])->name('live');
-
-//WebSockets Handlers
-WebSocketsRouter::webSocket('/socket/update-data', UpdateDataSocketHandler::class);

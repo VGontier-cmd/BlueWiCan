@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\CanDatasDataTable;
-use BeyondCode\LaravelWebSockets\Apps\AppProvider;
-use BeyondCode\LaravelWebSockets\Dashboard\DashboardLogger;
 
 class CoreController extends Controller
 {
@@ -20,17 +18,13 @@ class CoreController extends Controller
     /**
      * Permet d'afficher la page des données live
      */
-    public function live(AppProvider $appProvider) {
-        return view('core.live', [
-            "page_title" => "Toutes les données live",
-            "page_subtitle" => "Liste de toutes les trames en live",
-            "host" => config("broadcasting.connections.pusher.options.host"),
-            "port" => config("broadcasting.connections.pusher.options.port"),
-            "authEndpoint" => "socket/update-data",
-            "logChannel" => DashboardLogger::LOG_CHANNEL_PREFIX,
-            "apps" => $appProvider->all(),
+    public function live() {
+        $page_title = 'Toutes les données live';
+        $page_subtitle = 'Liste de toutes les trames en live';
 
-            "appKey" => config("broadcasting.connections.pusher.key")
-        ]);
+        $ws_host = config('websockets.ws_host');
+        $ws_port = config('websockets.ws_port');
+
+        return view('core.live', compact('page_title', 'page_subtitle', 'ws_host', 'ws_port'));
     }
 }

@@ -6,8 +6,7 @@
 @endpush
 
 @section('content')
-
-    <div class="card" id="app">
+    <div class="card">
         <div class="gradient-line"></div>
         <div class="dataTable-container pb-0">
             <div id="live-table__container" class="dataTables_wrapper dt-bootstrap5 no-footer">
@@ -15,7 +14,14 @@
                     <div class="col-sm-12 mb-0">
                         <div class="dt-buttons btn-group flex-wrap">
                             <form>
-                                <button id="btn-websockets" v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer"><i class="bi bi-power"></i></button>
+                                <button id="btn-websockets" v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer">
+									<i class="bi bi-power"></i>
+									<div v-if="!connected" class="spinner">
+										<div class="spinner-border" role="status">
+											<span class="sr-only"></span>
+										</div>
+									</div>
+								</button>
                                 <button id="btn-websockets" v-if="connected" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
                             </form>
                         </div>
@@ -59,38 +65,9 @@
 @endsection
 
 @push('scripts')
-<script>
-	const toast_wrapper = document.getElementById("toast-wrapper")
-
-	function loading(elem) {
-		let loader =
-		` <div class="spinner">
-			<div class="spinner-border" role="status">
-				<span class="sr-only"></span>
-			</div>
-		</div>`
-		if ($(elem).find('.spinner').length === 0) $(elem).append(loader);
-	}
-	
+<script>	
 	function showToast(level, message) {
 		let timeout = 5000;
-		let toast = 
-		`<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-level="${level}">
-			<div class="toast-header">
-				${(level == 'success') ? '<i class="bi bi-check-square-fill"></i>' : ''}
-				${(level == 'info') ? '<i class="bi bi-info-square-fill"></i>' : ''}
-				${(level == 'warning') ? '<i class="bi bi-exclamation-square-fill"></i>' : ''}
-				${(level == 'error') ? '<i class="bi bi-exclamation-square-fill"></i>' : ''}
-				<strong class="me-auto">${level}</strong>
-				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-			</div>
-			<div class="toast-body">
-				<p>${message}</p>
-			</div>
-		</div>`
-
-		$('#toast-wrapper').html(toast)
-
 		setTimeout(() => {
 			$('.toast').hide();
 		}, timeout);
@@ -100,113 +77,55 @@
 		el: "#app",
 		data: {
 			connected: false,
-			pusher: null,
 			canData: null,
-			apps: {!! json_encode($apps) !!},
-			logChannel: "{{ $logChannel }}",
-			authEndpoint: "{{ $authEndpoint }}",
-			host: "{{ $host }}",
-			port: "{{ $port }}",
-			state: null,
-			formError: false,
+			socket: null,
+			host: "",
+			port: "",
+			flashMessage: null,
 			incomingDatas: []
 		},
 		mounted() {
-			this.app = this.apps[0] || null;
+
 		},
 		methods: {
 			connect() {
-				loading("#btn-websockets")
+				flashMessage = {
+					level: 'success',
+					message: 'Connexion réussie'
+				}
 
-				updateData();
+				this.socket = new WebSocket("ws://{{ $ws_host }}:{{ $ws_port }}");
 
-				/*
-				this.pusher = new Pusher("staging", {
-					wsHost: this.host,
-					wsPort: this.port,
-					wssPort: this.port,
-					wsPath: this.app.path,
-					disableStats: true,
-					authEndpoint: this.authEndpoint,
-					forceTLS: false,
-					auth: {
-						headers: {
-							"X-CSRF-Token": "{{ csrf_token() }}",
-							"X-App-ID": this.app.id
-						}
-					},
-					enabledTransports: ["ws", "flash"]
-				});
-
-				this.pusher.connection.bind('state_change', states => {
-					this.state = states.current
-					$('#btn-websockets .spinner').remove();
-					console.log(this.state)
-					if(this.state == 'unavailable') showToast('warning', 'Le serveur websocket n\'est pas disponible.')
-				});
-
-				this.pusher.connection.bind('connected', () => {
+				this.socket.onopen = (e) => {
 					this.connected = true;
-					$('#btn-websockets .spinner').remove();
-					showToast('info', 'Vous êtes connecté.')
-				});
+					console.log("[open] Connection established");
+					console.log("Sending to server");
+					this.socket.send("My name is John");
+				};
 
-				this.pusher.connection.bind('disconnected', () => {
-					this.connected = false;
-					$('#btn-websockets .spinner').remove();
-					showToast('info', 'Vous êtes déconnecté.')
-				});
+				this.socket.onmessage = function(event) {
+					console.log(`[message] Data received from server: ${event.data}`);
+				};
 
-				this.pusher.connection.bind('error', event => {
-					this.formError = true;
-					showToast('error', 'Une erreur est survenue...')
-				});
+				this.socket.onclose = function(event) {
+					if (event.wasClean) {
+						console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+					} else {
+						// e.g. server process killed or network down
+						// event.code is usually 1006 in this case
+						console.log('[close] Connection died');
+					}
+				};
 
-				this.subscribeToAllChannels();
-				*/
+				this.socket.onerror = function(error) {
+					console.log(`[error]`);
+				};            
 			},
 			
-			subscribeToAllChannels() {
-				[
-					"api-message"
-				].forEach(channelName => this.subscribeToChannel(channelName));
-			},
-
-			subscribeToChannel(channelName) {
-				let inst = this;
-				this.pusher.subscribe(this.logChannel + channelName)
-					.bind("log-message", (data) => {
-                    console.log(data)
-					if (data.type === "api-message") {
-						if (data.details.includes("SendDataEvent")) {
-							let incomingData = JSON.parse(data.data);
-							inst.incomingDatas.push(incomingData);
-						}
-					}
-				});
-			},
-
 			disconnect() {
 				this.connected = false;
-				showToast('info', 'Vous êtes déconnecté.')
 			}
 		}
     });
-</script>
-
-
-<script>
-function updateData() {
-	const socket = new WebSocket(`ws://{{ $host }}:{{ $port }}/{{ $authEndpoint }}?appKey={{ $appKey }}`);
-
-	socket.onopen = function (event){
-		console.log('on open!!');
-	}
-
-	socket.onmessage = function (event) {
-		console.log(event);
-	}
-}
-
 </script>
 @endpush
