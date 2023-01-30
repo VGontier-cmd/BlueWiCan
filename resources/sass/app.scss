@@ -225,6 +225,7 @@ main {
     z-index: 4;
 
     .toast {
+        display: block;
         position: relative;
         width: auto;
         background-color: #fff;
@@ -234,7 +235,13 @@ main {
         border-radius: .325rem;
         overflow: hidden;
         box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.2);
+        transform: translateX(0);
+        transition: all .3s ease-in-out;
 
+        &.closed {
+            opacity: 0;
+            transform: translateX(150%);
+        }
         .toast-header,
         .toast-body {
             padding-inline: 1rem;

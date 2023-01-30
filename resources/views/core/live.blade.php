@@ -16,7 +16,7 @@
                             <form>
                                 <button id="btn-websockets" v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer">
 									<i class="bi bi-power"></i>
-									<div v-if="!connected" class="spinner">
+									<div v-if="connected" class="spinner">
 										<div class="spinner-border" role="status">
 											<span class="sr-only"></span>
 										</div>
@@ -66,21 +66,14 @@
 
 @push('scripts')
 <script>	
-	function showToast(level, message) {
-		let timeout = 5000;
-		setTimeout(() => {
-			$('.toast').hide();
-		}, timeout);
-	}
-
     new Vue({
 		el: "#app",
 		data: {
 			connected: false,
 			canData: null,
 			socket: null,
-			host: "",
-			port: "",
+			wsHost: "{{ $ws_host }}",
+			wsPort: "{{ $ws_port }}",
 			flashMessage: null,
 			incomingDatas: []
 		},
@@ -89,26 +82,24 @@
 		},
 		methods: {
 			connect() {
-				flashMessage = {
-					level: 'success',
-					message: 'Connexion réussie'
-				}
-
-				this.socket = new WebSocket("ws://{{ $ws_host }}:{{ $ws_port }}");
+				this.socket = new WebSocket(`ws://${this.wsHost}:${this.wsPort}`);
 
 				this.socket.onopen = (e) => {
 					this.connected = true;
+					this.showToast('success', 'Connexion réussie.')
 					console.log("[open] Connection established");
 					console.log("Sending to server");
 					this.socket.send("My name is John");
 				};
 
 				this.socket.onmessage = function(event) {
+					this.showToast('info', 'Nouveau message reçu.')
 					console.log(`[message] Data received from server: ${event.data}`);
 				};
 
 				this.socket.onclose = function(event) {
 					if (event.wasClean) {
+						this.showToast('info', 'Déconnexion réussie.')
 						console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
 					} else {
 						// e.g. server process killed or network down
@@ -124,6 +115,24 @@
 			
 			disconnect() {
 				this.connected = false;
+				this.showToast('info', 'Déconnexion réussie.')
+			},
+
+			showToast(lvl, msg) {				
+				this.flashMessage = null;
+				this.flashMessage = {
+					level: lvl,
+					message: msg
+				}
+				
+				$('.toast').removeClass('closed')
+				setTimeout(() => {
+					$('.toast').addClass('closed')
+				}, 5000);
+			},
+
+			hideToast() {
+				$('.toast').addClass('closed');
 			}
 		}
     });
