@@ -15,7 +15,14 @@
                     <div class="col-sm-12 mb-0">
                         <div class="dt-buttons btn-group flex-wrap">
                             <form>
-                                <button id="btn-websockets" v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer"><i class="bi bi-power"></i></button>
+                                <button id="btn-websockets" v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer">
+									<i class="bi bi-power"></i>
+									<div v-if="!connected" class="spinner">
+										<div class="spinner-border" role="status">
+											<span class="sr-only"></span>
+										</div>
+									</div>
+								</button>
                                 <button id="btn-websockets" v-if="connected" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
                             </form>
                         </div>
@@ -61,16 +68,6 @@
 @push('scripts')
 <script>
 	const toast_wrapper = document.getElementById("toast-wrapper")
-
-	function loading(elem) {
-		let loader =
-		` <div class="spinner">
-			<div class="spinner-border" role="status">
-				<span class="sr-only"></span>
-			</div>
-		</div>`
-		if ($(elem).find('.spinner').length === 0) $(elem).append(loader);
-	}
 	
 	function showToast(level, message) {
 		let timeout = 5000;
@@ -116,7 +113,6 @@
 		},
 		methods: {
 			connect() {
-				loading("#btn-websockets")
 
 				//updateData();
 
@@ -139,14 +135,12 @@
 
 				this.pusher.connection.bind('state_change', states => {
 					this.state = states.current
-					$('#btn-websockets .spinner').remove();
 					console.log(this.state)
 					if(this.state == 'unavailable') showToast('warning', 'Le serveur websocket n\'est pas disponible.')
 				});
 
 				this.pusher.connection.bind('connected', () => {
 					this.connected = true;
-					$('#btn-websockets .spinner').remove();
 					showToast('info', 'Vous êtes connecté.')
 				});
 
