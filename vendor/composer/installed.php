@@ -2,14 +2,10 @@
     'root' => array(
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-<<<<<<< HEAD
-=======
-        'reference' => '199b6bcc1b7c0b750df29567fadf5fddc2bdda6d',
->>>>>>> 302be9d26a6c60750b589e664bdc5c7ec94b8cb1
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'd6bbd20b5174a112a864d7252a2905a9e6f93929',
+        'reference' => '972c19e5d2ddf104a244f6962dc4b769bbe4aeca',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -24,18 +20,12 @@
             'dev_requirement' => false,
         ),
         'beyondcode/laravel-websockets' => array(
-<<<<<<< HEAD
-            'pretty_version' => '1.13.1',
-            'version' => '1.13.1.0',
-=======
             'pretty_version' => '1.13.2',
             'version' => '1.13.2.0',
-            'reference' => '50f8a1e77227a2d2302d45b99185d68a1c1c6866',
->>>>>>> 302be9d26a6c60750b589e664bdc5c7ec94b8cb1
             'type' => 'library',
             'install_path' => __DIR__ . '/../beyondcode/laravel-websockets',
             'aliases' => array(),
-            'reference' => 'f0649b65fb5562d20eff66f61716ef98717e228a',
+            'reference' => '50f8a1e77227a2d2302d45b99185d68a1c1c6866',
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -54,6 +44,15 @@
             'install_path' => __DIR__ . '/../cboden/ratchet',
             'aliases' => array(),
             'reference' => '5012dc954541b40c5599d286fd40653f5716a38f',
+            'dev_requirement' => false,
+        ),
+        'composer/semver' => array(
+            'pretty_version' => '3.3.2',
+            'version' => '3.3.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/./semver',
+            'aliases' => array(),
+            'reference' => '3953f23262f2bff1919fc82183ad9acb13ff62c9',
             'dev_requirement' => false,
         ),
         'cordoval/hamcrest-php' => array(
@@ -165,6 +164,15 @@
             'install_path' => __DIR__ . '/../evenement/evenement',
             'aliases' => array(),
             'reference' => '531bfb9d15f8aa57454f5f0285b18bec903b8fb7',
+            'dev_requirement' => false,
+        ),
+        'ezyang/htmlpurifier' => array(
+            'pretty_version' => 'v4.16.0',
+            'version' => '4.16.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ezyang/htmlpurifier',
+            'aliases' => array(),
+            'reference' => '523407fb06eb9e5f3d59889b3978d5bfe94299c8',
             'dev_requirement' => false,
         ),
         'facade/ignition-contracts' => array(
@@ -476,14 +484,10 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-<<<<<<< HEAD
-=======
-            'reference' => '199b6bcc1b7c0b750df29567fadf5fddc2bdda6d',
->>>>>>> 302be9d26a6c60750b589e664bdc5c7ec94b8cb1
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'd6bbd20b5174a112a864d7252a2905a9e6f93929',
+            'reference' => '972c19e5d2ddf104a244f6962dc4b769bbe4aeca',
             'dev_requirement' => false,
         ),
         'laravel/pint' => array(
@@ -585,6 +589,42 @@
             'reference' => 'ff6248ea87a9f116e78edd6002e39e5128a0d4dd',
             'dev_requirement' => false,
         ),
+        'maatwebsite/excel' => array(
+            'pretty_version' => '3.1.45',
+            'version' => '3.1.45.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../maatwebsite/excel',
+            'aliases' => array(),
+            'reference' => '80627071a8cebb3c1119f1d2881bb6a03a8f9152',
+            'dev_requirement' => false,
+        ),
+        'maennchen/zipstream-php' => array(
+            'pretty_version' => 'v2.4.0',
+            'version' => '2.4.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../maennchen/zipstream-php',
+            'aliases' => array(),
+            'reference' => '3fa72e4c71a43f9e9118752a5c90e476a8dc9eb3',
+            'dev_requirement' => false,
+        ),
+        'markbaker/complex' => array(
+            'pretty_version' => '3.0.2',
+            'version' => '3.0.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../markbaker/complex',
+            'aliases' => array(),
+            'reference' => '95c56caa1cf5c766ad6d65b6344b807c1e8405b9',
+            'dev_requirement' => false,
+        ),
+        'markbaker/matrix' => array(
+            'pretty_version' => '3.0.1',
+            'version' => '3.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../markbaker/matrix',
+            'aliases' => array(),
+            'reference' => '728434227fe21be27ff6d86621a1b13107a2562c',
+            'dev_requirement' => false,
+        ),
         'mockery/mockery' => array(
             'pretty_version' => '1.5.1',
             'version' => '1.5.1.0',
@@ -617,6 +657,15 @@
             'aliases' => array(),
             'reference' => '14daed4296fae74d9e3201d2c4925d1acb7aa614',
             'dev_requirement' => true,
+        ),
+        'myclabs/php-enum' => array(
+            'pretty_version' => '1.8.4',
+            'version' => '1.8.4.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../myclabs/php-enum',
+            'aliases' => array(),
+            'reference' => 'a867478eae49c9f59ece437ae7f9506bfaa27483',
+            'dev_requirement' => false,
         ),
         'nesbot/carbon' => array(
             'pretty_version' => '2.64.0',
@@ -707,6 +756,15 @@
             'aliases' => array(),
             'reference' => '4f7fd7836c6f332bb2933569e566a0d6c4cbed74',
             'dev_requirement' => true,
+        ),
+        'phpoffice/phpspreadsheet' => array(
+            'pretty_version' => '1.26.0',
+            'version' => '1.26.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
+            'aliases' => array(),
+            'reference' => '5b6ceea9705b068f993e268e4debc566c2637063',
+            'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(
             'pretty_version' => '1.9.0',
@@ -872,12 +930,12 @@
             ),
         ),
         'psr/simple-cache' => array(
-            'pretty_version' => '3.0.0',
-            'version' => '3.0.0.0',
+            'pretty_version' => '1.0.1',
+            'version' => '1.0.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/simple-cache',
             'aliases' => array(),
-            'reference' => '764e0b3939f5ca87cb904f570ef9be2d78a07865',
+            'reference' => '408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
             'dev_requirement' => false,
         ),
         'psr/simple-cache-implementation' => array(
@@ -896,18 +954,12 @@
             'dev_requirement' => false,
         ),
         'pusher/pusher-php-server' => array(
-<<<<<<< HEAD
-            'pretty_version' => '7.2.1',
-            'version' => '7.2.1.0',
-=======
             'pretty_version' => '7.2.2',
             'version' => '7.2.2.0',
-            'reference' => '4ace4873873b06c25cecb2dd6d9fdcbf2f20b640',
->>>>>>> 302be9d26a6c60750b589e664bdc5c7ec94b8cb1
             'type' => 'library',
             'install_path' => __DIR__ . '/../pusher/pusher-php-server',
             'aliases' => array(),
-            'reference' => '5d708d43d774218e1068037c56a887658a4930ac',
+            'reference' => '4ace4873873b06c25cecb2dd6d9fdcbf2f20b640',
             'dev_requirement' => false,
         ),
         'ralouphie/getallheaders' => array(
