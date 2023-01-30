@@ -19,15 +19,3 @@ use App\Events\SendData;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post("/sockets/connect", [SocketsController::class, "connect"]);
-
-
-Route::post("/data/send", function(Request $request) {
-    
-    $id = $request->input("id", null);
-    $trame = $request->input("trame", null);
-    $sizeTrame = strlen($trame);
-    $date = (new DateTime(now()))->format(DateTime::ATOM);
-    SendData::dispatch($id, $trame, $sizeTrame, $date);
-});
