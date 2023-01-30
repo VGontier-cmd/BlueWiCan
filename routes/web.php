@@ -24,4 +24,4 @@ Route::get('/', [CoreController::class, 'home'])->name('home');
 Route::get('/live', [CoreController::class, 'live'])->name('live');
 
 //WebSockets Handlers
-WebSocketsRouter::webSocket('/socket/update-data', UpdateDataSocketHandler::class);
+//WebSocketsRouter::webSocket('/socket/update-data', UpdateDataSocketHandler::class);
