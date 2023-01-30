@@ -2,7 +2,7 @@
     <div class="toast-header">
         <i v-if="flashMessage.level === 'success'" class="bi bi-check-square-fill"></i>
         <i v-if="flashMessage.level === 'info'" class="bi bi-info-square-fill"></i>
-        <i v-if="flashMessage.level === 'warning'" class="bi bi-exclamation-square-fill"></i>
+        <i v-if="flashMessage.level === 'warn'" class="bi bi-exclamation-square-fill"></i>
         <i v-if="flashMessage.level === 'error'" class="bi bi-exclamation-square-fill"></i>
         <strong class="me-auto">@{{flashMessage.level}}</strong>
         <button v-on:click="hideToast" type="button" class="btn-close"></button>
