@@ -9,13 +9,13 @@ use Exception;
 use Ratchet\ConnectionInterface;
 use Ratchet\RFC6455\Messaging\MessageInterface;
 use Ratchet\WebSocket\MessageComponentInterface;
-
+/*
 class UpdateDataSocketHandler extends BaseSocketHandler implements MessageComponentInterface
 {
     function onMessage(ConnectionInterface $from, MessageInterface $msg)
     {
 
-        /*
+        
         $body = collect(json_decode($msg->getPayload(), true));
 
         $payload = $body->get('payload');
@@ -32,8 +32,8 @@ class UpdateDataSocketHandler extends BaseSocketHandler implements MessageCompon
         $response = (new PostResource($updated))->toJson();
 
         $from->send($response);
-        */
+        
 
     }
 
-}
+}*/

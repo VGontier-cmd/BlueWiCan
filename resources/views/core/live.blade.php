@@ -118,7 +118,7 @@
 			connect() {
 				loading("#btn-websockets")
 
-				updateData();
+				//updateData();
 
 				/*
 				this.pusher = new Pusher("staging", {

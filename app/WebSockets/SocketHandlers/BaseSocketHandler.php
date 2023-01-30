@@ -10,10 +10,10 @@ use Ratchet\WebSocket\MessageComponentInterface;
 
 abstract class BaseSocketHandler implements MessageComponentInterface
 {
-
+    /*
     protected function verifyAppKey(ConnectionInterface $connection)
     {
-        $appKey = QueryParameters::create($connection->httpRequest)->get('appKey');
+        $appKey = QueryParameters::create($connection->httpRequest)->get(config('app.key'));
 
         if (! $app = App::findByKey($appKey)) {
             throw new UnknownAppKey($appKey);
@@ -53,5 +53,5 @@ abstract class BaseSocketHandler implements MessageComponentInterface
     {
         dump($e);
         dump('onerror');
-    }
+    }*/
 }
