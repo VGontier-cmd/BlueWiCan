@@ -56,7 +56,7 @@
 												<td>@{{ data.trame }}</td>
 												<td>@{{ data.date }}</td>
 											</tr>
-											<tr v-if="incomingDatas.length === 0" class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
+											<tr v-else class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
 										</tbody>
 									</table>
 								</div>
@@ -91,7 +91,7 @@
 				this.socket = new WebSocket(`ws://${this.wsHost}:${this.wsPort}`);
 				this.loading = true;
 
-				this.socket.onopen = (e) => {
+				this.socket.onopen = (event) => {
 					this.connected = true;
 					this.loading = false;
 					this.showToast('success', 'Connexion réussie.')
@@ -100,13 +100,16 @@
 					this.socket.send("My name is John");
 				};
 
-				this.socket.onmessage = function(event) {
+				this.socket.onmessage = (event) => {
 					this.loading = false;
 					this.showToast('info', 'Nouveau message reçu.')
 					console.log(`[message] Data received from server: ${event.data}`);
+
+					let incomingData = JSON.parse(event.data);
+					this.incomingDatas.push(incomingData);
 				};
 
-				this.socket.onclose = function(event) {
+				this.socket.onclose = (event) => {
 					this.loading = false;
 					if (event.wasClean) {
 						this.showToast('info', 'Déconnexion réussie.')
