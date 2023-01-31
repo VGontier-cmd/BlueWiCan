@@ -164,7 +164,7 @@
 						'X-CSRF-TOKEN': '{{ csrf_token() }}'
 					},
 					body: JSON.stringify({
-            			data: dataArray
+            			datas: dataArray
         			})
 				})
 				.then(response => response.json())
