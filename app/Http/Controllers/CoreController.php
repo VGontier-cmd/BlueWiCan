@@ -48,7 +48,10 @@ class CoreController extends Controller
                 DB::table('can_datas')
                 ->where('given_id', $item['given_id'])
                 ->update([
-                    'updated_at' => Carbon::parse($item['created_at'])->format('Y-m-d H:i:s')
+                    'given_id' => $item['given_id'],
+                    'data' => $item['data'],
+                    'length' => $item['length'],
+                    'created_at' => Carbon::parse($item['created_at'])->format('Y-m-d H:i:s')
                 ]);
             }
         }
