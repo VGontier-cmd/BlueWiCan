@@ -1,0 +1,45 @@
+/*
+|--------------------------------------------------------------------------
+| SASS Buttons
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize the applicdation's buttons.
+| 
+*/
+
+button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.app-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 0;
+    overflow: hidden;
+    border-radius: .325rem;
+    height: 40px;
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
+    border: none;
+    color: #fff;
+    
+    &.btn--primary {
+        background-color: $primary-color !important;
+    }
+
+    &.btn--square {
+        width: 40px;
+    }
+    
+    &.btn--simple {
+        padding-inline: .75rem;
+    }
+
+    span {
+        font-size: .8rem !important;
+    }
+}

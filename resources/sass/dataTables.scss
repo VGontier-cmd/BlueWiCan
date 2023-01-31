@@ -64,16 +64,6 @@
     }
 }
 
-.dt-buttons {
-    .btn {
-        &:not(.btn-danger) {
-            background-color: $primary-color;
-        }
-        box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
-        border: none;
-    }
-}
-
 @media (max-width: $bp-tablet) {
     .dataTables_filter,
     .dataTables_length {
