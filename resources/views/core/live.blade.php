@@ -44,16 +44,16 @@
 										<thead>
 											<tr>
 												<th title="CAN-ID" tabindex="0" rowspan="1" colspan="1">CAN-ID</th>
-												<th title="Length" tabindex="0" rowspan="1" colspan="1">Length</th>
 												<th title="Data" tabindex="0" rowspan="1" colspan="1">Data</th>
+												<th title="Length" tabindex="0" rowspan="1" colspan="1">Length</th>
 												<th title="Data" tabindex="0" rowspan="1" colspan="1">Date de réception</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr v-if="incomingDatas && incomingDatas.length > 0" v-for="(data, index) in incomingDatas">
 												<td>@{{ data.id }}</td>
-												<td>@{{ data.sizeTrame }}</td>
 												<td>@{{ data.trame }}</td>
+												<td>@{{ data.sizeTrame }}</td>
 												<td>@{{ data.date }}</td>
 											</tr>
 											<tr v-else class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
@@ -118,6 +118,7 @@
 			},
 			
 			disconnect() {
+				this.socket.close();
 				this.socket.onclose = (event) => {
 					this.connected = false;
 					this.loading = false;
