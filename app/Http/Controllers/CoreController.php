@@ -51,7 +51,7 @@ class CoreController extends Controller
                     'given_id' => $item['given_id'],
                     'data' => $item['data'],
                     'length' => $item['length'],
-                    'created_at' => Carbon::parse($item['created_at'])->format('Y-m-d H:i:s')
+                    'updated_at' => Carbon::parse($item['updated_at'])->format('Y-m-d H:i:s')
                 ]);
             }
         }
