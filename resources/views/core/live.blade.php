@@ -50,7 +50,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr v-if="incomingDatas" v-for="(data, index) in incomingDatas">
+											<tr v-if="incomingDatas && incomingDatas.length > 0" v-for="(data, index) in incomingDatas">
 												<td>@{{ data.id }}</td>
 												<td>@{{ data.sizeTrame }}</td>
 												<td>@{{ data.trame }}</td>
@@ -109,18 +109,6 @@
 					this.incomingDatas.push(incomingData);
 				};
 
-				this.socket.onclose = (event) => {
-					this.loading = false;
-					if (event.wasClean) {
-						this.showToast('info', 'Déconnexion réussie.')
-						console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-					} else {
-						// e.g. server process killed or network down
-						// event.code is usually 1006 in this case
-						console.log('[close] Connection died');
-					}
-				};
-
 				this.socket.onerror = (error) => {
 					console.log(error)
 					this.loading = false;
@@ -130,9 +118,19 @@
 			},
 			
 			disconnect() {
-				this.connected = false;
-				this.loading = false;
-				this.showToast('info', 'Déconnexion réussie.')
+				this.socket.onclose = (event) => {
+					this.connected = false;
+					this.loading = false;
+					if (event.wasClean) {
+						this.connected = false;
+						this.showToast('info', 'Déconnexion réussie.')
+						console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+					} else {
+						// e.g. server process killed or network down
+						// event.code is usually 1006 in this case
+						console.log('[close] Connection died');
+					}
+				};
 			},
 
 			showToast(lvl, msg) {				
