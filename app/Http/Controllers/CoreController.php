@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\CanData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,16 +33,26 @@ class CoreController extends Controller
     }
 
     public function store(Request $request) {
-        $data = $request->input('data');
+        $data = $request->input('datas');
 
         foreach ($data as $item) {
-            CanData::create([
-                'given_id' => $item['given_id'],
-                'data' => $item['data'],
-                'length' => $item['length'],
-                'created_at' => $item['created_at']
-            ]);
+            $recordExists = DB::table('can_datas')->where('given_id', $item['given_id'])->exists();
+            if(!$recordExists) {
+                CanData::create([
+                    'given_id' => $item['given_id'],
+                    'data' => $item['data'],
+                    'length' => $item['length'],
+                    'created_at' => Carbon::parse($item['created_at'])->format('Y-m-d H:i:s')
+                ]);
+            } else {
+                DB::table('can_datas')
+                ->where('given_id', $item['given_id'])
+                ->update([
+                    'updated_at' => Carbon::parse($item['created_at'])->format('Y-m-d H:i:s')
+                ]);
+            }
         }
+
         return response()->json(['success' => 'Data saved successfully.']);
     }
 }

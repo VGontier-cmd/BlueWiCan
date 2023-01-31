@@ -52,23 +52,13 @@
 											</tr>
 										</thead>
 										<tbody>
-											@for($i = 1; $i <= 10; $i++)
-												<tr>
-													<td>TEST {{ $i }}</td>
-													<td>TRAME  {{ $i }}</td>
-													<td>LENGTH {{ $i }}</td>
-													<td>DATE  {{ $i }}</td>
-												</tr>
-											@endfor
-
-											<!--
-											<tr v-if="incomingDatas && incomingDatas.length > 0" v-for="(data, index) in incomingDatas">
+											<tr v-if="incomingDatas" v-for="(data, index) in incomingDatas">
 												<td>@{{ data.id }}</td>
 												<td>@{{ data.trame }}</td>
 												<td>@{{ data.sizeTrame }}</td>
-												<td>@{{ data.date }}</td>
-											</tr>-->
-											<tr v-else class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
+												<td value="{{ now() }}">@{{ getDateNow() }} - @{{ getTimeNow() }}</td>
+											</tr>
+											<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
 										</tbody>
 									</table>
 								</div>
@@ -153,9 +143,11 @@
 					var id = cells[0].innerHTML;
 					var trame = cells[1].innerHTML;
 					var sizeTrame = cells[2].innerHTML;
-					var created_at = cells[3].innerHTML;
+					var created_at = cells[3].getAttribute('value');
 					dataArray.push({given_id: id, length: sizeTrame, data: trame, created_at: created_at});
 				}
+
+				console.log(dataArray)
 
 				fetch('/save-data', {
 					method: 'POST',
@@ -164,7 +156,7 @@
 						'X-CSRF-TOKEN': '{{ csrf_token() }}'
 					},
 					body: JSON.stringify({
-            			data: dataArray
+            			datas: dataArray
         			})
 				})
 				.then(response => response.json())
@@ -195,6 +187,22 @@
 
 			hideToast() {
 				$('.toast').addClass('closed');
+			},
+
+			getTimeNow(){
+				console.log(new Date())
+				Date.prototype.timeNow = function () {
+					return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds()+":"+ this.getMilliseconds();
+				}
+
+			return new Date().timeNow();
+			},
+
+			getDateNow(){
+				Date.prototype.dateNow = function () {
+					return String(this.getDate()).padStart(2, '0') + '/' + String(this.getMonth() + 1).padStart(2, '0') + '/' + this.getFullYear();
+				}
+				return new Date().dateNow();
 			}
 		}
     });

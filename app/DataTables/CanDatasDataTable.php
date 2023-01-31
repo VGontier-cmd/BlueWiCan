@@ -23,7 +23,10 @@ class CanDatasDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->editColumn('created_at', function($data){ 
-                return $data->created_at->format('d/m/Y à H:m'); 
+                return $data->created_at->format('d/m/Y à H:i:s'); 
+            })
+            ->editColumn('updated_at', function($data){ 
+                return $data->updated_at->format('d/m/Y à H:i:s'); 
             });
     }
 
@@ -81,7 +84,8 @@ class CanDatasDataTable extends DataTable
             Column::make('given_id'),
             Column::make('data'),
             Column::make('length'),
-            Column::make('created_at')
+            Column::make('created_at'),
+            Column::make('updated_at')
         ];
     }
 
