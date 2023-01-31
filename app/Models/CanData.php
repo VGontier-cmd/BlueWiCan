@@ -20,7 +20,6 @@ class CanData extends Model
      * @var array
      */
     protected $fillable = [
-        'data',
-        'length'
+        'given_id', 'data', 'length', 'created_at'
     ];
 }

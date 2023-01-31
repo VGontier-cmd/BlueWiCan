@@ -19,3 +19,6 @@ Route::get('/', [CoreController::class, 'home'])->name('home');
 
 // live page
 Route::get('/live', [CoreController::class, 'live'])->name('live');
+
+// save data
+Route::post('/save-data', [CoreController::class, 'store']);

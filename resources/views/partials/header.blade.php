@@ -3,7 +3,7 @@
         <button id="sidenav__minimalized-trigger" class="app-btn">
             <i class="bi bi-chevron-left"></i>
         </button>
-        <button id="header__sidenav-trigger" class="header__sidenav-trigger app-btn main-btn">
+        <button id="header__sidenav-trigger" class="header__sidenav-trigger app-btn btn--primary">
             <div class="header__sidenav-trigger-inner">
                 <div class="line"></div>
                 <div class="line"></div>

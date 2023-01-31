@@ -16,18 +16,20 @@
 				<div id="live-table__container" class="dataTables_wrapper dt-bootstrap5 no-footer">
 					<div class="row">
 						<div class="col-sm-12 mb-0">
-							<div class="dt-buttons btn-group flex-wrap">
-								<form>
-									<button id="btn-websockets" v-if="!connected" v-on:click="connect()" class="btn btn-primary" tabindex="0" type="button" title="Lancer">
-										<i class="bi bi-power"></i>
-										<div v-if="loading" class="spinner">
-											<div class="spinner-border" role="status">
-												<span class="sr-only"></span>
-											</div>
+							<div class="dt-buttons d-flex justify-content-between align-items-center">
+								<button v-if="!connected" v-on:click="connect()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Lancer">
+									<i class="bi bi-power"></i>
+									<div v-if="loading" class="spinner">
+										<div class="spinner-border" role="status">
+											<span class="sr-only"></span>
 										</div>
-									</button>
-									<button id="btn-websockets" v-if="connected" v-on:click="disconnect()" class="btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
-								</form>
+									</div>
+								</button>
+								<button v-if="connected" v-on:click="disconnect()" class="app-btn btn--square btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
+								<button v-on:click="save()" class="app-btn btn--simple btn--primary" tabindex="0" type="button" title="Arrêter">
+									<i class="bi bi-database-fill-add"></i> 
+									<span>Enregistrer</span>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -40,7 +42,7 @@
 								</div>
 								<!-- table -->
 								<div class="live-table__table">
-									<table class="table dataTable table-striped table-bordered table-hover no-footer" style="margin: 0 !important">
+									<table id="live-table" class="table dataTable table-striped table-bordered table-hover no-footer" style="margin: 0 !important">
 										<thead>
 											<tr>
 												<th title="CAN-ID" tabindex="0" rowspan="1" colspan="1">CAN-ID</th>
@@ -50,12 +52,22 @@
 											</tr>
 										</thead>
 										<tbody>
+											@for($i = 1; $i <= 10; $i++)
+												<tr>
+													<td>TEST {{ $i }}</td>
+													<td>TRAME  {{ $i }}</td>
+													<td>LENGTH {{ $i }}</td>
+													<td>DATE  {{ $i }}</td>
+												</tr>
+											@endfor
+
+											<!--
 											<tr v-if="incomingDatas && incomingDatas.length > 0" v-for="(data, index) in incomingDatas">
 												<td>@{{ data.id }}</td>
 												<td>@{{ data.trame }}</td>
 												<td>@{{ data.sizeTrame }}</td>
 												<td>@{{ data.date }}</td>
-											</tr>
+											</tr>-->
 											<tr v-else class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
 										</tbody>
 									</table>
@@ -102,7 +114,6 @@
 
 				this.socket.onmessage = (event) => {
 					this.loading = false;
-					this.showToast('info', 'Nouveau message reçu.')
 					console.log(`[message] Data received from server: ${event.data}`);
 
 					let incomingData = JSON.parse(event.data);
@@ -132,6 +143,40 @@
 						console.log('[close] Connection died');
 					}
 				};
+			},
+
+			save() {
+				const rows = document.querySelectorAll('#live-table tbody tr')
+				dataArray = []
+				for (let i = 0; i < rows.length; i++) {
+					var cells = rows[i].getElementsByTagName('td');
+					var id = cells[0].innerHTML;
+					var trame = cells[1].innerHTML;
+					var sizeTrame = cells[2].innerHTML;
+					var created_at = cells[3].innerHTML;
+					dataArray.push({given_id: id, length: sizeTrame, data: trame, created_at: created_at});
+				}
+
+				fetch('/save-data', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'X-CSRF-TOKEN': '{{ csrf_token() }}'
+					},
+					body: JSON.stringify({
+            			data: dataArray
+        			})
+				})
+				.then(response => response.json())
+				.then(data => {
+					this.showToast('success', `Les données ont été enregistrées avec succés`)
+					console.log(data);
+					console.log('Data saved successfully');
+				})
+				.catch(error => {
+					this.showToast('error', `Echec de l'enregistrement.`)
+					console.error('Error saving data: ', error);
+				});
 			},
 
 			showToast(lvl, msg) {				
