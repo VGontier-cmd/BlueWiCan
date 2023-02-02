@@ -26,10 +26,15 @@
 									</div>
 								</button>
 								<button v-if="connected" v-on:click="disconnect()" class="app-btn btn--square btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
-								<button v-on:click="save()" class="app-btn btn--simple btn--primary" tabindex="0" type="button" title="Arrêter">
-									<i class="bi bi-database-fill-add"></i> 
-									<span>Enregistrer</span>
-								</button>
+								<div class="d-flex align-items-center gap-2">
+									<button v-on:click="clear()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Supprimer">
+										<i class="bi bi-trash3-fill"></i>
+									</button>
+									<button v-on:click="save()" class="app-btn btn--simple btn--primary" tabindex="0" type="button" title="Enregistrer">
+										<i class="bi bi-database-fill-add"></i> 
+										<span>Enregistrer</span>
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -89,10 +94,12 @@
 
 		},
 		methods: {
+			// permet de se connecter au serveur websockets
 			connect() {
 				this.socket = new WebSocket(`ws://${this.wsHost}:${this.wsPort}`);
 				this.loading = true;
 
+				// lorsqu'un client a réussi à se connecter au serveur websockets
 				this.socket.onopen = (event) => {
 					this.connected = true;
 					this.loading = false;
@@ -100,6 +107,7 @@
 					console.log("[open] Connection established");
 				};
 
+				// lorsqu'un client reçoit un message du serveur websockets
 				this.socket.onmessage = (event) => {
 					this.loading = false;
 					console.log(`[message] Data received from server: ${event.data}`);
@@ -108,6 +116,7 @@
 					this.incomingDatas.push(incomingData);
 				};
 
+				// lorsqu'une erreur survient
 				this.socket.onerror = (error) => {
 					console.log(error)
 					this.loading = false;
@@ -116,6 +125,7 @@
 				};     
 			},
 			
+			// permet de se déconnecter du serveur websockets
 			disconnect() {
 				this.socket.close();
 				this.socket.onclose = (event) => {
@@ -133,6 +143,7 @@
 				};
 			},
 
+			// permet d'enregistrer les données live en base de données
 			save() {
 				const rows = document.querySelectorAll('#live-table tbody tr')
 				dataArray = []
@@ -144,8 +155,6 @@
 					var created_at = cells[3].getAttribute('value');
 					dataArray.push({given_id: id, length: sizeTrame, data: trame, created_at: created_at});
 				}
-
-				console.log(dataArray)
 
 				fetch('/save-data', {
 					method: 'POST',
@@ -169,6 +178,12 @@
 				});
 			},
 
+			// permet de vider le tableau de données
+			clear() {
+				this.incomingDatas = []
+			},
+
+			// permet d'afficher un message en précisant son niveau et le message
 			showToast(lvl, msg) {				
 				this.loading = false;
 				this.flashMessage = null;
@@ -183,19 +198,22 @@
 				}, 3000);
 			},
 
+			// permet de cacher un toast
 			hideToast() {
 				$('.toast').addClass('closed');
 			},
 
+			// retourne l'heure actuelle
 			getTimeNow(){
 				console.log(new Date())
 				Date.prototype.timeNow = function () {
 					return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds()+":"+ this.getMilliseconds();
 				}
 
-			return new Date().timeNow();
+				return new Date().timeNow();
 			},
 
+			// retourne la date actuelle
 			getDateNow(){
 				Date.prototype.dateNow = function () {
 					return String(this.getDate()).padStart(2, '0') + '/' + String(this.getMonth() + 1).padStart(2, '0') + '/' + this.getFullYear();
