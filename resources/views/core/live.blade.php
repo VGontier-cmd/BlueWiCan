@@ -16,7 +16,7 @@
 				<div id="live-table__container" class="dataTables_wrapper dt-bootstrap5 no-footer">
 					<div class="row">
 						<div class="col-sm-12 mb-0">
-							<div class="dt-buttons d-flex justify-content-between align-items-center">
+							<div class="dt-buttons d-flex align-items-center">
 								<button v-if="!connected" v-on:click="connect()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Lancer">
 									<i class="bi bi-power"></i>
 									<div v-if="loading" class="spinner">
@@ -26,15 +26,12 @@
 									</div>
 								</button>
 								<button v-if="connected" v-on:click="disconnect()" class="app-btn btn--square btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
-								<div class="d-flex align-items-center gap-2">
-									<button v-on:click="clear()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Supprimer">
-										<i class="bi bi-trash3-fill"></i>
-									</button>
-									<button v-on:click="save()" class="app-btn btn--simple btn--primary" tabindex="0" type="button" title="Enregistrer">
-										<i class="bi bi-database-fill-add"></i> 
-										<span>Enregistrer</span>
-									</button>
-								</div>
+								<button v-on:click="save()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Enregistrer">
+									<i class="bi bi-database-add"></i> 
+								</button>
+								<button v-on:click="clear()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Supprimer">
+									<i class="bi bi-eraser"></i>
+								</button>
 							</div>
 						</div>
 					</div>
