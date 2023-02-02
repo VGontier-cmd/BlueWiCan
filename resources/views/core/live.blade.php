@@ -98,8 +98,6 @@
 					this.loading = false;
 					this.showToast('success', 'Connexion réussie.')
 					console.log("[open] Connection established");
-					console.log("Sending to server");
-					this.socket.send("My name is John");
 				};
 
 				this.socket.onmessage = (event) => {
