@@ -90,30 +90,39 @@
 		},
 		methods: {
 			connect() {
-				this.socket = new WebSocket(`ws://${this.wsHost}:${this.wsPort}`);
-				this.loading = true;
+				// Si l'utilisateur n'est pas connecte => on essaye de le connecte au serveur websockets
+				if(!this.connected){
+					this.socket = new WebSocket(`ws://${this.wsHost}:${this.wsPort}`);
+					this.loading = true;
 
-				this.socket.onopen = (event) => {
-					this.connected = true;
-					this.loading = false;
-					this.showToast('success', 'Connexion réussie.')
-					console.log("[open] Connection established");
-				};
+					this.socket.onopen = (event) => {
+						this.connected = true;
+						this.loading = false;
+						this.showToast('success', 'Connexion réussie.')
+						console.log("[open] Connection established");
+					};
 
-				this.socket.onmessage = (event) => {
-					this.loading = false;
-					console.log(`[message] Data received from server: ${event.data}`);
+					this.socket.onmessage = (event) => {
+						this.loading = false;
+						console.log(`[message] Data received from server: ${event.data}`);
 
-					let incomingData = JSON.parse(event.data);
-					this.incomingDatas.push(incomingData);
-				};
+						let incomingData = JSON.parse(event.data);
+						this.incomingDatas.push(incomingData);
+					};
 
-				this.socket.onerror = (error) => {
-					console.log(error)
-					this.loading = false;
-					this.showToast('warn', `Erreur de connexion.`)
-					console.log(`[error]`);
-				};            
+					this.socket.onerror = (error) => {
+						console.log(error)
+						this.loading = false;
+						this.showToast('warn', `Erreur de connexion.`)
+						console.log(`[error]`);
+					};   
+				}
+				// Si l'utilisateur est deja connecte => on le deconnecte du serveur websockets
+				else {
+					this.connected = false;
+					this.socket = null;
+				}
+				         
 			},
 			
 			disconnect() {
