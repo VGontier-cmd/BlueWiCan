@@ -25,7 +25,7 @@
 										</div>
 									</div>
 								</button>
-								<button v-if="connected" v-on:click="disconnect()" class="app-btn btn--square btn btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
+								<button v-if="connected" v-on:click="disconnect()" class="app-btn btn--square btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
 								<button v-on:click="save()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Enregistrer">
 									<i class="bi bi-database-add"></i> 
 								</button>
@@ -142,43 +142,52 @@
 
 			// permet d'enregistrer les données live en base de données
 			save() {
-				const rows = document.querySelectorAll('#live-table tbody tr')
-				dataArray = []
-				for (let i = 0; i < rows.length; i++) {
-					var cells = rows[i].getElementsByTagName('td');
-					var id = cells[0].innerHTML;
-					var trame = cells[1].innerHTML;
-					var sizeTrame = cells[2].innerHTML;
-					var created_at = cells[3].getAttribute('value');
-					dataArray.push({given_id: id, length: sizeTrame, data: trame, created_at: created_at});
-				}
+				if(this.incomingData && this.incomingDatas.length > 0) {
+					const rows = document.querySelectorAll('#live-table tbody tr')
+					dataArray = []
 
-				fetch('/save-data', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						'X-CSRF-TOKEN': '{{ csrf_token() }}'
-					},
-					body: JSON.stringify({
-            			datas: dataArray
-        			})
-				})
-				.then(response => response.json())
-				.then(data => {
-					this.showToast('success', `Les données ont été enregistrées avec succés`)
-					console.log(data);
-					console.log('Data saved successfully');
-				})
-				.catch(error => {
-					this.showToast('error', `Echec de l'enregistrement.`)
-					console.error('Error saving data: ', error);
-				});
+					for (let i = 0; i < rows.length; i++) {
+						var cells = rows[i].getElementsByTagName('td');
+						var id = cells[0].innerHTML;
+						var trame = cells[1].innerHTML;
+						var sizeTrame = cells[2].innerHTML;
+						var created_at = cells[3].getAttribute('value');
+						dataArray.push({given_id: id, length: sizeTrame, data: trame, created_at: created_at});
+					}
+
+					fetch('/save-data', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
+						},
+						body: JSON.stringify({
+							datas: dataArray
+						})
+					})
+					.then(response => response.json())
+					.then(data => {
+						this.showToast('success', `Les données ont été enregistrées avec succés`)
+						console.log(data);
+						console.log('Data saved successfully');
+					})
+					.catch(error => {
+						this.showToast('error', `Echec de l'enregistrement.`)
+						console.error('Error saving data: ', error);
+					});
+				} else {
+					this.showToast('info', `Aucune donnée à enregistrer.`)
+				}
 			},
 
 			// permet de vider le tableau de données
 			clear() {
-				this.incomingDatas = []
-				this.showToast('info', 'Suppression du tableau réussie.')
+				if(this.incomingData && this.incomingDatas.length > 0) {
+					this.incomingDatas = []
+					this.showToast('info', 'Suppression du tableau réussie.')
+				} else {
+					this.showToast('info', 'Aucune donnée à supprimer.')
+				}
 			},
 
 			// permet d'afficher un message en précisant son niveau et le message
