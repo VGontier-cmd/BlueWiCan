@@ -53,8 +53,8 @@
 										</thead>
 										<tbody>
 											<tr v-if="incomingDatas" v-for="(data, index) in incomingDatas">
-												<td>@{{ data.id }}</td>
-												<td>@{{ data.trame }}</td>
+												<td>@{{ data.id.toUpperCase() }}</td>
+												<td>@{{ data.trame.toUpperCase() }}</td>
 												<td>@{{ data.sizeTrame }}</td>
 												<td value="{{ now() }}">@{{ getDateNow() }} - @{{ getTimeNow() }}</td>
 											</tr>
