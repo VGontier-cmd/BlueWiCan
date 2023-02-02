@@ -178,6 +178,7 @@
 			// permet de vider le tableau de données
 			clear() {
 				this.incomingDatas = []
+				this.showToast('info', 'Suppression du tableau réussie.')
 			},
 
 			// permet d'afficher un message en précisant son niveau et le message
