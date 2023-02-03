@@ -14,8 +14,11 @@ use App\Http\Controllers\CoreController;
 |
 */
 
+// dasgboard page
+Route::get('/', [CoreController::class, 'dashboard'])->name('dashboard');
+
 // homepage path
-Route::get('/', [CoreController::class, 'home'])->name('home');
+Route::get('/saved', [CoreController::class, 'saved'])->name('saved');
 
 // live page
 Route::get('/live', [CoreController::class, 'live'])->name('live');

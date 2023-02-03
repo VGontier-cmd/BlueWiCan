@@ -208,9 +208,14 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
-    padding: $page-space-x;
     margin-top: $header-height;
     z-index: 4;
+    
+    padding: 1.5rem .5rem;
+    
+    @media (min-width: $bp-tablet) {
+        padding: $page-space-x;
+    }
 
     .toast {
         display: block;

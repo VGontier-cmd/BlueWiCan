@@ -63,7 +63,7 @@ function setActiveLinks() {
         var $this = $(this);
 		var href = $this.attr('href');
 		var page = $this.attr('target-page');
-		var closeMatch = ((href.includes(path_tab) && path !== '/') || (page == 'home' && path == '/'));
+		var closeMatch = ((href.includes(path_tab) && path !== '/') || (page == 'dashboard' && path == '/'));
 	
         if(closeMatch) {
             $this.attr('data-active', true);

@@ -11,12 +11,21 @@ use App\DataTables\CanDatasDataTable;
 class CoreController extends Controller
 {
     /**
+     * Permet d'afficher le dashboard
+     */
+    public function dashboard() {
+        $page_title = 'Dashboard';
+        $page_subtitle = 'Dashboard';
+        return view('core.dashboard', compact('page_title', 'page_subtitle'));
+    }
+
+    /**
      * Permet d'afficher la page d'accueil
      */
-    public function home(CanDatasDataTable $dataTable) {
+    public function saved(CanDatasDataTable $dataTable) {
         $page_title = 'Toutes les données stockées';
         $page_subtitle = 'Liste de toutes les trames stockées';
-        return $dataTable->render('core.home', compact('page_title', 'page_subtitle'));
+        return $dataTable->render('core.saved', compact('page_title', 'page_subtitle'));
     }
 
     /**

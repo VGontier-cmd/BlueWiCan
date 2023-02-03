@@ -5,10 +5,10 @@
     <div class="footer-wrapper">
         <ul class="footer__link-list">
             <li class="footer__link-item">
-                <a href="#" class="footer__link">Dashboard</a>
+                <a href="{{ route('dashboard') }}" class="footer__link">Dashboard</a>
             </li>
             <li class="footer__link-item">
-                <a href="{{ route('home') }}" class="footer__link">Données stockées</a>
+                <a href="{{ route('saved') }}" class="footer__link">Données stockées</a>
             </li>
             <li class="footer__link-item">
                 <a href="{{ route('live') }}" class="footer__link">Données live</a>
