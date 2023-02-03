@@ -111,6 +111,10 @@
 
 					let incomingData = JSON.parse(event.data);
 					this.incomingDatas.push(incomingData);
+
+					// Update de la scrollbar
+					const scrollableDiv = $(".live-table__table")[0];
+					scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
 				};
 
 				// lorsqu'une erreur survient
@@ -178,6 +182,7 @@
 			// permet de vider le tableau de données
 			clear() {
 				this.incomingDatas = []
+				$("#live-table tbody").empty();
 				this.showToast('info', 'Suppression du tableau réussie.')
 			},
 
