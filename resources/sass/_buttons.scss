@@ -34,6 +34,10 @@ button {
     &.btn--square {
         width: 40px;
     }
+
+    &.btn-danger {
+        background-color: #dc3545 !important;
+    }
     
     &.btn--simple {
         padding-inline: .75rem;
@@ -47,6 +51,7 @@ button {
 .dt-buttons {
     .btn {
         border: none !important;
+        background-color: $primary-color !important;
     }
     .app-btn {
         border-radius: 0;
