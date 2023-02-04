@@ -51,7 +51,7 @@
 											<td>@{{ data.id.toUpperCase() }}</td>
 											<td>@{{ data.trame.toUpperCase() }}</td>
 											<td>@{{ data.sizeTrame }}</td>
-											<td value="{{ now() }}">@{{ getDateNow() }} - @{{ getTimeNow() }}</td>
+											<td value="{{ data.date }}">@{{ getDate(data.date) }} - @{{ getTime(data.date) }}</td>
 										</tr>
 										<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
 									</tbody>
@@ -208,21 +208,20 @@
 			},
 
 			// retourne l'heure actuelle
-			getTimeNow(){
-				console.log(new Date())
-				Date.prototype.timeNow = function () {
+			getTime(currentDate){
+				Date.prototype.time = function () {
 					return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds()+":"+ this.getMilliseconds();
 				}
 
-				return new Date().timeNow();
+				return new Date(currentDate).time();
 			},
 
 			// retourne la date actuelle
-			getDateNow(){
-				Date.prototype.dateNow = function () {
+			getDate(currentDate){
+				Date.prototype.date = function () {
 					return String(this.getDate()).padStart(2, '0') + '/' + String(this.getMonth() + 1).padStart(2, '0') + '/' + this.getFullYear();
 				}
-				return new Date().dateNow();
+				return new Date(currentDate).date();
 			}
 		}
     });
