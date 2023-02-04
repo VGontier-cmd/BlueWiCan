@@ -138,7 +138,7 @@
 
 			// permet d'enregistrer les données live en base de données
 			save() {
-				if(this.incomingData && this.incomingDatas.length > 0) {
+				if( this.incomingDatas &&this.incomingDatas.length > 0) {
 					const rows = document.querySelectorAll('#live-table tbody tr')
 					dataArray = []
 
@@ -178,9 +178,8 @@
 
 			// permet de vider le tableau de données
 			clear() {
-				if(this.incomingData && this.incomingDatas.length > 0) {
+				if(this.incomingDatas && this.incomingDatas.length > 0) {
 					$("#live-table tbody").empty();
-					this.incomingDatas = []
 					this.showToast('info', 'Suppression du tableau réussie.')
 				} else {
 					this.showToast('info', 'Aucune donnée à supprimer.')
