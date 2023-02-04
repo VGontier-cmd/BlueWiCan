@@ -26,7 +26,7 @@
                                 <span>{{ $nb_trames_today }}</span>
                             </h1>
                             <h6 class="mb-0 font-weight-bolder">Trames enregistrées</h6>
-                            <p class="opacity-8 mb-0 text-sm">Ajourd'hui</p>
+                            <p class="opacity-8 mb-0 text-sm">Aujourd'hui</p>
                         </div>
                     </div>
                 </div>
