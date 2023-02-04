@@ -8,22 +8,23 @@
 */
 
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    background-color: #fff;
-    box-shadow: $large-shadow;
     width: 100%;
     transition: all .2s ease-in-out;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    backdrop-filter: blur(4px);
+    background-color: transparent;
 
     .header-wrapper {
+        position: relative;
         width: 100%;
         display: flex;
         align-items: center;
         height: $header-height-mobile;
         
         .header-title {
+            opacity: 0;
             padding-inline: .75rem;
         }
 
@@ -36,9 +37,12 @@
         }
     }
     
-    @media (min-width: $bp-laptop) {
-        width: calc(100vw - $sidenav-width) !important;
-        margin-left: $sidenav-width;
+    &.scrolled {
+        box-shadow: $large-shadow;
+
+        .header-title {
+            opacity: 1;
+        }
     }
 }
 
@@ -75,6 +79,12 @@
 
     @media (min-width: $bp-tablet) {
         width: $header-height;
+    }
+
+    &.scrolled {
+        .line {
+            background-color: $primary-color !important;
+        }
     }
 
     .header__sidenav-trigger-inner {

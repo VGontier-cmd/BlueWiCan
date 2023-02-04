@@ -14,17 +14,29 @@ class CoreController extends Controller
      * Permet d'afficher le dashboard
      */
     public function dashboard() {
-        $page_title = 'Dashboard';
-        $page_subtitle = 'Dashboard';
-        return view('core.dashboard', compact('page_title', 'page_subtitle'));
+        $startOfDay = Carbon::createFromTimestamp(strtotime('today'))->startOfDay();
+        $endOfDay = Carbon::createFromTimestamp(strtotime('tomorrow'))->startOfDay();
+        
+        $page_title = 'Bienvenue,';
+        $page_subtitle = 'Consultez les données envoyées directement depuis le BlueWiCan.';
+        
+        $nb_trames = CanData::all()->count();
+        $nb_trames_today = CanData::whereBetween('created_at', [$startOfDay, $endOfDay])->count();
+
+        return view('core.dashboard', compact(
+            'page_title', 
+            'page_subtitle', 
+            'nb_trames',
+            'nb_trames_today' 
+        ));
     }
 
     /**
      * Permet d'afficher la page d'accueil
      */
     public function saved(CanDatasDataTable $dataTable) {
-        $page_title = 'Toutes les données stockées';
-        $page_subtitle = 'Liste de toutes les trames stockées';
+        $page_title = 'Données stockées';
+        $page_subtitle = 'Données stockées';
         return $dataTable->render('core.saved', compact('page_title', 'page_subtitle'));
     }
 
@@ -32,8 +44,8 @@ class CoreController extends Controller
      * Permet d'afficher la page des données live
      */
     public function live() {
-        $page_title = 'Toutes les données live';
-        $page_subtitle = 'Liste de toutes les trames en live';
+        $page_title = 'Données live';
+        $page_subtitle = 'Données live';
 
         $ws_host = config('websockets.ws_host');
         $ws_port = config('websockets.ws_port');

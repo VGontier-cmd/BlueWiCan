@@ -2,7 +2,7 @@ import './bootstrap';
 import 'laravel-datatables-vite';
 
 toggleNav();
-togglePageFormat();
+//togglePageFormat();
 setActiveLinks();
 
 /**
@@ -69,4 +69,25 @@ function setActiveLinks() {
             $this.attr('data-active', true);
         }
     })
+}
+
+scroll()
+function scroll() {
+    const button = document.getElementById("header__sidenav-trigger");
+    const header = document.getElementById("header")
+    const hero_bg = document.getElementById("hero-bg");
+
+    window.onscroll = function() {
+        const scrollHeight = window.pageYOffset;
+        const threshold = $(hero_bg).innerHeight() - $(button).innerHeight();
+        console.log(threshold)
+
+        if (scrollHeight > threshold) {
+            $(button).addClass("scrolled");
+            $(header).addClass("scrolled");
+        } else {
+            $(button).removeClass("scrolled");
+            $(header).removeClass("scrolled");
+        }
+    };
 }

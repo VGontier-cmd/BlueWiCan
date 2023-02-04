@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card">
-        <div class="gradient-line"></div>
+    <div class="card card-table">
         <div class="dataTable-container">
             {{ $dataTable->table() }}
         </div>
@@ -10,5 +9,14 @@
 @endsection
 
 @push('scripts')
-    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+{{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+
+<script>	
+    new Vue({
+        el: "#app",
+        data: {},
+        mounted() {},
+        methods: {}
+    });
+</script>
 @endpush

@@ -17,8 +17,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font: inherit;
-    background-color: $secondary-color !important;
+    background-color: #fff !important;
 }
 
 *, *::after, *::before {
@@ -42,4 +41,9 @@ ul {
     list-style: none !important;
     padding: 0 !important;
     margin: 0 !important;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
 }
