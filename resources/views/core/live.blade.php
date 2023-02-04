@@ -51,7 +51,7 @@
 											<td>@{{ data.id.toUpperCase() }}</td>
 											<td>@{{ data.trame.toUpperCase() }}</td>
 											<td>@{{ data.sizeTrame }}</td>
-											<td value="{{ data.date }}">@{{ getDate(data.date) }} - @{{ getTime(data.date) }}</td>
+											<td value="@{{ data.date }}">@{{ getDate(data.date) }} - @{{ getTime(data.date) }}</td>
 										</tr>
 										<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
 									</tbody>
