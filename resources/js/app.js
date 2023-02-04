@@ -2,7 +2,7 @@ import './bootstrap';
 import 'laravel-datatables-vite';
 
 toggleNav();
-//togglePageFormat();
+scroll()
 setActiveLinks();
 
 /**
@@ -71,7 +71,9 @@ function setActiveLinks() {
     })
 }
 
-scroll()
+/**
+ * Permet de modifier le style de du header lorsque le scroll dépasse le hero-bg (fond bleu)
+ */
 function scroll() {
     const button = document.getElementById("header__sidenav-trigger");
     const header = document.getElementById("header")
