@@ -66,7 +66,7 @@
 @endsection
 
 @push('scripts')
-<script>	
+<script>
     new Vue({
 		el: "#app",
 		data: {
@@ -79,9 +79,7 @@
 			flashMessage: null,
 			incomingDatas: []
 		},
-		mounted() {
-
-		},
+		mounted() {},
 		methods: {
 			// permet de se connecter au serveur websockets
 			connect() {
@@ -179,7 +177,6 @@
 			// permet de vider le tableau de données
 			clear() {
 				if(this.incomingDatas && this.incomingDatas.length > 0) {
-					$("#live-table tbody").empty();
 					this.incomingDatas = []
 					this.showToast('info', 'Suppression du tableau réussie.')
 				} else {
