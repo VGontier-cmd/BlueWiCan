@@ -44,7 +44,7 @@
 											<th tabindex="0" rowspan="1" colspan="1">ID</th>
 											<th tabindex="0" rowspan="1" colspan="1">DATA</th>
 											<th tabindex="0" rowspan="1" colspan="1">LENGTH</th>
-											<th tabindex="0" rowspan="1" colspan="1">NUMBER</th>
+											<th tabindex="0" rowspan="1" colspan="1">COUNT</th>
 											<th tabindex="0" rowspan="1" colspan="1">RECEIVED_AT</th>
 										</tr>
 									</thead>
