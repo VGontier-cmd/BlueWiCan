@@ -9,8 +9,8 @@
         <div class="col-xl-7">
             <div class="card card-graph" :class="{ 'show': currentGraph == 'day' }">
                 <div class="card-header bg-white">
-                    <h5 class="card-title">Data(s) saved today</h5>
-                    <h6 class="card-subtitle text-muted">Number of frames saved today : {{ $today }}</h6>
+                    <h5 class="card-title">Data(s) stored today</h5>
+                    <h6 class="card-subtitle text-muted">Number of frames stored today : {{ $today }}</h6>
                 </div>
                 <div class="card-body">
                     <canvas id="today-chart"></canvas>
@@ -19,8 +19,8 @@
 
             <div class="card card-graph" :class="{ 'show': currentGraph == 'month' }">
                 <div class="card-header bg-white">
-                    <h5 class="card-title">Data(s) saved this month</h5>
-                    <h6 class="card-subtitle text-muted">Number of frames saved by days for {{ $month }}</h6>
+                    <h5 class="card-title">Data(s) stored this month</h5>
+                    <h6 class="card-subtitle text-muted">Number of frames stored by days for {{ $month }}</h6>
                 </div>
                 <div class="card-body">
                     <canvas id="month-chart"></canvas>
@@ -35,7 +35,7 @@
                             <h1 class="card-count"> 
                                 <span>{{ $nb_trames_total }}</span>
                             </h1>
-                            <h6 class="mb-0 font-weight-bolder">Frames saved</h6>
+                            <h6 class="mb-0 font-weight-bolder">Frames stored</h6>
                             <p class="opacity-8 mb-0 text-sm">Total</p>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                             <h1 class="card-count"> 
                                 <span>{{ $nb_trames_current_day }}</span>
                             </h1>
-                            <h6 class="mb-0 font-weight-bolder">Frames saved</h6>
+                            <h6 class="mb-0 font-weight-bolder">Frames stored</h6>
                             <p class="opacity-8 mb-0 text-sm">Today</p>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             <h1 class="card-count"> 
                                 <span>{{ $nb_trames_current_month }}</span>
                             </h1>
-                            <h6 class="mb-0 font-weight-bolder">Frames saved</h6>
+                            <h6 class="mb-0 font-weight-bolder">Frames stored</h6>
                             <p class="opacity-8 mb-0 text-sm">This month</p>
                         </div>
                     </div>

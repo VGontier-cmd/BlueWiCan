@@ -20,9 +20,9 @@ class CoreController extends Controller
     private $endOfMonth;
 
     public function __construct() {
-        setlocale(LC_TIME, 'fr_FR.utf8');
-        $this->today = Carbon::parse(Carbon::today())->locale('fr_FR')->isoFormat('dddd Do MMMM');
-        $this->month = Carbon::parse(Carbon::today())->locale('fr_FR')->isoFormat('MMMM');
+        setlocale(LC_TIME, 'en_US.utf8');
+        $this->today = Carbon::parse(Carbon::today())->locale('en_US')->isoFormat('dddd Do MMMM');
+        $this->month = Carbon::parse(Carbon::today())->locale('en_US')->isoFormat('MMMM');
 
         $this->startOfDay = Carbon::createFromTimestamp(strtotime('today'))->startOfDay();
         $this->endOfDay = Carbon::createFromTimestamp(strtotime('tomorrow'))->startOfDay();
@@ -34,8 +34,8 @@ class CoreController extends Controller
      * Permet d'afficher le dashboard
      */
     public function dashboard() { 
-        $page_title = 'Bienvenue,';
-        $page_subtitle = 'Consultez les données envoyées directement depuis le BlueWiCan.';
+        $page_title = 'Welcome,';
+        $page_subtitle = 'Consult the data sent directly from the BlueWiCan.';
         
         $nb_trames_total = CanData::all()->count();
         $nb_trames_current_day = CanData::whereBetween('created_at', [$this->startOfDay, $this->endOfDay])->count();
@@ -50,7 +50,7 @@ class CoreController extends Controller
         $labels_graph_month = [];
         foreach ($data_graph_month as $data) {
             $date = Carbon::createFromTimestamp(strtotime("today"))->startOfMonth()->addDay($data->day - 1);
-            $labels_graph_month[] = $date->locale('fr_FR')->isoFormat('dddd Do');
+            $labels_graph_month[] = $date->locale('en_US')->isoFormat('dddd Do');
         }
 
         return view('core.dashboard', compact(
@@ -95,8 +95,8 @@ class CoreController extends Controller
      * Permet d'afficher la page d'accueil
      */
     public function saved(CanDatasDataTable $dataTable) {
-        $page_title = 'Données stockées';
-        $page_subtitle = 'Données stockées';
+        $page_title = 'Datas stored';
+        $page_subtitle = 'Datas stored';
         return $dataTable->render('core.saved', compact('page_title', 'page_subtitle'));
     }
 
@@ -104,8 +104,8 @@ class CoreController extends Controller
      * Permet d'afficher la page des données live
      */
     public function live() {
-        $page_title = 'Données live';
-        $page_subtitle = 'Données live';
+        $page_title = 'Live Datas';
+        $page_subtitle = 'Live Datas';
 
         $ws_host = config('websockets.ws_host');
         $ws_port = config('websockets.ws_port');

@@ -29,7 +29,7 @@
                         <i class="bi bi-server"></i>
                     </div>
                     <span class="nav-item__text">
-                        Datas Saved
+                        Datas Stored
                     </span>
                 </a>
             </li>
