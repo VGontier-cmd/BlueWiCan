@@ -277,6 +277,12 @@
                         }
                     }
                 }
+                
+                .data-count {
+                    border-left: 1px solid $border-color-light;
+                    text-align: center;
+                    width: 5rem;
+                }
             }
         }
     }

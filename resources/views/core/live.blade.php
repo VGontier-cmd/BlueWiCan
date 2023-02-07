@@ -44,8 +44,8 @@
 											<th tabindex="0" rowspan="1" colspan="1">ID</th>
 											<th tabindex="0" rowspan="1" colspan="1">DATA</th>
 											<th tabindex="0" rowspan="1" colspan="1">LENGTH</th>
-											<th tabindex="0" rowspan="1" colspan="1">NUMBER</th>
-											<th tabindex="0" rowspan="1" colspan="1">RECEIVED_AT</th>
+											<th tabindex="0" rowspan="1" colspan="1">RECEIVED AT</th>
+											<th tabindex="0" rowspan="1" colspan="1" class="data-count">COUNT</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -53,8 +53,8 @@
 											<td>@{{ data.id.toUpperCase() }}</td>
 											<td>@{{ data.trame.toUpperCase() }}</td>
 											<td>@{{ data.sizeTrame }}</td>
-											<td>@{{ data.number }}</td>
 											<td v-bind:value="data.date">@{{ getDate(data.date) }} - @{{ getTime(data.date) }}</td>
+											<td class="data-count">@{{ data.count }}</td>
 										</tr>
 										<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="5">No data received...</td></tr>
 									</tbody>
@@ -105,7 +105,7 @@
 					console.log(`[message] Data received from server: ${event.data}`);
 
 					let incomingData = JSON.parse(event.data);
-					incomingData.number = 1
+					incomingData.count = 1
 					let dataExists = this.incomingDatas.find(data => data.id === incomingData.id);
 
 					// si la data existe déjà on remplace ses données
@@ -113,7 +113,7 @@
 						dataExists.trame = incomingData.trame
 						dataExists.sizeTrame = incomingData.sizeTrame
 						dataExists.date = incomingData.date
-						dataExists.number++
+						dataExists.count++
 					// sinon on l'ajoute
 					} else {
 						this.incomingDatas.push(incomingData);
