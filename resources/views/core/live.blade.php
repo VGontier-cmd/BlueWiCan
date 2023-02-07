@@ -41,10 +41,11 @@
 								<table id="live-table" class="table dataTable table-striped table-bordered table-hover no-footer" style="margin: 0 !important">
 									<thead>
 										<tr>
-											<th title="CAN-ID" tabindex="0" rowspan="1" colspan="1">ID</th>
-											<th title="Data" tabindex="0" rowspan="1" colspan="1">DATA</th>
-											<th title="Length" tabindex="0" rowspan="1" colspan="1">LENGTH</th>
-											<th title="Data" tabindex="0" rowspan="1" colspan="1">RECEIVED_AT</th>
+											<th tabindex="0" rowspan="1" colspan="1">ID</th>
+											<th tabindex="0" rowspan="1" colspan="1">DATA</th>
+											<th tabindex="0" rowspan="1" colspan="1">LENGTH</th>
+											<th tabindex="0" rowspan="1" colspan="1">NUMBER</th>
+											<th tabindex="0" rowspan="1" colspan="1">RECEIVED_AT</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -52,9 +53,10 @@
 											<td>@{{ data.id.toUpperCase() }}</td>
 											<td>@{{ data.trame.toUpperCase() }}</td>
 											<td>@{{ data.sizeTrame }}</td>
+											<td>@{{ data.number }}</td>
 											<td v-bind:value="data.date">@{{ getDate(data.date) }} - @{{ getTime(data.date) }}</td>
 										</tr>
-										<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="4">No data receive...</td></tr>
+										<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="5">No data received...</td></tr>
 									</tbody>
 								</table>
 							</div>
@@ -80,7 +82,9 @@
 			flashMessage: null,
 			incomingDatas: []
 		},
-		mounted() {},
+		mounted() {
+			this.connect()
+		},
 		methods: {
 			// permet de se connecter au serveur websockets
 			connect() {
@@ -101,12 +105,15 @@
 					console.log(`[message] Data received from server: ${event.data}`);
 
 					let incomingData = JSON.parse(event.data);
+					incomingData.number = 1
 					let dataExists = this.incomingDatas.find(data => data.id === incomingData.id);
+
 					// si la data existe déjà on remplace ses données
 					if(dataExists) {
 						dataExists.trame = incomingData.trame
 						dataExists.sizeTrame = incomingData.sizeTrame
 						dataExists.date = incomingData.date
+						dataExists.number++
 					// sinon on l'ajoute
 					} else {
 						this.incomingDatas.push(incomingData);
