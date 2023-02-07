@@ -8,14 +8,14 @@
                 <a href="{{ route('dashboard') }}" class="footer__link">Dashboard</a>
             </li>
             <li class="footer__link-item">
-                <a href="{{ route('saved') }}" class="footer__link">Données stockées</a>
+                <a href="{{ route('saved') }}" class="footer__link">Datas Stored</a>
             </li>
             <li class="footer__link-item">
-                <a href="{{ route('live') }}" class="footer__link">Données live</a>
+                <a href="{{ route('live') }}" class="footer__link">Live Datas</a>
             </li>
         </ul>
         <div class="footer__copyright">
-            <h3>Projet Ingénieur ESIGELEC</h3>
+            <h3>Engineer Project ESIGELEC</h3>
             <p>2022/2023</p>
         </div>
     </div>

@@ -19,10 +19,10 @@
 								</div>
 							</button>
 							<button v-if="connected" v-on:click="disconnect()" class="app-btn btn--square btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
-							<button v-on:click="save()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Enregistrer">
+							<button v-on:click="save()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Save Datas">
 								<i class="bi bi-database-add"></i> 
 							</button>
-							<button v-on:click="clear()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Supprimer">
+							<button v-on:click="clear()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Delete">
 								<i class="bi bi-eraser"></i>
 							</button>
 						</div>
@@ -52,9 +52,9 @@
 											<td>@{{ data.id.toUpperCase() }}</td>
 											<td>@{{ data.trame.toUpperCase() }}</td>
 											<td>@{{ data.sizeTrame }}</td>
-											<td value="@{{ data.date }}">@{{ getDate(data.date) }} - @{{ getTime(data.date) }}</td>
+											<td v-bind:value="data.date">@{{ getDate(data.date) }} - @{{ getTime(data.date) }}</td>
 										</tr>
-										<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
+										<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="4">No data receive...</td></tr>
 									</tbody>
 								</table>
 							</div>
