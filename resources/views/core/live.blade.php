@@ -184,6 +184,7 @@
 					})
 					.catch(error => {
 						this.showToast('error', `Echec de l'enregistrement.`)
+						console.log(error);
 						console.error('Error saving data: ', error);
 					});
 				} else {
