@@ -154,7 +154,7 @@
 						var id = cells[0].innerHTML;
 						var trame = cells[1].innerHTML;
 						var sizeTrame = cells[2].innerHTML;
-						var created_at = cells[3].getAttribute('value');
+						var created_at = cells[4].getAttribute('value');
 						dataArray.push({given_id: id, length: sizeTrame, data: trame, created_at: created_at});
 					}
 
