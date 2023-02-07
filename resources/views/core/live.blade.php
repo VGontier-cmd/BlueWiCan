@@ -19,10 +19,10 @@
 								</div>
 							</button>
 							<button v-if="connected" v-on:click="disconnect()" class="app-btn btn--square btn-danger" tabindex="0" type="button" title="Arrêter"><i class="bi bi-power"></i></button>
-							<button v-on:click="save()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Enregistrer">
+							<button v-on:click="save()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Save Datas">
 								<i class="bi bi-database-add"></i> 
 							</button>
-							<button v-on:click="clear()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Supprimer">
+							<button v-on:click="clear()" class="app-btn btn--square btn--primary" tabindex="0" type="button" title="Delete">
 								<i class="bi bi-eraser"></i>
 							</button>
 						</div>
@@ -40,10 +40,10 @@
 								<table id="live-table" class="table dataTable table-striped table-bordered table-hover no-footer" style="margin: 0 !important">
 									<thead>
 										<tr>
-											<th title="CAN-ID" tabindex="0" rowspan="1" colspan="1">CAN-ID</th>
+											<th title="CAN-ID" tabindex="0" rowspan="1" colspan="1">ID</th>
 											<th title="Data" tabindex="0" rowspan="1" colspan="1">Data</th>
 											<th title="Length" tabindex="0" rowspan="1" colspan="1">Length</th>
-											<th title="Data" tabindex="0" rowspan="1" colspan="1">Date de réception</th>
+											<th title="Data" tabindex="0" rowspan="1" colspan="1">Reception Date</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -53,7 +53,7 @@
 											<td>@{{ data.sizeTrame }}</td>
 											<td value="@{{ data.date }}">@{{ getDate(data.date) }} - @{{ getTime(data.date) }}</td>
 										</tr>
-										<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="4">Aucune donnée reçue...</td></tr>
+										<tr v-if="incomingDatas.length == 0" class="live-table__empty"><td colspan="4">No data receive...</td></tr>
 									</tbody>
 								</table>
 							</div>

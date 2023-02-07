@@ -29,7 +29,7 @@
                         <i class="bi bi-server"></i>
                     </div>
                     <span class="nav-item__text">
-                        Données stockées
+                        Datas Saved
                     </span>
                 </a>
             </li>
@@ -39,7 +39,7 @@
                         <i class="bi bi-camera-video-fill"></i>
                     </div>
                     <span class="nav-item__text">
-                        Données live
+                        Live Datas
                     </span>
                 </a>
             </li>
