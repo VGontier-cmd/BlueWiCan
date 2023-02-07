@@ -100,7 +100,15 @@
 					console.log(`[message] Data received from server: ${event.data}`);
 
 					let incomingData = JSON.parse(event.data);
-					this.incomingDatas.push(incomingData);
+					let dataExists = this.incomingDatas.find(data => data.id === incomingData.id);
+					// si la data existe déjà on remplace ses données
+					if(dataExists)
+						dataExists.trame = incomingData.trame
+						dataExists.sizeTrame = incomingData.sizeTrame
+						dataExists.date = incomingData.date
+					// sinon on l'ajoute
+					else
+						this.incomingDatas.push(incomingData);
 
 					// Update de la scrollbar
 					const scrollableDiv = $(".live-table__table")[0];
