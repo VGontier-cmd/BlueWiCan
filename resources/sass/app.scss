@@ -187,7 +187,7 @@ canvas {
         position: relative;
         display: flex;
         flex-direction: column;
-        min-height: calc(100vh - $header-height-mobile);
+        min-height: 100vh;
 
         .hero-bg {
             position: absolute;
@@ -200,7 +200,7 @@ canvas {
         }
 
         @media (min-width: $bp-tablet) {
-            min-height: calc(100vh - $header-height);
+            min-height: 100vh;
         }
 
         .main-inner {

@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('can_datas', function (Blueprint $table) {
-            $table->id();
-            $table->string('given_id');
+            $table->increments('data_id');
+            $table->string('id');
             $table->string('data');
             $table->integer('length');
             $table->timestamps();

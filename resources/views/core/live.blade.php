@@ -33,6 +33,7 @@
 						<div class="live-table__wrapper">
 							<!-- table section -->
 							<div class="dataTable-live__header">
+								<div title="Datas received" class="count-datas">@{{ incomingDatas.length }}</div>
 								<h3 class="dataTable-live__section">Receive</h3>
 							</div>
 							<!-- table -->
@@ -40,10 +41,10 @@
 								<table id="live-table" class="table dataTable table-striped table-bordered table-hover no-footer" style="margin: 0 !important">
 									<thead>
 										<tr>
-											<th title="CAN-ID" tabindex="0" rowspan="1" colspan="1">CAN-ID</th>
-											<th title="Data" tabindex="0" rowspan="1" colspan="1">Data</th>
-											<th title="Length" tabindex="0" rowspan="1" colspan="1">Length</th>
-											<th title="Data" tabindex="0" rowspan="1" colspan="1">Date de réception</th>
+											<th title="CAN-ID" tabindex="0" rowspan="1" colspan="1">ID</th>
+											<th title="Data" tabindex="0" rowspan="1" colspan="1">DATA</th>
+											<th title="Length" tabindex="0" rowspan="1" colspan="1">LENGTH</th>
+											<th title="Data" tabindex="0" rowspan="1" colspan="1">RECEIVED_AT</th>
 										</tr>
 									</thead>
 									<tbody>

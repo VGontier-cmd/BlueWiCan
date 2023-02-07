@@ -117,19 +117,19 @@ class CoreController extends Controller
         $data = $request->input('datas');
 
         foreach ($data as $item) {
-            $recordExists = DB::table('can_datas')->where('given_id', $item['given_id'])->exists();
+            $recordExists = DB::table('can_datas')->where('id', $item['id'])->exists();
             if(!$recordExists) {
                 CanData::create([
-                    'given_id' => $item['given_id'],
+                    'id' => $item['id'],
                     'data' => $item['data'],
                     'length' => $item['length'],
                     'created_at' => Carbon::parse($item['created_at'])->format('Y-m-d H:i:s')
                 ]);
             } else {
                 DB::table('can_datas')
-                ->where('given_id', $item['given_id'])
+                ->where('id', $item['id'])
                 ->update([
-                    'given_id' => $item['given_id'],
+                    'id' => $item['id'],
                     'data' => $item['data'],
                     'length' => $item['length'],
                     'updated_at' => Carbon::parse($item['created_at'])->format('Y-m-d H:i:s')
