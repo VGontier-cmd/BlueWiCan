@@ -127,9 +127,9 @@ class CoreController extends Controller
                 ]);
             } else {
                 DB::table('can_datas')
-                ->where('id', $item['given_id'])
+                ->where('id', $item['id'])
                 ->update([
-                    'id' => $item['given_id'],
+                    'id' => $item['id'],
                     'data' => $item['data'],
                     'length' => $item['length'],
                     'updated_at' => Carbon::parse($item['created_at'])->format('Y-m-d H:i:s')
