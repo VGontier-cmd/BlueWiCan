@@ -19,20 +19,29 @@ button {
     align-items: center;
     justify-content: center;
     gap: .5rem;
-    padding: 0;
     overflow: hidden;
     border-radius: .375rem;
-    height: 36px;
     box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
     border: none;
-    color: #fff;
+    
+    &.btn--form {
+        padding: .75rem 1rem;
+        font-size: 1rem;
+    }
     
     &.btn--primary {
+        color: #fff;
         background-color: $primary-color !important;
+    }
+
+    &.btn--secondary {
+        background-color: transparent !important;
     }
 
     &.btn--square {
         width: 40px;
+        height: 36px;
+        padding: 0;
     }
 
     &.btn-danger {
@@ -47,6 +56,7 @@ button {
         font-size: .8rem !important;
     }
 }
+
 
 .dt-buttons {
     .btn {

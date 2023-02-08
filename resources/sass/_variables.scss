@@ -16,7 +16,7 @@
 $primary-color: #243783;
 $secondary-color: #cbcfdd;
 $font-color: #344767;
-$large-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+$shadow-lg: 0 20px 27px 0 rgb(0 0 0 / 5%);
 $border-color-light: #dbdbdb;
 $page-space-x: 1.5rem;
 $hero-height: 264px;
@@ -55,6 +55,16 @@ $table-font-color: #67748e;
 $table-odd-line-bg: #f2f2f2;
 $table-even-line-bg: #fff;
 $table-section-header-width: 2.5rem;
+
+/*
+|--------------------------------------------------------------------------
+| Form variables
+|--------------------------------------------------------------------------
+*/
+
+$input-border-color: #e7eaf0;
+$input-font-color: #495057;
+$input-font-size: 1rem;
 
 /*
 |--------------------------------------------------------------------------
