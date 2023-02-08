@@ -23,8 +23,8 @@
                     <i class="bi bi-box-arrow-right"></i>
                 </a>
             @else
-                <a href="{{ route('login') }}">Sign in</a>
-                <a href="{{ route('register') }}">Sign up</a>
+                <a href="{{ route('login') }}" class="auth-btn auth-btn__signin">Sign in</a>
+                <a href="{{ route('register') }}" class="auth-btn auth-btn__signup">Sign up</a>
             @endif
         </div>
     </div>

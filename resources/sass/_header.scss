@@ -93,10 +93,41 @@
                 color: $primary-color;
                 border-color: $primary-color;
             }
+
+            .auth-btn {    
+                &.auth-btn__signin {
+                    background-color: transparent;
+                    color: $primary-color;
+                }
+            
+                &.auth-btn__signup {
+                    background-color: $primary-color;
+                    color: #fff;
+                }
+            }
         }
     }
 }
 
+.auth-btn {
+    padding: .375rem .5rem;
+    border-radius: .375rem;
+    //border: 2px solid #fff;
+    font-size: .85rem;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1;
+
+    &.auth-btn__signin {
+        background-color: transparent;
+        color: #fff;
+    }
+
+    &.auth-btn__signup {
+        background-color: #fff;
+        color: $primary-color;
+    }
+}
 
 #sidenav__minimalized-trigger {
     display: none;
