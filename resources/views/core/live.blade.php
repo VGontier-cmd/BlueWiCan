@@ -95,7 +95,7 @@
 				this.socket.onopen = (event) => {
 					this.connected = true;
 					this.loading = false;
-					this.showToast('success', 'Connexion réussie.')
+					this.showToast('success', 'Successful connection.')
 					console.log("[open] Connection established");
 				};
 
@@ -128,7 +128,7 @@
 				this.socket.onerror = (error) => {
 					console.log(error)
 					this.loading = false;
-					this.showToast('warn', `Erreur de connexion.`)
+					this.showToast('warn', `Connection error.`)
 					console.log(`[error]`);
 				};     
 			},
@@ -141,7 +141,7 @@
 					this.loading = false;
 					if (event.wasClean) {
 						this.connected = false;
-						this.showToast('info', 'Déconnexion réussie.')
+						this.showToast('info', 'Logout successful.')
 						console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
 					} else {
 						// e.g. server process killed or network down
@@ -179,17 +179,17 @@
 					})
 					.then(response => response.json())
 					.then(data => {
-						this.showToast('success', `Les données ont été enregistrées avec succés`)
+						this.showToast('success', `Data saved successfully`)
 						console.log(data);
 						console.log('Data saved successfully');
 					})
 					.catch(error => {
-						this.showToast('error', `Echec de l'enregistrement.`)
+						this.showToast('error', `Saved failed.`)
 						console.log(error);
 						console.error('Error saving data: ', error);
 					});
 				} else {
-					this.showToast('info', `Aucune donnée à enregistrer.`)
+					this.showToast('info', `No data to save.`)
 				}
 			},
 
@@ -197,9 +197,9 @@
 			clear() {
 				if(this.incomingDatas && this.incomingDatas.length > 0) {
 					this.incomingDatas = []
-					this.showToast('info', 'Suppression du tableau réussie.')
+					this.showToast('info', 'Array deleted successfully.')
 				} else {
-					this.showToast('info', 'Aucune donnée à supprimer.')
+					this.showToast('info', 'No data to delete.')
 				}
 			},
 
