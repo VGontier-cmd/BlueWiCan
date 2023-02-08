@@ -18,7 +18,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required',
+            'email' => 'required|email_regex',
             'password' => 'required',
         ]);
 
@@ -45,7 +45,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|unique:users,email',
+            'email' => 'required|email_regex|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
@@ -61,7 +61,10 @@ class AuthController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
-        Auth::login($user);
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->has('remember'))) {
+            return redirect()->intended('/');
+        }
+        //Auth::login($user);
 
         return redirect('/');
     }

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -25,6 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Email validation
+        Validator::extend('email_regex', function ($attribute, $value, $parameters, $validator) {
+            return preg_match('/^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/', $value);
+        });
     }
 }

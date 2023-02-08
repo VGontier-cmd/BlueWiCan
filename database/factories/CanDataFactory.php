@@ -24,9 +24,10 @@ class CanDataFactory extends Factory
      */
     public function definition()
     {
+        $hex = strtoupper(bin2hex(Str::random(10)));
         return [
-            'given_id' => Str::random(10),
-            'data' => Str::random(20),
+            'id' => Str::random(10),
+            'data' => implode(' ', str_split($hex, 2)),
             'length' => 10,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

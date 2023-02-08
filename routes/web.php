@@ -6,43 +6,40 @@ use App\Http\Controllers\CoreController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Auth Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Here is where you can register web routes available to an authenticated
+| user
 |
 */
-
-// dasgboard page
-Route::get('/', [CoreController::class, 'dashboard'])->name('dashboard');
-
-// homepage path
-Route::get('/saved', [CoreController::class, 'saved'])->name('saved');
-
-// live page
-Route::get('/live', [CoreController::class, 'live'])->name('live');
-
-// save data
-Route::post('/save-data', [CoreController::class, 'store']);
+Route::middleware(['auth'])->group(function () {
+    // dashboard page
+    Route::get('/', [CoreController::class, 'dashboard'])->name('dashboard');
+    // saved page
+    Route::get('/saved', [CoreController::class, 'saved'])->name('saved');
+    // live page
+    Route::get('/live', [CoreController::class, 'live'])->name('live');
+    // insert data
+    Route::post('/save-data', [CoreController::class, 'store']);
+    // logout
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 
 /*
 |--------------------------------------------------------------------------
-| Auth Routes
+| Guest Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for authentication and user's
-| account
+| Here is where you can register web routes available to an guest user
 |
 */
-
-Route::get('/login', [AuthController::class, 'signin'])->name('signin');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-
-Route::get('/register', [AuthController::class, 'signup'])->name('signup');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
-
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [AuthController::class, 'signin'])->name('signin');
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    
+    Route::get('/register', [AuthController::class, 'signup'])->name('signup');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
+});
 
