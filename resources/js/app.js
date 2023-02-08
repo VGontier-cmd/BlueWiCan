@@ -3,7 +3,6 @@ import 'laravel-datatables-vite';
 
 toggleNav();
 scroll()
-setActiveLinks();
 
 /**
  * Permet d'afficher/fermer la navigation format mobile 
@@ -47,28 +46,6 @@ function togglePageFormat() {
             return attr == 'minimalized' ? 'default' : 'minimalized';
         });
     });
-}
-
-
-/**
- * Permet d'activer les liens de la navigation vertical en fonction des routes
- */
-function setActiveLinks() {
-    var sidenav_links = document.querySelectorAll('.sidenav__navbar .nav-link')
-
-    const path = location.pathname;
-    const path_tab = path.split('/')[1];
-
-    $(sidenav_links).each(function() {
-        var $this = $(this);
-		var href = $this.attr('href');
-		var page = $this.attr('target-page');
-		var closeMatch = ((href.includes(path_tab) && path !== '/') || (page == 'dashboard' && path == '/'));
-	
-        if(closeMatch) {
-            $this.attr('data-active', true);
-        }
-    })
 }
 
 /**

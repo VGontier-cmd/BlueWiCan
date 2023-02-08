@@ -14,7 +14,7 @@
                 <h6 class="nav-subtitle">Menu</h6>
             </li>
             <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link" data-active="false" target-page="dashboard">
+                <a href="{{ route('dashboard') }}" class="nav-link" data-active="{{ (Route::currentRouteName() == 'dashboard') ? 'true' : 'false'}}">
                     <div class="nav-item__icon">
                         <i class="bi bi-grid-1x2-fill"></i>
                     </div>
@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('saved') }}" class="nav-link" data-active="false" target-page="saved">
+                <a href="{{ route('saved') }}" class="nav-link" data-active="{{ (Route::currentRouteName() == 'saved') ? 'true' : 'false'}}">
                     <div class="nav-item__icon">
                         <i class="bi bi-server"></i>
                     </div>
@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('live') }}" class="nav-link" data-active="false" target-page="live">
+                <a href="{{ route('live') }}" class="nav-link" data-active="{{ (Route::currentRouteName() == 'live') ? 'true' : 'false'}}">
                     <div class="nav-item__icon">
                         <i class="bi bi-camera-video-fill"></i>
                     </div>
