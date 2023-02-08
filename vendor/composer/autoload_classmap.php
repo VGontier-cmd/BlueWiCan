@@ -9,6 +9,7 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\DataTables\\CanDatasDataTable' => $baseDir . '/app/DataTables/CanDatasDataTable.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CoreController' => $baseDir . '/app/Http/Controllers/CoreController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
