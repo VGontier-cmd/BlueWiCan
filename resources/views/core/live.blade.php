@@ -160,11 +160,11 @@
 					for (let i = 0; i < rows.length; i++) {
 						var cells = rows[i].getElementsByTagName('td');
 						var id = cells[0].innerHTML;
-						var trame = cells[1].innerHTML;
-						var sizeTrame = cells[2].innerHTML;
+						var data = cells[1].innerHTML;
+						var length = cells[2].innerHTML;
 						var created_at = cells[3].getAttribute('value');
-						console.log(id,trame,sizeTrame,created_at)
-						dataArray.push({given_id: id, length: sizeTrame, data: trame, created_at: created_at});
+
+						dataArray.push({id: id, data: data, length: length, created_at: created_at});
 					}
 
 					fetch('/save-data', {
