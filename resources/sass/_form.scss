@@ -1,0 +1,84 @@
+/*
+|--------------------------------------------------------------------------
+| SASS Form
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize the form components of the application.
+| 
+*/
+
+input,
+textarea,
+select {
+    font: inherit;
+    outline: none !important;
+    box-shadow: none !important;
+    color: $input-font-color !important;
+
+    &::placeholder {
+        font-weight: normal !important;
+        font-size: $input-font-size !important;
+    }
+}
+
+input,
+textarea,
+select {
+    border: 1px solid $input-border-color !important;
+}
+
+
+.form-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #344767;
+    margin-left: 0.25rem;
+
+    &.label-required:after {
+        content: "*";
+        margin-left: .2rem;
+    }
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    line-height: 1.1;
+    background-color: #fff;
+    background-clip: padding-box;
+    appearance: none;
+    transition: box-shadow 0.15s ease, $input-border-color 0.15s ease;
+    font-size: $input-font-size !important;
+    padding: 1rem !important;
+    border-radius: 0.3rem !important;
+
+    outline: none !important;
+
+    &-color {
+        width: 3rem !important;
+        padding: 0.375rem !important;
+
+        &:disabled {
+            background: #fff !important;
+        }
+    }
+}
+
+label {
+    display: block;
+}
+.form-switch {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+input {
+    &::placeholder {
+        font-size: 14px;
+        opacity: 0.5;
+    }
+    &:focus-visible {
+        border-color: $primary-color !important;
+    }
+}

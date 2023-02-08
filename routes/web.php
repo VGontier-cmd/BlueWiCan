@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CoreController;
 
 /*
@@ -25,3 +26,23 @@ Route::get('/live', [CoreController::class, 'live'])->name('live');
 
 // save data
 Route::post('/save-data', [CoreController::class, 'store']);
+
+
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for authentication and user's
+| account
+|
+*/
+
+Route::get('/login', [AuthController::class, 'signin'])->name('signin');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('/register', [AuthController::class, 'signup'])->name('signup');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+

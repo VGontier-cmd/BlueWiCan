@@ -22,6 +22,7 @@
         display: flex;
         align-items: center;
         height: $header-height-mobile;
+        padding-right: $page-space-x;
         
         .header-title {
             opacity: 0;
@@ -35,6 +36,40 @@
                 padding-inline: 1.5rem;
             }
         }
+
+        .header__auth {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: .75rem;
+            
+            .auth-user {
+                display: flex;
+                align-items: center;
+                gap: .75rem;
+                color: #fff;
+                font-weight: bold;
+                font-size: .9rem;
+                
+                .auth-user__profile {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+                    border: 2px solid #fff;
+                }
+            }
+
+            .logout-btn {
+                color: #fff;
+                text-decoration: none;
+                font-size: 1.2rem;
+                border-left: 1px solid #fff;
+                padding-left: .75rem;
+            }
+        }
     }
     
     &.scrolled {
@@ -43,9 +78,56 @@
         .header-title {
             opacity: 1;
         }
+
+        .header__auth {
+            .auth-user {
+                color: $primary-color;
+
+                .auth-user__profile {
+                    background-color: $primary-color;
+                    border-color: $primary-color;
+                    color: #fff;
+                }
+            }
+            .logout-btn {
+                color: $primary-color;
+                border-color: $primary-color;
+            }
+
+            .auth-btn {    
+                &.auth-btn__signin {
+                    background-color: transparent;
+                    color: $primary-color;
+                }
+            
+                &.auth-btn__signup {
+                    background-color: $primary-color;
+                    color: #fff;
+                }
+            }
+        }
     }
 }
 
+.auth-btn {
+    padding: .375rem .5rem;
+    border-radius: .375rem;
+    //border: 2px solid #fff;
+    font-size: .85rem;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1;
+
+    &.auth-btn__signin {
+        background-color: transparent;
+        color: #fff;
+    }
+
+    &.auth-btn__signup {
+        background-color: #fff;
+        color: $primary-color;
+    }
+}
 
 #sidenav__minimalized-trigger {
     display: none;
