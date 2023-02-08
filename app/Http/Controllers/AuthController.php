@@ -18,7 +18,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
@@ -30,7 +30,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials, $request->filled('remember'))) {
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/');
         }
 
         return redirect()->back()->withInput($request->only('email', 'remember'));
@@ -45,7 +45,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
@@ -63,13 +63,12 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/dashboard');
+        return redirect('/');
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        $request->user()->token()->revoke();
-        $request->user()->token()->delete();
-        return response()->json(['message' => 'Successfully logged out']);
+        auth()->logout();
+        return redirect('/');
     }
 }
