@@ -26,7 +26,7 @@
                 </span>
             @enderror
         </div>
-        <div class="pass-section d-flex mb-3">
+        <div class="d-flex justify-content-between mb-4">
             <div class="input-item form-switch">
                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label for="remember">Remember me</label>

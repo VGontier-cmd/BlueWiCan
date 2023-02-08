@@ -65,6 +65,14 @@ select {
     }
 }
 
+label {
+    display: block;
+}
+.form-switch {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
 input {
     &::placeholder {
         font-size: 14px;
