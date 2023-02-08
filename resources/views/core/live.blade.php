@@ -163,6 +163,7 @@
 						var trame = cells[1].innerHTML;
 						var sizeTrame = cells[2].innerHTML;
 						var created_at = cells[3].getAttribute('value');
+						console.log(id,trame,sizeTrame,created_at)
 						dataArray.push({given_id: id, length: sizeTrame, data: trame, created_at: created_at});
 					}
 
