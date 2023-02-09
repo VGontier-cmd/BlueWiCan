@@ -23,7 +23,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/login')
+            return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -33,7 +33,7 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
 
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        return redirect()->back()->withInput($request->only('email', 'remember'))->with('error', 'Invalid login or password.');
     }
 
     public function signup()
@@ -61,10 +61,7 @@ class AuthController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->has('remember'))) {
-            return redirect()->intended('/');
-        }
-        //Auth::login($user);
+        Auth::login($user, $request->has('remember'));
 
         return redirect('/');
     }

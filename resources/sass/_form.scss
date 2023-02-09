@@ -52,17 +52,15 @@ select {
     font-size: $input-font-size !important;
     padding: 1rem !important;
     border-radius: 0.3rem !important;
-
     outline: none !important;
 
-    &-color {
-        width: 3rem !important;
-        padding: 0.375rem !important;
-
-        &:disabled {
-            background: #fff !important;
-        }
+    &.is-invalid {
+        border-color: $error-color !important;
     }
+}
+
+.invalid-feedback {
+    margin-bottom: 0 !important;
 }
 
 label {

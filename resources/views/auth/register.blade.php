@@ -7,7 +7,7 @@
     </div>
 </section>
 
-<section class="form-wrapper grid center auth-section">
+<section class="form-wrapper auth-section">
     <form method="POST" action="{{ route('register') }}" class="auth-form">
         @csrf
         <div class="header">

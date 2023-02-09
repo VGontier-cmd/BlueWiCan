@@ -1,9 +1,11 @@
 @extends('layouts.auth')
 
 @section('content')
-<section class="form-wrapper grid center auth-section">
+<section class="form-wrapper auth-section">
+    
     <form method="POST" action="{{ route('login') }}" class="auth-form">
         @csrf
+        @include('partials._flash_alert')
         <div class="header">
             <h1>Welcome Back</h1>
             <p>Welcome back, Please enter your details</p>
