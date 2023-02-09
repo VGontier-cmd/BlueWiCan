@@ -1,0 +1,198 @@
+/*
+|--------------------------------------------------------------------------
+| SASS Documentation
+|--------------------------------------------------------------------------
+|
+| Here is where you can stylize documentation pages
+| 
+*/
+@import "variables";
+@import "style";
+@import "buttons";
+
+.docs-banner {
+    background-color: $primary-color;
+    color: #fff;
+    padding: .5rem;
+    font-weight: 500;
+    text-align: center;
+    font-size: .9rem;
+
+    span {
+        opacity: .8;
+    }
+}
+
+.docs-layout {
+    display: flex;
+    align-items: flex-start;
+}
+
+.docs-aside {
+    position: sticky;
+    top: 0;
+    background-image: linear-gradient(to bottom, #f5f5fa, #fff);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    @media (min-width: 1536px) {
+        max-width: 32rem;
+        width: 100%;
+    }
+
+    .docs-aside__img {
+        width: 100%;
+        padding: 2rem 0;
+    }
+    .docs-aside__wrapper {
+        padding-inline: 4rem;
+
+        @media (min-width: 1280px) {
+            width: 20rem;
+        }
+
+        .docs-aside__nav {
+            margin-top: 1rem;
+
+            ul {
+                li {
+                    display: block;
+                    padding: 0.65em 0;
+                    white-space: nowrap;
+
+                    h2 {
+                        color: $docs-nav-link-ft;
+                        cursor: pointer;
+                        font-weight: bold;
+                        display: block;
+                        font-size: .9em;
+                        font-weight: bold;
+                        margin-bottom: 1em;
+                        text-decoration: none;
+                        transition: all .3s ease;
+                    }
+                }
+                ul {
+                    li {
+                        a {
+                            font-weight: 400;
+                            line-height: 1.25;
+                            padding-left: 1em;
+                            position: relative;
+                            color: $docs-nav-link-ft;
+                            display: block;
+                            font-size: .9em;
+                            font-weight: 400;
+                            text-decoration: none;
+                            transition: transform .3s ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.docs-content {
+    .docs-content__wrapper {
+        padding-inline: 6rem;
+
+        .docs-content__inner {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+
+            .docs-main {
+                max-width: 65ch;
+            }
+        }
+    }
+}
+
+
+.docs-main {
+    h2 {
+        font-weight: 400;
+        line-height: 1.125em;
+        margin-top: 2em;
+        margin-bottom: 0.75em;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.8em;
+        margin-bottom: 1.5em;
+        color: $docs-text-ft;
+    }
+
+    .img-section,
+    .code-section {
+        margin-bottom: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .code-section {
+        position: relative;
+        overflow-x: auto;
+
+        code {
+            border-radius: .5rem;
+            display: block;
+            background-color: $docs-code-bg;
+            font-size: .85rem;
+            font-weight: 500;
+            line-height: 1.9;
+            min-width: max-content;
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+    
+            .line {
+                padding-inline: 1rem;
+    
+                span {
+                    color: $docs-code-ft;
+                }
+            }
+        }
+
+        .btn-copy {
+            position: absolute;
+            top: .5rem;
+            right: .5rem;
+            color: $docs-code-ft;
+            opacity: .5;
+
+            .check-icon {
+                display: none;
+            }
+
+            &.success {
+                .copy-icon {
+                    display: none;
+                }
+                .check-icon {
+                    display: block;
+                }
+            }
+            &:hover, &.success {
+                opacity: 1;
+            }
+        }
+    }
+
+    .img-section {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: .5rem;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

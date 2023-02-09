@@ -11,6 +11,7 @@ button {
     border: none;
     outline: none;
     background: transparent;
+    padding: 0;
 }
 
 .app-btn {
@@ -24,7 +25,8 @@ button {
     box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
     border: none;
     color: #fff;
-    
+    text-decoration: none;
+
     &.btn--form {
         padding: .75rem 1rem;
         font-size: 1rem;
@@ -55,8 +57,13 @@ button {
     }
 
     span {
-        font-size: .8rem !important;
+        font-size: .85rem !important;
     }
+}
+
+
+.btn-docs {
+    padding: .5rem;
 }
 
 

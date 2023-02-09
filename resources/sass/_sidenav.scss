@@ -54,6 +54,7 @@
     overflow: hidden;
     z-index: 2;
     overflow : hidden;
+    padding-bottom: 2rem;
 
     @media (max-width: $bp-laptop) {
         transform: translateX(-150%);
@@ -171,16 +172,23 @@
     }
 }
 
-.sidenav__image {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 40%);
-    z-index: 2;
 
-    img {
-        width: 130px;
-        margin-inline: auto;
-        object-fit: contain;
+.sidenav__docs {
+    margin-inline: 1.5rem;
+    background-color: #dddddd;
+    border-radius: .375rem;
+    padding: 1rem;
+    box-shadow: $shadow-lg;
+
+    .sidenav__docs-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        color: $primary-color;
+
+        p {
+            font-size: .85rem;
+        }
     }
 }

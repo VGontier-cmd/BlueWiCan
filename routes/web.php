@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CoreController;
 
@@ -24,6 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/save-data', [CoreController::class, 'store']);
     // logout
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    // documentaiton page
+    Route::get('/docs', [DocController::class, 'docs'])->name('docs');
 });
 
 /*

@@ -8,7 +8,9 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/sass/app.scss',
                 'resources/js/auth.js',
-                'resources/sass/auth.scss'
+                'resources/sass/auth.scss',
+                'resources/js/docs.js',
+                'resources/sass/docs.scss'
             ],
             refresh: true,
         }),
