@@ -90,7 +90,8 @@ class AuthController extends Controller
     /**
      * Send email with reset password link
      * 
-     * (you must change smtp porperties in .env file to send the reset email)
+     * (This feature should works but you must change smtp porperties 
+     * in .env file to send the reset email)
      */
     public function sendResetLinkEmail(Request $request)
     {

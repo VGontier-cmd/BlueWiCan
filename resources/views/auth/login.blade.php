@@ -2,7 +2,6 @@
 
 @section('content')
 <section class="form-wrapper auth-section">
-    
     <form method="POST" action="{{ route('login') }}" class="auth-form">
         @csrf
         @include('partials._flash_alert')
@@ -40,12 +39,5 @@
             <p>Dont have an account? <a href="{{ route('register') }}">Sign up</a></p>
         </div>
     </form>
-</section>
-
-
-<section class="auth-section section-bg">
-    <div class="auth-bg">
-        <img src="{{url('/images/stellantis-small-logo-white.png')}}" />
-    </div>
 </section>
 @endsection

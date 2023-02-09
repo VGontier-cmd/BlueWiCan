@@ -1,12 +1,6 @@
 @extends('layouts.auth')
 
 @section('content')
-<section class="auth-section section-bg">
-    <div class="auth-bg">
-        <img src="{{url('/images/stellantis-small-logo-white.png')}}" />
-    </div>
-</section>
-
 <section class="form-wrapper auth-section">
     <form method="POST" action="{{ route('register') }}" class="auth-form">
         @csrf

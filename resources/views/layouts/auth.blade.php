@@ -14,6 +14,12 @@
 <body>
     <main id="main">
         <div class="auth-layout">
+            <!-- section bg -->
+            <section class="auth-section section-bg">
+                <div class="auth-bg">
+                    <img src="{{ url('/images/stellantis-small-logo-white.png') }}" />
+                </div>
+            </section>
             @yield('content')
         </div>
     </main>

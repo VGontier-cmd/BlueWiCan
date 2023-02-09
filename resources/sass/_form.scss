@@ -67,9 +67,13 @@ label {
     display: block;
 }
 .form-switch {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: .75rem;
+
+    input, label {
+        cursor: pointer;
+    }
 }
 input {
     &::placeholder {

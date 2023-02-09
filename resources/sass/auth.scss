@@ -23,16 +23,13 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
+  display: flex;
 
   .auth-section {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &.section-bg {
-      background-color: #f4f5f9;
-    }
   }
 
   @media (max-width: $bp-laptop) {
@@ -133,50 +130,6 @@
   font-size: 1rem;
 }
 
-.btn {
-  width: 100%;
-  border: none;
-  outline: none;
-  border-radius: 0.5rem;
-  margin-top: 1.25rem;
-  cursor: pointer;
-  background: var(--secondary);
-  line-height: 48px;
-  font-family: inherit;
-  font-size: inherit;
-}
-.btn-primary {
-  background: var(--accent);
-  color: var(--primary);
-}
-.google-sign-in svg {
-  width: 18px;
-  height: auto;
-  margin-right: 1rem;
-}
-.pass-section {
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-@media (min-width: 768px) {
-  .page-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .banner {
-    background: var(--secondary);
-    order: 2;
-  }
-  .banner img {
-    width: 250px;
-  }
-}
-
-.google-sign-in {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .auth-bg {
   position: relative;
   width: 100%;
@@ -184,7 +137,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(36, 55, 131, 1);
+  background-color: $primary-color;
+
+  background-image: url(../../public/images/auth-bg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   img {
     position: relative;
@@ -196,7 +154,7 @@
 .auth-form {
   width: 100%;
   padding-inline: $page-space-x;
-  margin: auto;
+  margin: 6rem auto;
 
   @media (min-width: $bp-mobile-L) {
     width: 475px;
