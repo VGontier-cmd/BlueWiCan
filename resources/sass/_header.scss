@@ -27,6 +27,7 @@
         .header-title {
             opacity: 0;
             padding-inline: .75rem;
+            flex: 1;
         }
 
         @media (min-width: $bp-tablet) {
