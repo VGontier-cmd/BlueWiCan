@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -15,6 +16,9 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+    /**
+     * Login
+     */
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -41,6 +45,9 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+    /**
+     * Register
+     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -66,9 +73,47 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Logout
+     */
     public function logout()
     {
         auth()->logout();
         return redirect('/');
+    }
+
+    public function resetPassword()
+    {
+        return view('auth.reset_password');
+    }
+
+    /**
+     * Send email with reset password link
+     * 
+     * (you must change smtp porperties in .env file to send the reset email)
+     */
+    public function sendResetLinkEmail(Request $request)
+    {
+        /*
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email_regex',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $response = Password::sendResetLink($request->only('email'));
+
+        switch ($response) {
+            case Password::RESET_LINK_SENT:
+                return redirect()->back()->with('status', trans($response));
+            case Password::INVALID_USER:
+                return redirect()->back()->withErrors(['email' => trans($response)]);
+        }*/
+
+        return redirect()->back()->with('error', 'this feature is not yet implemented');
     }
 }

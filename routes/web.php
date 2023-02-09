@@ -26,7 +26,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Guest Routes
@@ -41,5 +40,8 @@ Route::middleware(['guest'])->group(function () {
     
     Route::get('/register', [AuthController::class, 'signup'])->name('signup');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+    Route::get('/password/reset', [AuthController::class, 'resetPassword'])->name('password.reset');
+    Route::post('/password/email', [AuthController::class, 'sendResetLinkEmail'])->name('password.email');
 });
 

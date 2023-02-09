@@ -33,7 +33,7 @@
                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label for="remember">Remember me</label>
             </div>
-            <a href="#" class="link-primary">Forgot password?</a>
+            <a href="{{ route('password.reset') }}" class="link-primary">Forgot password?</a>
         </div>
         <button type="submit" class="app-btn btn--primary btn--form w-100 mb-2">Sign in</button>
         <div class="footer">
