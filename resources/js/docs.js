@@ -7,16 +7,27 @@ copyToClipboard();
  * Copy code to clipboard
  */
 function copyToClipboard() {
-    var clipboard = new ClipboardJS('.btn-copy');
-    var btn_copy = document.querySelector('.btn-copy');
+    const btn_copy_list = document.querySelectorAll('.btn-copy');
 
-    clipboard.on('success', function(e) {
-        $(btn_copy).addClass('success');
-        setTimeout(() => {
-            $(btn_copy).removeClass('success');
-        }, 2000);
-    });
-    clipboard.on('error', function(e) {
-        console.log(e);
-    });
+    btn_copy_list.forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        
+        const clipboard = new ClipboardJS(btn);
+        clipboard.on('success', function(e) {
+            e.clearSelection();
+            $(btn).addClass('success');
+            $(btn).popover('show');
+            setTimeout(() => {
+                $(btn).removeClass('success');
+                $(btn).popover('hide');
+            }, 2000);
+        });
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+    })
+
 }

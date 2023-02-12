@@ -117,7 +117,7 @@
     h2 {
         font-weight: 400;
         line-height: 1.125em;
-        margin-top: 2em;
+        padding-top: 2em;
         margin-bottom: 0.75em;
     }
 
@@ -227,5 +227,13 @@
                 height: 3rem;
             }
         }
+    }
+}
+
+.popover {
+    .popover-body {
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        font-size: .8rem;
     }
 }

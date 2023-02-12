@@ -6,18 +6,27 @@
         <nav class="docs-aside__nav">
             <ul>
                 <li>
-                    <h2>Getting Started</h2>
+                    <h2>Server SSH</h2>
                     <ul>
-                        <li class="active">
-                            <a href="#">Introduction</a>
+                        <li>
+                            <a href="#connection">Connection</a>
                         </li>
                         <li>
-                            <a href="#">Installation</a>
+                            <a href="#web">Web site</a>
+                        </li>
+                        <li>
+                            <a href="#db">Database</a>
+                        </li>
+                        <li>
+                            <a href="#sockets">Web Sockets</a>
+                        </li>
+                        <li>
+                            <a href="#cron">Cron</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <h2>Production</h2>
+                    <h2>Development</h2>
                     <ul>
                         <li class="active">
                             <a href="#">Configuration</a>
