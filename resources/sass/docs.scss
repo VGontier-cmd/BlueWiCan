@@ -128,6 +128,23 @@
         color: $docs-text-ft;
     }
 
+    .list {
+        list-style: inside !important;
+        margin-bottom: 1.5em !important;
+        p {
+            display: block;
+            margin-bottom: .5rem;
+        }
+        li {
+            margin-left: 1.5rem !important;
+        }
+    }
+
+    .highlighted {
+        color: $primary-color;
+        font-weight: bold;
+    }
+
     .img-section,
     .code-section {
         margin-bottom: 1.5rem;
@@ -137,24 +154,29 @@
     .code-section {
         position: relative;
         overflow-x: auto;
-
+        border-radius: .5rem;
+        display: block;
+        background-color: $docs-code-bg;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+        
         code {
-            border-radius: .5rem;
-            display: block;
-            background-color: $docs-code-bg;
             font-size: .85rem;
             font-weight: 500;
             line-height: 1.9;
+            font-family: monospace;
             min-width: max-content;
-            padding-bottom: 1rem;
-            padding-top: 1rem;
-            font-family: 'Courier New', Courier, monospace;
-    
+
             .line {
-                padding-inline: 1rem;
-    
+                padding-left: 1rem;
+                padding-right: 2rem;
+
                 span {
                     color: $docs-code-ft;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 1.5rem;
                 }
             }
         }
@@ -189,10 +211,21 @@
         width: 100%;
         overflow: hidden;
         border-radius: .5rem;
-
+        margin-bottom: 2.5rem;
+        
         img {
             width: 100%;
             object-fit: cover;
+        }
+
+        &[img-type=small] {
+            height: 3rem;
+            margin-bottom: 1rem;
+
+            img {
+                width: auto;
+                height: 3rem;
+            }
         }
     }
 }
