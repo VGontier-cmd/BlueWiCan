@@ -29,5 +29,4 @@ function copyToClipboard() {
             console.log(e);
         });
     })
-
 }

@@ -59,6 +59,7 @@
 
             ul {
                 li {
+                    position: relative;
                     display: block;
                     padding: 0.65em 0;
                     white-space: nowrap;
@@ -76,6 +77,8 @@
                     }
                 }
                 ul {
+                    position: relative;
+
                     li {
                         a {
                             font-weight: 400;
@@ -87,7 +90,22 @@
                             font-size: .9em;
                             font-weight: 400;
                             text-decoration: none;
-                            transition: transform .3s ease;
+                            transition: color .3s ease-in-out;
+
+                            &.active {
+                                color: $primary-color;
+
+                                &:before {
+                                    content: "";
+                                    position: absolute;
+                                    height: 0.4rem;
+                                    width: 0.4rem;
+                                    border-radius: 50%;
+                                    background-color: $primary-color;
+                                    left: 0;
+                                    top: 0.40em;
+                                }
+                            }
                         }
                     }
                 }
@@ -174,10 +192,6 @@
                 span {
                     color: $docs-code-ft;
                 }
-
-                &:not(:last-child) {
-                    margin-bottom: 1.5rem;
-                }
             }
         }
 
@@ -235,5 +249,46 @@
         padding: 0.5rem 1rem;
         font-weight: 500;
         font-size: .8rem;
+    }
+}
+
+
+.doc-btn {
+	display: inline-flex;
+    position: relative;
+    font-size: .85rem;
+    background-color: #fff;
+    color: $primary-color !important;
+    text-transform: uppercase;
+    line-height: 1.2;
+    border: 1px solid $primary-color;
+    text-decoration: none;
+
+    &.--primary {
+        color: #fff !important;
+        span {
+            background-color: $primary-color;
+        }
+    }
+    span {
+        transition: all .2s ease-in-out;
+    }
+
+    span {
+        padding: .6rem 1rem;
+        position: relative;
+        background-color: #fff;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 0 0 1px $primary-color;
+        z-index: 1;
+        gap: .6rem;
+    }
+
+    &:hover {
+        span {
+		    transform: translate(-.25rem, -.25rem);
+        }
     }
 }

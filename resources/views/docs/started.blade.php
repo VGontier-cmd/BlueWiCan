@@ -1,6 +1,15 @@
 @extends('layouts.docs')
 
 @section('content')
+<div class="d-flex justify-content-end align-items-center gap-2 mb-4">
+    <a class="doc-btn" href="https://laravel.com/docs/9.x" target="_blank">
+        <span>Laravel documentation<i class="bi bi-arrow-up-right"></i></span>
+    </a>
+    <a class="doc-btn --primary" href="">
+        <span><i class="bi bi-cloud-download"></i>Download project</span>
+    </a>
+</div>
+
 <section id="connection">
     <h1>Server SSH</h1>
     <h2>Connection</h2>
@@ -71,9 +80,11 @@
             <div class="line">
                 <span>sudo git pull BlueWiCan master</span>
             </div>
+            <div class="line">&nbsp;</div>
             <div class="line">
                 <span>sudo php artisan optimize</span>
             </div>
+            <div class="line">&nbsp;</div>
             <div class="line">
                 <span>sudo npm run build</span>
             </div>
@@ -199,6 +210,7 @@
             <div class="line">
                 <span>cd /var/www/nodejs</span>
             </div>
+            <div class="line">&nbsp;</div>
             <div class="line">
                 <span>npm start</span>
             </div>
@@ -259,6 +271,23 @@
     </div>
     <p>
         Pour plus de précision, on vous invite à consulter la documentaion Cron <a href="https://doc.ubuntu-fr.org/cron" target="_blank">https://doc.ubuntu-fr.org/cron</a>
+    </p>
+</section>
+
+
+
+<!-- SECTION - prerequisites -->
+<section id="prerequisites">
+    <h2>Prérequis</h2>
+    <p>
+        Pour accéder à la base de données de l'application, rendez-vous sur le lien suivant: <a href="http://82.66.189.233/phpmyadmin" target="_blank">http://82.66.189.233/phpmyadmin</a>
+    </p>
+    <div class="img-section shadow-lg">
+        <img src="{{url('/images/docs/bdd-login.png')}}">
+    </div>
+    <p>
+        Pour vous à phpMyAdmin sur le serveur vous devez utiliser comme nom d'utilisateur 
+        <span class="highlighted">root</span> et entrer le mot de passe <span class="highlighted">wildisblue</span>.
     </p>
 </section>
 @endsection

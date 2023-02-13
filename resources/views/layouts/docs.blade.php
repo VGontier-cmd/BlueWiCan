@@ -28,7 +28,7 @@
         </div>
     </div>
     <main id="main">
-        <div class="docs-layout">
+        <div class="docs-layout" data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" tabindex="0">
             <!-- aside -->
             @include('.docs._docs_sidenav')
 
