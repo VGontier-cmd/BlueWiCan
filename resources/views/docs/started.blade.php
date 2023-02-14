@@ -9,8 +9,9 @@
         <span><i class="bi bi-cloud-download"></i>Download project</span>
     </a>
 </div>
+
 <!-- PROLOGUE -->
-<section>
+<section class="doc-section">
     <h1>Prologue</h1>
     <section id="intro">
         <h2>Introduction</h2>
@@ -60,6 +61,36 @@
             <li><span class="highlighted">Vue.js</span>, framework javascript utilisé pour les interfaces web</li>
             <li><span class="highlighted">Bootstrap</span>, une collection d'outils utiles à la création du design de sites et d'applications web.</li>
         </ul>
+    </section>
+</section>
+
+
+<!-- DEVELOPMENT -->
+<section class="doc-section">
+    <h1>Development</h1>
+    <!-- prerequisites -->
+    <section id="prerequisites">
+        <h2>Configurations</h2>
+        <p>
+            Pour le développement local et toutes les incompréhensions à propos de Laravel ou les problèmes techniques que vous pouvez rencontrer, 
+            on vous invite à vous renseigner directement sur la documentation de laravel <a href="https://laravel.com/docs/9.x/" target="_blank">ici</a>
+        </p>
+        <p>
+            Avant de commencer à rentrer dans les détails de l'application, récupérez le code source de l'application <a href="https://github.com/Nyrress/BlueWiCan/archive/refs/heads/master.zip" download>ici</a>, et lié le porjet à un nouveau
+            repository sur GitHub ou GitLab (au choix) mais on vous conseille d'utiliser un outil de versionning Git pour une meilleure organisation et
+            assurer la mainteance de l'application.
+        </p>
+        <ul class="list">
+            <p>Dans un premier temps, assurez-vous de bien avoir installé les outils suivants :</p>
+            <li><span class="highlighted">Laravel 9</span></li>
+            <li><span class="highlighted">PHP >= 8.0</span></li>
+            <li><span class="highlighted">Composer</span></li>
+            <li><span class="highlighted">Laragon</span></li>
+            <li><span class="highlighted">Un IDE comme VSCODE</span></li>
+            <li><span class="highlighted">Node.js</span></li>
+        </ul>
+
+        <!--
         <p>
             Laravel inclu un serveur local pouvant être lancé grâce à la commande suivante :
         </p>
@@ -76,31 +107,55 @@
         </div>
         <p>
             Cependant, vous pouvez utiliser UWAMPP, WAMPP, XAMPP ou encore Laragon si vous ne voulez pas vous compliquer la vie (conseillé pour les projets Laravel)
-        </p>
+        </p>-->
     </section>
-</section>
 
-
-<!-- DEVELOPMENT -->
-<section>
-    <!-- prerequisites -->
-    <section id="prerequisites">
-        <h2>Prérequis</h2>
+    <section id="dev-bdd">
+        <h2>Base de données</h2>
         <p>
-            Pour accéder à la base de données de l'application, rendez-vous sur le lien suivant: <a href="http://82.66.189.233/phpmyadmin" target="_blank">http://82.66.189.233/phpmyadmin</a>
+            Afin de pouvoir configurer votre de base de données locale, ouvrez le projet dans votre IDE.
         </p>
-        <div class="img-section shadow-lg">
-            <img src="{{url('/images/docs/bdd-login.png')}}">
+        <p>
+            Un fichier de configuration <span class="highlighted">.env</span> se trouvant à la racinne du projet rassemble des variables
+            d'envrionnements permettant de configurer l'application et la base de données. 
+        </p>
+        <div class="code-section">
+            <code id="code-dev-1">
+                <div class="line">
+                    <span>DB_CONNECTION=mysql</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>DB_HOST=127.0.0.1</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>DB_PORT=3306</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>DB_DATABASE=BlueWiCan</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>DB_USERNAME=root</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>DB_PASSWORD=</span>
+                </div>
+            </code>
+            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-dev-1">
+                <i class="bi bi-clipboard2-fill copy-icon"></i>
+                <i class="bi bi-clipboard2-check-fill check-icon"></i>
+            </button>
         </div>
         <p>
-            Pour vous à phpMyAdmin sur le serveur vous devez utiliser comme nom d'utilisateur 
-            <span class="highlighted">root</span> et entrer le mot de passe <span class="highlighted">wildisblue</span>.
+            Remplacer ces variables déjà présentent dans le fichier par la configuration ci-dessus.
         </p>
-    </section>
+        <p>
+            Dans le dossier <span class="highlighted">/database/migrations</span> du projet vous allez retrouver
+            toutes les migrations de base de données pour l'ajout, la suppression et la modification des tables.
+        </p>
 </section>
 
 <!-- SERVER -->
-<section>
+<section class="doc-section">
     <!-- SERVER SSH - Connection -->
     <section id="connection">
         <h1>Server SSH</h1>

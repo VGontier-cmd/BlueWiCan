@@ -132,6 +132,11 @@
 
 
 .docs-main {
+    .doc-section {
+        padding-bottom: 3rem;
+        border-bottom: 1px solid $border-color-light;
+        margin-bottom: 4rem;
+    }
     h2 {
         font-weight: 400;
         line-height: 1.125em;
