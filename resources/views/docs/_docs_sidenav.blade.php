@@ -6,23 +6,17 @@
         <nav class="docs-aside__nav">
             <ul id="docs-aside__links">
                 <li>
-                    <h2>Server SSH</h2>
+                    <h2>Prologue</h2>
                     <ul>
                         <div class="active-marker"></div>
                         <li class="list-group-item">
-                            <a href="#connection">Connection</a>
+                            <a href="#intro">Introduction</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="#web">Web site</a>
+                            <a href="#objectifs">Objectifs</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="#db">Database</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#sockets" class="list-group-item">Web Sockets</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#cron" class="list-group-item">Cron</a>
+                            <a href="#releases">Releases notes</a>
                         </li>
                     </ul>
                 </li>
@@ -42,16 +36,23 @@
                     </ul>
                 </li>
                 <li>
-                    <h2>Development</h2>
+                    <h2>Server SSH</h2>
                     <ul>
-                        <li class="active">
-                            <a href="#">Installation</a>
+                        <div class="active-marker"></div>
+                        <li class="list-group-item">
+                            <a href="#connection">Connection</a>
                         </li>
-                        <li>
-                            <a href="#">Server SSH</a>
+                        <li class="list-group-item">
+                            <a href="#web">Web site</a>
                         </li>
-                        <li>
-                            <a href="#">Database</a>
+                        <li class="list-group-item">
+                            <a href="#db">Database</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#sockets" class="list-group-item">Web Sockets</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#cron" class="list-group-item">Cron</a>
                         </li>
                     </ul>
                 </li>
