@@ -16,7 +16,7 @@
                             <a href="#objectifs">Objectifs</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="#releases">Releases notes</a>
+                            <a href="#tools">Outils utilisés</a>
                         </li>
                     </ul>
                 </li>
@@ -25,13 +25,13 @@
                     <ul>
                         <div class="active-marker"></div>
                         <li class="list-group-item">
-                            <a href="#prerequisites">Prerequisites</a>
-                        </li>
-                        <li class="list-group-item">
                             <a href="#config">Configurations</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="#improvements">Improvements</a>
+                            <a href="#dev-db">Database</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#use">Guide d'utilisation</a>
                         </li>
                     </ul>
                 </li>
@@ -41,9 +41,6 @@
                         <div class="active-marker"></div>
                         <li class="list-group-item">
                             <a href="#connection">Connection</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#web">Web site</a>
                         </li>
                         <li class="list-group-item">
                             <a href="#db">Database</a>

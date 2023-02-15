@@ -45,8 +45,8 @@
         </p>
     </section>
     
-    <section id="releases">
-        <h2>Releases notes</h2>
+    <section id="tools">
+        <h2>Outils utilisés</h2>
         <p>
             Cette application a été développée via le framework <span class="highlighted">Laravel</span>, un framework PHP 
             utilisant l'architecture <span class="highlighted">MVC</span> permettant de construire des applications web.
@@ -69,7 +69,7 @@
 <section class="doc-section">
     <h1>Development</h1>
     <!-- prerequisites -->
-    <section id="prerequisites">
+    <section id="config">
         <h2>Configurations</h2>
         <p>
             Pour le développement local et toutes les incompréhensions à propos de Laravel ou les problèmes techniques que vous pouvez rencontrer, 
@@ -89,34 +89,15 @@
             <li><span class="highlighted">Un IDE comme VSCODE</span></li>
             <li><span class="highlighted">Node.js</span></li>
         </ul>
-
-        <!--
-        <p>
-            Laravel inclu un serveur local pouvant être lancé grâce à la commande suivante :
-        </p>
-        <div class="code-section">
-            <code id="code-release">
-                <div class="line">
-                    <span>php artisan serve</span>
-                </div>
-            </code>
-            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-release">
-                <i class="bi bi-clipboard2-fill copy-icon"></i>
-                <i class="bi bi-clipboard2-check-fill check-icon"></i>
-            </button>
-        </div>
-        <p>
-            Cependant, vous pouvez utiliser UWAMPP, WAMPP, XAMPP ou encore Laragon si vous ne voulez pas vous compliquer la vie (conseillé pour les projets Laravel)
-        </p>-->
     </section>
 
-    <section id="dev-bdd">
+    <section id="dev-db">
         <h2>Base de données</h2>
         <p>
             Afin de pouvoir configurer votre de base de données locale, ouvrez le projet dans votre IDE.
         </p>
         <p>
-            Un fichier de configuration <span class="highlighted">.env</span> se trouvant à la racinne du projet rassemble des variables
+            Un fichier de configuration <span class="highlighted">.env</span> se trouvant à la racine du projet rassemble des variables
             d'envrionnements permettant de configurer l'application et la base de données. 
         </p>
         <div class="code-section">
@@ -149,9 +130,176 @@
             Remplacer ces variables déjà présentent dans le fichier par la configuration ci-dessus.
         </p>
         <p>
-            Dans le dossier <span class="highlighted">/database/migrations</span> du projet vous allez retrouver
-            toutes les migrations de base de données pour l'ajout, la suppression et la modification des tables.
+            Notez que l'application met en cache différents fichiers comme <span class="highlighted">.env</span> et <span class="highlighted">web.php</span>
+            dans le dossier <span class="highlighted">/bootstrap</span> (rien à voir avec le framework CSS). Par conséquent, à chaque 
+            modification de ces fichiers il est important d'exécuter la commande suivante permettant de vider les caches.
         </p>
+        <div class="code-section">
+            <code id="code-dev-2">
+                <div class="line">
+                    <span>php artisan optimize</span>&nbsp;
+                </div>
+            </code>
+            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-dev-2">
+                <i class="bi bi-clipboard2-fill copy-icon"></i>
+                <i class="bi bi-clipboard2-check-fill check-icon"></i>
+            </button>
+        </div>
+        <p>
+            La gestion de votre base de données se fait dans le dossier <span class="highlighted">/database</span>.
+            Ce dossier contient aussi un sous dossier pour les migrations de base de données <span class="highlighted">/database/migrations</span> 
+            dans lequel vous allez retrouver toutes les migrations de base de données pour l'ajout, la suppression et la modification des tables.
+        </p>
+        <p>
+            Voici un exemple de migration que nous avons créé pour l'ajout de la table <span class="highlighted">can_datas</span>.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/migration.png')}}">
+        </div>
+        <ul class="list">
+            <p>Cette table contient les champs suivants :</p>
+            <li><span class="highlighted">data_id :</span> la clé primaire de la table auto-incrémentée.</li>
+            <li><span class="highlighted">id :</span> l'id de la trame</li>
+            <li><span class="highlighted">data :</span> les données de la trame</li>
+            <li><span class="highlighted">length :</span> la taille de la trame</li>
+            <li><span class="highlighted">created_at :</span> date de création de la trame</li>
+            <li><span class="highlighted">updated_at :</span> date de modification de la trame</li>
+        </ul>
+        <p>
+            Vous pouvez créer vos propres migrations, pour plus de renseignement consulter la documentation de Laravel.
+        </p>
+        <p>
+            Pour créer la base de données ainsi que toutes les tables, vous pouvez exécuter les migrations grâce
+            à la commande suivante :
+        </p>
+        <div class="code-section">
+            <code id="code-dev-3">
+                <div class="line">
+                    <span>php artisan migrate</span>&nbsp;
+                </div>
+            </code>
+            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-dev-3">
+                <i class="bi bi-clipboard2-fill copy-icon"></i>
+                <i class="bi bi-clipboard2-check-fill check-icon"></i>
+            </button>
+        </div>
+        <p>
+            Vous pouvez maintenant, accéder à votre base de données locale grâce à phpMyAdmin.
+        </p>
+    </section>
+
+    <!-- use -->
+    <section id="use">
+        <h2>Guide d'utilisation</h2>
+        <p>
+            Pour commencer à utiliser et développer l'application vous devez démarrer votre serveur apache,
+            Soit en utilisant le serveur de Laravel en exécutant la commande suivante :
+        </p>
+        <div class="code-section">
+            <code id="code-dev-4">
+                <div class="line">
+                    <span>php artisan serve</span>
+                </div>
+            </code>
+            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-dev-4">
+                <i class="bi bi-clipboard2-fill copy-icon"></i>
+                <i class="bi bi-clipboard2-check-fill check-icon"></i>
+            </button>
+        </div>
+        <p>
+            Soit, vous pouvez utiliser UWAMP, WAMPP, XAMPP ou encore Laragon si vous ne voulez pas vous compliquer la vie (conseillé pour les projets Laravel).
+        </p>
+        <p>
+            Laravel utilise un outil de construction frontal moderne qui fournit un environnement de 
+            développement extrêmement rapide et regroupe votre code pour la production. 
+            Lors de la création d'applications avec Laravel, vous utiliserez généralement Vite pour regrouper les 
+            fichiers CSS et JavaScript de votre application dans des ressources prêtes pour la production.
+        </p>
+        <p>
+            De ce fait, pour compiler les assets de styles et de scripts vous devez exécuter la commande suivante
+            dans un terminal de VSCODE.
+        </p>
+        <div class="code-section">
+            <code id="code-dev-5">
+                <div class="line">
+                    <span>npm run dev</span>
+                </div>
+            </code>
+            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-dev-5">
+                <i class="bi bi-clipboard2-fill copy-icon"></i>
+                <i class="bi bi-clipboard2-check-fill check-icon"></i>
+            </button>
+        </div>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vite-run.png')}}">
+        </div>
+
+        <p>
+            Rendez-vous ensuite sur votre application web locale via votre naviguateur.
+        </p>
+        <p>
+            Vous arriverez sur une page de connexion vous permettant de vous connecter à l'application, cependant si vous ne possèder pas de compte, 
+            vous avez la possibilité de vous en créer un en appuyant sur le bouton sign up.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/login.png')}}">
+        </div>
+        <p>
+            Pour vous inscrire vous devez saisir votre nom ainsi que vos identifiants de connexion.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/register.png')}}">
+        </div>
+        <p>
+            Une fois connecté, vous arriverez sur un dashboard vous présentant les statistiques globales
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/dashboard.png')}}">
+        </div>
+        <p>
+            Sur le menu latéral à votre gauche vous pouvez retrouver l’onglet "<span class="highlighted">Datas Stored</span>"
+            redirigeant sur la page permettant la visualisation des trames stockées dans la base de données.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/saved.png')}}">
+        </div>
+        <div class="img-section" img-type="small">
+            <img src="{{url('/images/docs/saved-actions.png')}}">
+        </div>
+        <ul class="list">
+            <p>Différentes fonctionnalités sont mises à disposition :</p>
+            <li><span class="highlighted">Actualisation du tableau</span> regroupant la liste des trames enregistrées</li>
+            <li><span class="highlighted">Imprimer</span> la liste des trames affichées</li>
+            <li><span class="highlighted">Télécharger</span> la liste des trames affichées sous les formats <span class="highlighted">PDF</span>, <span class="highlighted">CSV</span> et <span class="highlighted">Excel</span></li>
+        </ul>
+        <p>
+            Vous avez aussi la possibilité de trier les différents résultats en 
+            fonction des attributs caractérisant une trame (<span class="highlighted">id</span>, <span class="highlighted">data</span>, <span class="highlighted">length</span>, <span class="highlighted">created_at</span>).
+        </p>
+        <p>
+            Ensuite, dans l’onglet "<span class="highlighted">Live Datas</span>", vous aurez la possibilité de voir les trames
+            envoyées depuis le BlueWiCan.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/live.png')}}">
+        </div>
+        <div class="img-section" img-type="small">
+            <img src="{{url('/images/docs/live-actions.png')}}">
+        </div>
+        <ul class="list">
+            <p>Sur cette page plusieurs actions sont disponibles comme :</p>
+            <li><span class="highlighted">Ouverture/Fermuture</span> d'une connexion au serveur websockets</li>
+            <li><span class="highlighted">Enregistrer</span> les trames reçues en base de données</li>
+            <li><span class="highlighted">Effacer</span> les trames reçues</li>
+        </ul>
+        <p>
+            Sur toute l'application, une fois connecté, vous avez la possibilité de vous déconnecter grâce au bouton de déconnexion
+            à droite de votre profil.
+        </p>
+        <div class="img-section" img-type="small">
+            <img src="{{url('/images/docs/auth.png')}}">
+        </div>
+    </section>
 </section>
 
 <!-- SERVER -->
@@ -259,69 +407,9 @@
             Assurez-vous que toutes les autorisations nécessaires sont accordées 
             pour exécuter ces commandes et que votre environnement est correctement configuré.
         </p>
-    </section>
-    
-    <!-- SECTION - Web site -->
-    <section id="web">
-        <h2>Web site</h2>
         <p>
             Pour accéder à l'application web, rendez-vous sur le lien suivant: <a href="http://82.66.189.233/" target="_blank">http://82.66.189.233</a>
         </p>
-        <p>
-            Vous arriverez sur une page de connexion vous permettant de vous connecter à l'application, cependant si vous ne possèder pas de compte, 
-            vous avez la possibilité de vous en créer un en appuyant sur le bouton sign up.
-        </p>
-        <div class="img-section shadow-lg">
-            <img src="{{url('/images/docs/login.png')}}">
-        </div>
-        <p>
-            Pour vous inscrire vous devez saisir votre nom ainsi que vos identifiants de connexion.
-        </p>
-        <div class="img-section shadow-lg">
-            <img src="{{url('/images/docs/register.png')}}">
-        </div>
-        <p>
-            Une fois connecté, vous arriverez sur un dashboard vous présentant les statistiques globales
-        </p>
-        <div class="img-section shadow-lg">
-            <img src="{{url('/images/docs/dashboard.png')}}">
-        </div>
-        <p>
-            Sur le menu latéral à votre gauche vous pouvez retrouver l’onglet "<span class="highlighted">Datas Stored</span>"
-            redirigeant sur la page permettant la visualisation des trames stockées dans la base de données.
-        </p>
-        <div class="img-section shadow-lg">
-            <img src="{{url('/images/docs/saved.png')}}">
-        </div>
-        <div class="img-section" img-type="small">
-            <img src="{{url('/images/docs/saved-actions.png')}}">
-        </div>
-        <ul class="list">
-            <p>Différentes fonctionnalités sont mises à disposition :</p>
-            <li><span class="highlighted">Actualisation du tableau</span> regroupant la liste des trames enregistrées</li>
-            <li><span class="highlighted">Imprimer</span> la liste des trames affichées</li>
-            <li><span class="highlighted">Télécharger</span> la liste des trames affichées sous les formats <span class="highlighted">PDF</span>, <span class="highlighted">CSV</span> et <span class="highlighted">Excel</span></li>
-        </ul>
-        <p>
-            Vous avez aussi la possibilité de trier les différents résultats en 
-            fonction des attributs caractérisant une trame (<span class="highlighted">id</span>, <span class="highlighted">data</span>, <span class="highlighted">length</span>, <span class="highlighted">created_at</span>).
-        </p>
-        <p>
-            Ensuite, dans l’onglet "<span class="highlighted">Live Datas</span>", vous aurez la possibilité de voir les trames
-            envoyées depuis le BlueWiCan.
-        </p>
-        <div class="img-section shadow-lg">
-            <img src="{{url('/images/docs/live.png')}}">
-        </div>
-        <div class="img-section" img-type="small">
-            <img src="{{url('/images/docs/live-actions.png')}}">
-        </div>
-        <ul class="list">
-            <p>Sur cette page plusieurs actions sont disponibles comme :</p>
-            <li><span class="highlighted">Ouverture/Fermuture</span> d'une connexion au serveur websockets</li>
-            <li><span class="highlighted">Enregistrer</span> les trames reçues en base de données</li>
-            <li><span class="highlighted">Effacer</span> les trames reçues</li>
-        </ul>
     </section>
     
     <!-- SECTION - bdd -->
