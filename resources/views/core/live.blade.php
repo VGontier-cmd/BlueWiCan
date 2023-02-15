@@ -157,6 +157,7 @@
 					const rows = document.querySelectorAll('#live-table tbody tr')
 					dataArray = []
 
+					// on parcourt toutes les lignes du tableau
 					for (let i = 0; i < rows.length; i++) {
 						var cells = rows[i].getElementsByTagName('td');
 						var id = cells[0].innerHTML;
@@ -164,9 +165,11 @@
 						var length = cells[2].innerHTML;
 						var created_at = cells[3].getAttribute('value');
 
+						// on ajoute la trame à notre tableau de données
 						dataArray.push({id: id, data: data, length: length, created_at: created_at});
 					}
 
+					// requête AJAX pour enregistrer les données stockées dans le tableau
 					fetch('/save-data', {
 						method: 'POST',
 						headers: {

@@ -115,10 +115,10 @@
                             font-size: .9em;
                             font-weight: 400;
                             text-decoration: none;
-                            transition: color .3s ease-in-out;
 
                             &.active {
                                 color: $primary-color;
+                                font-weight: 600;
 
                                 &:before {
                                     content: "";
@@ -141,25 +141,6 @@
 
 
 .docs-content {
-    &:before,
-    &:after {
-        content: "";
-        display: block;
-        position: sticky;
-        left: 0;
-        height: 3rem;
-    }
-
-    &:before {
-        top: 0;
-        background-image: linear-gradient(to top, transparent, #fff);
-    }
-
-    &:after {
-        bottom: 0;
-        background-image: linear-gradient(to bottom, transparent, #fff);
-    }
-
     .docs-content__wrapper {
         padding-inline: 6rem;
 

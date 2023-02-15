@@ -38,13 +38,17 @@ Route::middleware(['auth'])->group(function () {
 |
 */
 Route::middleware(['guest'])->group(function () {
+    // login page
     Route::get('/login', [AuthController::class, 'signin'])->name('signin');
+    // login
     Route::post('/login', [AuthController::class, 'login'])->name('login');
-    
+    // register page
     Route::get('/register', [AuthController::class, 'signup'])->name('signup');
+    // register
     Route::post('/register', [AuthController::class, 'register'])->name('register');
-
+    // reset password page
     Route::get('/password/reset', [AuthController::class, 'resetPassword'])->name('password.reset');
+    // reset password
     Route::post('/password/email', [AuthController::class, 'sendResetLinkEmail'])->name('password.email');
 });
 

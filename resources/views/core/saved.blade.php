@@ -9,14 +9,5 @@
 @endsection
 
 @push('scripts')
-{{ $dataTable->scripts(attributes: ['type' => 'module']) }}
-
-<script>	
-    new Vue({
-        el: "#app",
-        data: {},
-        mounted() {},
-        methods: {}
-    });
-</script>
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 @endpush

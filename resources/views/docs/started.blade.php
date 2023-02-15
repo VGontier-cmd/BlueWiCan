@@ -67,7 +67,7 @@
 
 <!-- DEVELOPMENT -->
 <section class="doc-section">
-    <h1>Development</h1>
+    <h1>Développement</h1>
     <!-- prerequisites -->
     <section id="config">
         <h2>Configurations</h2>
@@ -154,7 +154,7 @@
             Voici un exemple de migration que nous avons créé pour l'ajout de la table <span class="highlighted">can_datas</span>.
         </p>
         <div class="img-section shadow-lg">
-            <img src="{{url('/images/docs/migration.png')}}">
+            <img src="{{url('/images/docs/data-migration.png')}}">
         </div>
         <ul class="list">
             <p>Cette table contient les champs suivants :</p>
@@ -308,31 +308,323 @@
     </section>
 
 
-    <!-- authentification -->
-    <section id="auth">
-        <h2>Authentification</h2>
+    <!-- mvc -->
+    <section id="mvc">
+        <h2>Le MVC de Laravel</h2>
+        <ul class="list">
+            <p>Comme énoucé précédement, Laravel est un framework basé sur l'architecture MVC :</p>
+            <li><span class="highlighted">Models</span>, c’est Eloquent qui se charge de cet aspect et on a créé un modèle "<span class="highlighted">CanData</span>" pour nos trames dans le dossier <span class="highlighted">/Http/Models</span></li>
+            <li><span class="highlighted">Views</span>, affichage des pages de l'applciation dans le dossier <span class="highlighted">/resources/views</span></li>
+            <li><span class="highlighted">Controllers</span>, c’est le chef d’orchestre de l’application, permet de gérer toutes les actions nécessaires de l'application dans le dossier <span class="highlighted">/Http/Controllers</span></li>
+        </ul>
+
         <p>
-            Pour commencer à utiliser et développer l'application vous devez démarrer votre serveur apache,
-            Soit en utilisant le serveur de Laravel en exécutant la commande suivante :
+            Directement lié aux contrôleurs on retrouve les routes permettant l'accès aux différentes actions des contrôleurs.
         </p>
+        <p>
+            La définition des routes se fait dans le fichier <span class="highlighted">web.php</span>
+        </p>
+        <p>
+            Pour mieux comprendre la communication entre les blocs principaux composant l'application, voici un petit schema résumant
+            l'architecture MVC de Laravel et de manière générale.
+        </p>
+        <div class="img-section">
+            <img src="{{url('/images/docs/mvc.png')}}" >
+        </div>
     </section>
 
-    <!-- dataTables -->
-    <section id="datatables">
-        <h2>DataTables</h2>
+    <!-- routes -->
+    <section id="routes">
+        <h2>Les routes</h2>
         <p>
-            Pour commencer à utiliser et développer l'application vous devez démarrer votre serveur apache,
-            Soit en utilisant le serveur de Laravel en exécutant la commande suivante :
+            Dans le fichier <span class="highlighted">web.php</span>, nous avons organisé les routes de notre application
+            en les regroupant en fonction de leur niveau d'accessibilité.
         </p>
+        <p>
+            Vous avez surement remarqué la présence de deux <span class="highlighted">middlewares</span>, pour faire simple un middleware 
+            est une étape pour la requête HTTP arrivant en amont, ça permet d’accomplir des vérifications
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/routes-auth.png')}}" >
+        </div>
+        <p>
+            ici, avec le middleware "<span class="highlighted">auth</span>", on demande que l’accès à 
+            ces routes soient limités aux utilisateurs authentifiés. Ceux qui ne le sont pas seront automatiquement renvoyés sur
+            la page de connexion.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/routes-guest.png')}}" >
+        </div>
+        <p>
+            Contrairement au middleware "<span class="highlighted">auth</span>", "<span class="highlighted">guest</span>" permet d'accorder l’accès aux routes
+            de connexion, d'inscription, etc... (dans notre cas) Uniquement si l'utilisateur n'est pas authentifié. Dans le cas où un utilisateur est déjà connecté 
+            avec l'ouverture d'une session, il n'est pas possible pour lui de se rediriger vers la page de connexion. Pour cela, il devra se déconnecter.       
+        </p>
+        <p>
+            De plus, il n'est pas compliqué sous Laravel de comprendre comment se définit une route.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/route-ex.png')}}" >
+        </div>
+        <ul class="list">
+            <p>En effet elle se décompose en plusieurs parties :</p>
+            <li><span class="highlighted">Type</span></li>
+            <li><span class="highlighted">l'URI</span></li>
+            <li><span class="highlighted">Contrôleur</span></li>
+            <li><span class="highlighted">Action du contrôleur</span></li>
+            <li><span class="highlighted">Nom de la route (optionnel)</span></li>
+        </ul>
     </section>
 
-    <!-- vue.js -->
-    <section id="vuejs">
-        <h2>Vue.js</h2>
+    <!-- stored -->
+    <section id="stored">
+        <h2>Données stockées</h2>
         <p>
-            Pour commencer à utiliser et développer l'application vous devez démarrer votre serveur apache,
-            Soit en utilisant le serveur de Laravel en exécutant la commande suivante :
+            Sur la page de données stockées créée via le fichier <span class="highlighted">/resources/views/core/saved.blade.php</span> 
+            vous pouvez remarquer un tableau de données créé grâce à la librairie "<span class="highlighted">yajra/DataTables</span>"
+            nous l'avons par la suite stylisé avec du scss et configuré grâce à notre classe <span class="highlighted">CanDataDataTable.php</span>
         </p>
+        <p>
+            On lui précise sur quel model ce tableau doit-il agir et récupérer les données, c'est dans la méthode <span class="highlighted">query</span> que cela
+            se fait en lui précisant le model en paramètre.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/can-datatable.png')}}" >
+        </div>
+        <p>
+            On oublie pas de définir la route pour accéder à la page des données stockées.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/saved-route.png')}}" >
+        </div>
+        <p>
+            On appelle par la suite cette classe dans la méthode <span class="highlighted">saved</span> de notre <span class="highlighted">CoreController</span>.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/saved-method.png')}}" >
+        </div>
+        <p>
+            Puis on affiche le tableau sur notre vue, dans le fichier <span class="highlighted">saved.blade.php</span>.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/saved-view.png')}}" >
+        </div>
+        <p>
+            Avec un peu de style, voila le résutlat !
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/saved.png')}}" >
+        </div>
+    </section>
+
+    <!-- live -->
+    <section id="live">
+        <h2>Données live</h2>
+        <p>
+            Sur cette page nous réutilisons un tableau du même style que celui sur la page des données stockées, cependant,
+            nous n'utilisons pas la librairie <span class="highlighted">yajra/datatables</span> pour celui-ci.
+        </p>
+        <p>
+            Contrairement à la page des données stockées nous nous basons pas sur des données enregistrées pour l'affichage des trames
+            mais bien sur des données envoyées par le BlueWiCan sous le format <span class="highlighted">JSON</span> se basant sur l'exemple
+            ci-dessous.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/trame-json.png')}}" >
+        </div>
+        <ul class="list">
+            <p>
+                C'est sur cette page que nous allons ouvrir une connexion <span class="highlighted">web socket</span>, donc dans notre fichier
+                <span class="highlighted">.env</span> nous avons rajouté deux variables d'environnements :
+            </p>
+            <li><span class="highlighted">WS_HOST</span>, l'hôte du serveur web socket</li>
+            <li><span class="highlighted">WS_PORT</span>, le port du serveur</li>
+        </ul>
+        <p><strong>Configuration Locale :</strong></p>
+        <div class="code-section">
+            <code id="code-live-1">
+                <div class="line">
+                    <span>WS_HOST=127.0.0.1</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>WS_PORT=6001</span>
+                </div>
+            </code>
+            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-live-1">
+                <i class="bi bi-clipboard2-fill copy-icon"></i>
+                <i class="bi bi-clipboard2-check-fill check-icon"></i>
+            </button>
+        </div>
+        <p><strong>Configuration en production :</strong></p>
+        <div class="code-section">
+            <code id="code-live-1">
+                <div class="line">
+                    <span>WS_HOST=82.66.189.233</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>WS_PORT=6001</span>
+                </div>
+            </code>
+            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-live-1">
+                <i class="bi bi-clipboard2-fill copy-icon"></i>
+                <i class="bi bi-clipboard2-check-fill check-icon"></i>
+            </button>
+        </div>
+        <p>
+            On définie la route pour accéder à la page des données live.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/live-route.png')}}" >
+        </div>
+        <p>
+            Toujours dans le <span class="highlighted">CoreController</span>, on appelle la méthode <span class="highlighted">live</span>.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/live-method.png')}}" >
+        </div>
+        <p>
+            Dans cette méthode, on déclare et iniatialise les variables <span class="highlighted">$ws_host</span> et <span class="highlighted">$ws_port</span> pour
+            les injecter dans notre vue <span class="highlighted">live.blade.php</span>.
+        </p>
+        <p>
+            De plus, si vous voulez utiliser vos variables d'environnement dans votre application, il vous faut utiliser la méthode "<span class="highlighted">config()</span>".
+            Les variables d'environnement sont utilisées dans les fichiers de configurations dans le dossier <span class="highlighted">config</span> de l'application.
+        </p>
+        <p>
+            Les fichiers de configurations sont des tableaux PHP hashés par des clés et valeurs comme le montre ce fichier de configuration que nous avons créé pour les
+            configurations websockets (<span class="highlighted">websockets.php</span>). 
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/ws-config.png')}}" >
+        </div>
+        <p>
+            <strong>PETIT RAPPEL :</strong> Les données de ces fichiers sont mises en cache. Donc à la modification de celles-ci, n'oubliez pas d'exécuter la commande suivante
+        </p>
+        <div class="code-section">
+            <code id="code-live-2">
+                <div class="line">
+                    <span>php artisan optimize</span>
+                </div>
+            </code>
+            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-live-2">
+                <i class="bi bi-clipboard2-fill copy-icon"></i>
+                <i class="bi bi-clipboard2-check-fill check-icon"></i>
+            </button>
+        </div>
+        <p>
+            Renseignez-vous à ce sujet pour mieux comprendre, notamment avec la documentation de Laravel.
+        </p>
+        <p>
+            Intéressons nous à l'affichage des données live, le fichier <span class="highlighted">live.blade.php</span> utilise le framework <span class="highlighted">Vue.js</span>
+            pour faire l'affichage des trames directement sur la vue sans avoir besion de rafraichir la page.
+        </p>
+        <p>
+            Dans une balise script nous avons créé un objet Vue permettant de manipuler notre page comme nous le souhaitions.
+            A chaque actualisation de notre objet, la page se changera automatiquement. 
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vue-obj.png')}}">
+        </div>
+        <ul class="list">
+            <p>Faisons une brève explication sur cette objet Vue :</p>
+            <li><span class="highlighted">el : </span>élément du DOM à partir duquel l'objet Vue agit.</li>
+            <li><span class="highlighted">data : </span>permet de définir toutes les variables propre à l'objet.</li>
+            <li><span class="highlighted">mounted : </span>cette méthode est appellée dès les chargement de la page.</li>
+            <li><span class="highlighted">methods : </span>permet de renseigner toutes les méthodes propre à l'objet.</li>
+        </ul>
+
+        <p>
+            Pour afficher les données directment dans le tableau, on vérifie s'il y'a des données envoyées et si oui alors
+            on boucle sur dessus avec la directive Vue <span class="highlighted">v-for="(data, index) in incomingDatas"</span>.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vue-display-datas.png')}}">
+        </div>
+
+        <ul class="list">
+            <p>Notre objet contient différentes méthodes :</p>
+            <li><span class="highlighted">connect() : </span>permet d'ouvrir la connexion au serveur websocket</li>
+            <li><span class="highlighted">disconnect() : </span>permet de fermer la connexion au serveur websocket.</li>
+            <li><span class="highlighted">save() : </span>permet d'enregistrer toutes les trames reçues en base de données.</li>
+            <li><span class="highlighted">clear() : </span>permet de supprimer les trames reçues du tableau.</li>
+        </ul>
+        <p>
+            Rentrons plus dans les détails de ces méthodes :
+        </p>
+        <p><span class="highlighted">01 - connect() : </span></p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vue-connect.png')}}">
+        </div>
+        <p>
+            Cette méthode est appellée dès le chargement de la page puisque nous l'appellons dans la méthode <span class="highlighted">mounted()</span>.
+        </p> 
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vue-connect-btn.png')}}">
+        </div>
+        <p>
+           De plus, la gestion du bouton de connexion ou de déconexion se fait en fonction de l'état de l'attribut <span class="highlighted">connected</span>.
+           Nous vérifions sont état avec la directive Vue <span class="highlighted">v-if="connected"</span>. Donc en fonction de l'état de cette attribut soit 
+           on affiche le bouton de connexion, soit celui de déconnexion.
+        </p>
+        <p>
+            Le bouton de connexion appelle la méthode "<span class="highlighted">connect()</span>" lorsque nous cliquons dessus, grâce à la directive <span class="highlighted">v-on:click='connect()'</span>, 
+            tandis que le bouton de déconnexion appelle la méthode "<span class="highlighted">disconnect()</span>" avec la directive <span class="highlighted">v-on:click='disconnect()'</span>
+        </p>
+        <p>
+            Dans ces deux méthodes nous jouons sur un changement de l'état booléen de la variable <span class="highlighted">connected</span>.
+        </p>
+        <p><span class="highlighted">02 - disconnect() : </span></p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vue-disconnect.png')}}">
+        </div>
+        <p>
+            Comme expliqué précédement, cette méthode est appellée au clique du bouton de déconnexion changeant l'état de la variable <span class="highlighted">connected</span> à false.
+        </p>
+        <p><span class="highlighted">03 - save() : </span></p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vue-save.png')}}">
+        </div>
+        <p>
+            Cette méthode est appellée au clique du bouton pour enregistrer les données</span>.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vue-save-btn.png')}}">
+        </div>
+        <p>
+            Elle permet d'envoyer une requête Ajax à notre endpoint <span class="highlighted">/save-data</span> dans le <span class="highlighted">CoreController</span>.
+        </p>
+        <p>
+            Cette requête Ajax prend en body, le tableau de données précédement construit (<span class="highlighted">dataArray</span>) en parcourant totues les lignes du tableau et en y récupérant les valeurs de chaque
+            cellule.
+        </p>
+        <p>
+            Via la route suivante :
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/save-data-route.png')}}">
+        </div>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/save-method.png')}}">
+        </div>
+        <p>
+            Dans l'action de notre contrôleur on parcourt toutes les trames dans le body de la requête et pour chaque trame on 
+            vérifie si elle existe déjà ou non dans la base de données en fonction de son id.
+        </p>
+        <p>
+            Si la trame n'existe pas alors on l'insert dans la base de données sinon on la modifie.
+        </p>
+        <p><span class="highlighted">04 - clear() : </span></p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vue-clear.png')}}">
+        </div>
+        <p>Pour effacer les données affichées on vide le tableau des données envoyées.</p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vue-clear-btn.png')}}">
+        </div>
+        <p>Avec l'ajout de styles on obtient ce résultat :</p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/live.png')}}">
+        </div>
     </section>
 
     <!-- authentification -->
@@ -534,7 +826,7 @@
             </button>
         </div>
         <p>
-            Dans ce fichier se trouve toutes les tâches et commandes planifiées selon certains paramètres
+            Dans ce fichier se trouve toutes les tâches et commandes planifiées selon certains paramètres.
         </p>
         <div class="img-section shadow-lg">
             <img src="{{url('/images/docs/crontab.png')}}">

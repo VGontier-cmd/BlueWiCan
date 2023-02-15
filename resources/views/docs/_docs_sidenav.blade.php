@@ -23,7 +23,7 @@
                         </ul>
                     </li>
                     <li>
-                        <h2>Development</h2>
+                        <h2>Développement</h2>
                         <ul>
                             <div class="active-marker"></div>
                             <li class="list-group-item">
@@ -36,67 +36,16 @@
                                 <a href="#use">Guide d'utilisation</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="#auth">Authentification</a>
+                                <a href="#mvc">Le MVC de Laravel</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="#datatables">DataTables</a>
+                                <a href="#routes">Les routes</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="#vuejs">Vue.js</a>
+                                <a href="#stored">Données stockées</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="#improvements">Points d'améliorations</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h2>Development</h2>
-                        <ul>
-                            <div class="active-marker"></div>
-                            <li class="list-group-item">
-                                <a href="#config">Configurations</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#dev-db">Base de données</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#use">Guide d'utilisation</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#auth">Authentification</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#datatables">DataTables</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#vuejs">Vue.js</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#improvements">Points d'améliorations</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h2>Development</h2>
-                        <ul>
-                            <div class="active-marker"></div>
-                            <li class="list-group-item">
-                                <a href="#config">Configurations</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#dev-db">Base de données</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#use">Guide d'utilisation</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#auth">Authentification</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#datatables">DataTables</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#vuejs">Vue.js</a>
+                                <a href="#live">Données live</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="#improvements">Points d'améliorations</a>
