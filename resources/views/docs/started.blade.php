@@ -162,9 +162,12 @@
             <li><span class="highlighted">id :</span> l'id de la trame</li>
             <li><span class="highlighted">data :</span> les données de la trame</li>
             <li><span class="highlighted">length :</span> la taille de la trame</li>
-            <li><span class="highlighted">created_at :</span> date de création de la trame</li>
+            <li><span class="highlighted">created_at :</span> date de création de la trame </li>
             <li><span class="highlighted">updated_at :</span> date de modification de la trame</li>
         </ul>
+        <p>
+            Les colonnes <span class="highlighted">created_at</span> et <span class="highlighted">updated_at</span> sont créées par la méthode <span class="highlighted">timestamps</span>.
+        </p>
         <p>
             Vous pouvez créer vos propres migrations, pour plus de renseignement consulter la documentation de Laravel.
         </p>
@@ -230,6 +233,9 @@
                 <i class="bi bi-clipboard2-check-fill check-icon"></i>
             </button>
         </div>
+        <p>
+            Laisser le serveur vite tourner pendant que vous développez afin de compiler les scripts JS ou SCSS si vous y apportez des modifications.
+        </p>
         <div class="img-section shadow-lg">
             <img src="{{url('/images/docs/vite-run.png')}}">
         </div>
@@ -292,13 +298,50 @@
             <li><span class="highlighted">Enregistrer</span> les trames reçues en base de données</li>
             <li><span class="highlighted">Effacer</span> les trames reçues</li>
         </ul>
+        <div class="img-section" img-type="small" style="height: 2.5rem">
+            <img src="{{url('/images/docs/auth.png')}}" >
+        </div>
         <p>
             Sur toute l'application, une fois connecté, vous avez la possibilité de vous déconnecter grâce au bouton de déconnexion
             à droite de votre profil.
         </p>
-        <div class="img-section" img-type="small">
-            <img src="{{url('/images/docs/auth.png')}}">
-        </div>
+    </section>
+
+
+    <!-- authentification -->
+    <section id="auth">
+        <h2>Authentification</h2>
+        <p>
+            Pour commencer à utiliser et développer l'application vous devez démarrer votre serveur apache,
+            Soit en utilisant le serveur de Laravel en exécutant la commande suivante :
+        </p>
+    </section>
+
+    <!-- dataTables -->
+    <section id="datatables">
+        <h2>DataTables</h2>
+        <p>
+            Pour commencer à utiliser et développer l'application vous devez démarrer votre serveur apache,
+            Soit en utilisant le serveur de Laravel en exécutant la commande suivante :
+        </p>
+    </section>
+
+    <!-- vue.js -->
+    <section id="vuejs">
+        <h2>Vue.js</h2>
+        <p>
+            Pour commencer à utiliser et développer l'application vous devez démarrer votre serveur apache,
+            Soit en utilisant le serveur de Laravel en exécutant la commande suivante :
+        </p>
+    </section>
+
+    <!-- authentification -->
+    <section id="improvements">
+        <h2>Points d'améliorations</h2>
+        <p>
+            Pour commencer à utiliser et développer l'application vous devez démarrer votre serveur apache,
+            Soit en utilisant le serveur de Laravel en exécutant la commande suivante :
+        </p>
     </section>
 </section>
 
@@ -306,8 +349,8 @@
 <section class="doc-section">
     <!-- SERVER SSH - Connection -->
     <section id="connection">
-        <h1>Server SSH</h1>
-        <h2>Connection</h2>
+        <h1>Déploiement de l'application</h1>
+        <h2>Connexion</h2>
         <p>
             Pour accéder à votre projet web, vous pouvez utiliser un terminal et vous connecter 
             à votre serveur en exécutant les commandes suivantes :
