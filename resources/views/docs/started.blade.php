@@ -219,6 +219,12 @@
             fichiers CSS et JavaScript de votre application dans des ressources prêtes pour la production.
         </p>
         <p>
+            Vous pouvez configurer vos assets dans le fichier <span class="highlighted">vite.config.js</span> à la racine du projet.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/vite.png')}}">
+        </div>
+        <p>
             De ce fait, pour compiler les assets de styles et de scripts vous devez exécuter la commande suivante
             dans un terminal de VSCODE.
         </p>
@@ -364,7 +370,7 @@
             De plus, il n'est pas compliqué sous Laravel de comprendre comment se définit une route.
         </p>
         <div class="img-section shadow-lg">
-            <img src="{{url('/images/docs/route-ex.png')}}" >
+            <img src="{{ url('/images/docs/route-ex.png') }}" >
         </div>
         <ul class="list">
             <p>En effet elle se décompose en plusieurs parties :</p>
@@ -374,6 +380,32 @@
             <li><span class="highlighted">Action du contrôleur</span></li>
             <li><span class="highlighted">Nom de la route (optionnel)</span></li>
         </ul>
+    </section>
+
+    <!-- stored -->
+    <section id="auth">
+        <h2>Authentification</h2>
+        <p>
+            Tous les traitements concernant l'authentification et l'inscription figurent dans le contrôleur <span class="highlighted">AuthController</span>.
+        </p>
+        <p>
+            Action <span class="highlighted">login</span> permettant de se connecter
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{ url('/images/docs/login-method.png') }}" >
+        </div>
+        <p>
+            Action <span class="highlighted">register</span> permettant de s'inscrire
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{ url('/images/docs/register-method.png') }}" >
+        </div>
+        <p>
+            Action <span class="highlighted">logout</span> permettant se déconnecter
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{ url('/images/docs/logout-method.png') }}" >
+        </div>
     </section>
 
     <!-- stored -->
@@ -626,16 +658,112 @@
             <img src="{{url('/images/docs/live.png')}}">
         </div>
     </section>
+</section>
 
-    <!-- authentification -->
-    <section id="improvements">
-        <h2>Points d'améliorations</h2>
+
+<!-- IMPROVEMENTS -->
+<section class="doc-section">
+    <h1>Points d'améliorations</h1>
+    <section id="improve-register">
+        <h2>Inscription</h2>
         <p>
-            Pour commencer à utiliser et développer l'application vous devez démarrer votre serveur apache,
-            Soit en utilisant le serveur de Laravel en exécutant la commande suivante :
+            Nous avons fait une inscription simple sans gestion de rôles, ni <span class="highlighted">vérification par email</span>, etc.
+            Ce sont des fonctionnalités qui pourront être implémentées plus tard.
+        </p>
+        <p>
+            De plus, nous avions commencé à implémenter la fonctionnalité pour <span class="highlighted">réinitiliser son mot de passe</span> concistant 
+            à envoyer un lien de réinitilisation par mail.
+        </p>
+        <p>
+            Nous avons fait le page mais reste à finir le back-end.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/reset-password.png')}}">
+        </div>
+        <p>
+            Cependant nous n'avions pas eu le temps de la finir et de vraiment l'implémenter. 
+            Ce sera à vous de faire vos recherches et de définir un protocole d'envoi de mail.
+        </p>
+        <p>
+            Notamment, en configurant ceci :
+        </p>
+        <div class="code-section">
+            <code id="code-auth-1">
+                <div class="line">
+                    <span>MAIL_MAILER=smtp</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>MAIL_HOST=mailhog</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>MAIL_PORT=1025</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>MAIL_USERNAME=null</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>MAIL_PASSWORD=null</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>MAIL_ENCRYPTION=null</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>MAIL_FROM_ADDRESS="hello@example.com"</span>&nbsp;
+                </div>
+                <div class="line">
+                    <span>MAIL_FROM_NAME="${APP_NAME}"</span>
+                </div>
+            </code>
+            <button class="btn-copy" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Copied" aria-label="Copy to Clipboard" data-clipboard-target="#code-auth-1">
+                <i class="bi bi-clipboard2-fill copy-icon"></i>
+                <i class="bi bi-clipboard2-check-fill check-icon"></i>
+            </button>
+        </div>
+        <p>
+            Voici la méthode qui nous avions commencé à implémenter dans le contrôleur <span class="highlighted">AuthController</span>.
+        </p>
+        <div class="img-section shadow-lg">
+            <img src="{{url('/images/docs/reset-password-method.png')}}">
+        </div>
+    </section>
+
+    <section id="https">
+        <h2>HTTPS</h2>
+        <p>
+            Concernant le site en production, il serait important d'utiliser un <span class="highlighted">certificat SSL</span> 
+            et mettre en place une connexion sécurisée via le protocole <span class="highlighted">https</span>.
+        </p>
+        <p>
+            L'HTTPS est un protocole de communication qui utilise le certificat SSL pour sécuriser les échanges entre le navigateur de 
+            l'utilisateur et le site web. Lorsqu'un utilisateur se connecte à un site web en HTTPS, ses données sont chiffrées avant 
+            d'être envoyées au serveur web. Cela garantit que les informations sensibles, telles que les noms d'utilisateur, 
+            les mots de passe et les informations de paiement, ne peuvent pas être interceptées par des tiers malveillants.
+        </p>
+        <p>
+            En résumé, le certificat SSL et l'HTTPS sont utilisés pour protéger la confidentialité et l'intégrité des données échangées 
+            entre les utilisateurs et les sites web. Ils sont particulièrement importants pour les sites qui traitent des informations sensibles, 
+            tels que les sites de commerce électronique, les services bancaires en ligne et les sites de santé en ligne.
+        </p>
+    </section>
+
+    <section id="wss">
+        <h2>WSS</h2>
+        <p>
+            Actuellement, nous utilisons le protocole <span class="highlighted">WS</span> pour la communication en temps réel entre un navigateur
+            et un serveur.
+        </p>
+        <p>
+            C'est un protocole de communication bidirectionnel en temps réel entre un navigateur web et un serveur, 
+            qui permet aux applications web d'envoyer et de recevoir des données en temps réel, 
+            sans avoir à constamment interroger le serveur. Le protocole WSS utilise SSL/TLS pour chiffrer les données échangées entre le 
+            navigateur et le serveur, offrant ainsi une sécurité supplémentaire par rapport au protocole WebSocket standard.
+        </p>
+        <p>
+            C'est pourquoi, il serait intéressant d'ajouter uen couche de sécurité supplémentaire avec le <span class="highlighted">WSS (WebSockets over SSL)</span> couplé avec le protocole SSL/TLS.
         </p>
     </section>
 </section>
+
 
 <!-- SERVER -->
 <section class="doc-section">

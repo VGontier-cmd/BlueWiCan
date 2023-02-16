@@ -42,13 +42,28 @@
                                 <a href="#routes">Les routes</a>
                             </li>
                             <li class="list-group-item">
+                                <a href="#auth">Authentification</a>
+                            </li>
+                            <li class="list-group-item">
                                 <a href="#stored">Données stockées</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="#live">Données live</a>
                             </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>Points d'améliorations</h2>
+                        <ul>
+                            <div class="active-marker"></div>
                             <li class="list-group-item">
-                                <a href="#improvements">Points d'améliorations</a>
+                                <a href="#improve-register">Inscription</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#https">HTTPS</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#wss">WSS</a>
                             </li>
                         </ul>
                     </li>
