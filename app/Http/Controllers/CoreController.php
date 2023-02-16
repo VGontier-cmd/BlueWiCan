@@ -113,11 +113,15 @@ class CoreController extends Controller
         return view('core.live', compact('page_title', 'page_subtitle', 'ws_host', 'ws_port'));
     }
 
+    /**
+     * Requête AJAX permettant d'insérer une liste de trames en base de données
+     */
     public function store(Request $request) {
         $data = $request->input('datas');
 
         foreach ($data as $item) {
             $recordExists = DB::table('can_datas')->where('id', $item['id'])->exists();
+            // si la trame n'existe pas alors on l'ajoute
             if(!$recordExists) {
                 CanData::create([
                     'id' => $item['id'],
@@ -125,7 +129,9 @@ class CoreController extends Controller
                     'length' => $item['length'],
                     'created_at' => Carbon::parse($item['created_at'])->format('Y-m-d H:i:s')
                 ]);
-            } else {
+            } 
+            // sinon on la modifie
+            else {
                 DB::table('can_datas')
                 ->where('id', $item['id'])
                 ->update([
