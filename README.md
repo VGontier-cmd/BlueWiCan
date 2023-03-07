@@ -19,9 +19,9 @@ The BlueWiCan project aims at developing a web application able to receive CAN f
 
 ## Authors
 
-- [@VGontier-cmd](https://www.github.com/VGontier-cmd)
-- [@Gimly-76](https://www.github.com/Gimly-76)
-- [@NathanCarel](https://www.github.com/NathanCarel)
+- [Vivien Gontier](https://www.github.com/VGontier-cmd)
+- [Théo Carel](https://www.github.com/Gimly-76)
+- [Nathan Carel](https://www.github.com/NathanCarel)
 
 
 ## Introduction
