@@ -13,7 +13,7 @@
 
 # BlueWiCan App
 
-Desktop multi function application to improve and increase your chance to cop limited releases with or without a bot.
+The BlueWiCan project aims at developing a web application able to receive CAN frames sent directly from a Bluetooth or Wifi module named BlueWiCan. This application will allow the user to visualize the CAN data and analyze them in real-time.
 
 
 
