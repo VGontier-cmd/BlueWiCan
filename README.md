@@ -30,8 +30,6 @@ Welcome to the BlueWiCan project !
 
 This project was realized for an engineering school end of study project for a French company : <a href="https://www.stellantis.com">Stellantis</a>.
 
-The BlueWiCan project aims at developing a web application able to receive CAN frames sent directly from a Bluetooth or Wifi module named BlueWiCan. This application will allow the user to visualize the CAN data and to analyze them in real time.
-
 This documentation will provide all the necessary information to understand the operation of the application, including installation instructions, user guides and technical specifications. We hope this documentation will help you get the most out of the BlueWiCan application.
 
 
